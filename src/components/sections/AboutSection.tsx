@@ -1,0 +1,109 @@
+"use client";
+
+import { Download, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+export default function AboutSection() {
+  return (
+    <section className="bg-[#FCF9F4] py-20 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          
+          {/* ── Brand Storytelling (Left) ── */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="text-sand text-xs font-semibold tracking-[0.2em] uppercase mb-6">
+                Who We Are
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-navy leading-tight mb-8">
+                Designing spaces that seamlessly blend comfort, functionality, and modern aesthetics.
+              </h2>
+              
+              <div className="space-y-6 text-[#1E3A6A]/70 text-base lg:text-lg leading-relaxed">
+                <p>
+                  At Infravue Interiors, we transform ordinary spaces into refined, functional, and inspiring experiences — from elegant homes to high-performance corporate environments.
+                </p>
+                
+                <div className="pt-4">
+                  <h3 className="text-xl font-bold text-navy mb-4">Interior Designers in Hyderabad</h3>
+                  <p className="mb-6">
+                    Based in Hyderabad, we offer end-to-end interior design and turnkey solutions — from concept planning to final execution. Our approach combines:
+                  </p>
+                  
+                  <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {[
+                      "Thoughtful Design",
+                      "Precise Planning",
+                      "High-Quality Materials",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-2 text-sm font-semibold text-navy">
+                        <CheckCircle2 size={18} className="text-terracotta" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <p className="pt-4">
+                  Every project is crafted to reflect your style, purpose, and budget, while maintaining a strong focus on quality and timely delivery.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* ── Lead Magnet / Visual (Right) ── */}
+          <div className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              {/* Background Decoration */}
+              <div className="absolute -inset-4 bg-[#FCF9F4] rounded-3xl -z-10 transform rotate-2" />
+              
+              <div className="bg-white rounded-2xl border border-sand/30 p-8 shadow-[0_20px_50px_rgba(30,58,106,0.1)]">
+                <div className="relative h-64 w-full mb-8 rounded-xl overflow-hidden">
+                  <Image 
+                    src="/images/services/design.jpeg" 
+                    alt="Interior Design Guide" 
+                    fill 
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-navy/20" />
+                </div>
+                
+                <h4 className="text-xl font-bold text-navy mb-3">
+                  Free Interior Design Guide
+                </h4>
+                <p className="text-[#1E3A6A]/60 text-sm mb-8">
+                  Get our exclusive 2024 Design Trends & Budgeting Guide to plan your dream space effectively.
+                </p>
+                
+                <button 
+                  className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-navy text-white font-bold rounded-[6px] hover:bg-navy-dark transition-all duration-300 group"
+                  onClick={() => window.open('https://wa.me/917478075444?text=Hi! I would like to download the Free Interior Design Guide.', '_blank')}
+                >
+                  <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
+                  Download Guide (PDF)
+                </button>
+                
+                <p className="text-[10px] text-center text-navy/40 mt-4 uppercase tracking-widest">
+                  Instant Access via WhatsApp
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
