@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#FCF9F4] py-20 lg:py-32">
+    <section id="about" className="bg-white py-20 lg:py-32 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
@@ -67,7 +67,7 @@ export default function AboutSection() {
               className="relative"
             >
               {/* Background Decoration */}
-              <div className="absolute -inset-4 bg-[#FCF9F4] rounded-3xl -z-10 transform rotate-2" />
+              <div className="absolute -inset-4 bg-gray-50 rounded-3xl -z-10 transform rotate-2" />
               
               <div className="bg-white rounded-2xl border border-sand/30 p-8 shadow-[0_20px_50px_rgba(30,58,106,0.1)]">
                 <div className="relative h-64 w-full mb-8 rounded-xl overflow-hidden">

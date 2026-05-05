@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakartaSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-cream text-foreground">
+      <body className="min-h-full flex flex-col bg-white text-foreground">
         <Providers>
           <LeadSessionInit />
           <RootLayoutWrapper>{children}</RootLayoutWrapper>

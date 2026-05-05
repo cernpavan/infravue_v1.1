@@ -88,7 +88,7 @@ export default function BookingForm() {
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12 bg-white rounded-2xl border border-sand/20 shadow-xl shadow-navy/5"
+            className="text-center py-12 bg-white rounded-2xl border border-gray-100 shadow-xl shadow-navy/5"
           >
             <div className="flex justify-center mb-6">
               <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center">
@@ -107,7 +107,7 @@ export default function BookingForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-[#FCF9F4] p-6 sm:p-8 space-y-4"
+            className="bg-white p-6 sm:p-8 space-y-4"
           >
             <div className="text-center mb-2">
               <h2 className="text-xl font-bold text-navy">Free Consultation</h2>
@@ -127,7 +127,7 @@ export default function BookingForm() {
                 type="text"
                 placeholder="Full Name"
                 {...register("name")}
-                className="w-full px-5 py-4 bg-white border border-sand/30 rounded-xl text-sm text-navy placeholder:text-navy/40 focus:outline-none focus:border-navy/60 focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
+                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
               />
               {errors.name && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.name.message}</p>}
             </div>
@@ -139,7 +139,7 @@ export default function BookingForm() {
                 type="tel"
                 placeholder="Phone Number"
                 {...register("phone")}
-                className="w-full px-5 py-4 bg-white border border-sand/30 rounded-xl text-sm text-navy placeholder:text-navy/40 focus:outline-none focus:border-navy/60 focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
+                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
               />
               {errors.phone && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.phone.message}</p>}
             </div>
@@ -150,7 +150,7 @@ export default function BookingForm() {
                 <select
                   id="serviceType"
                   {...register("serviceType")}
-                  className="w-full px-5 py-4 bg-white border border-sand/30 rounded-xl text-sm text-navy focus:outline-none focus:border-navy/60 focus:ring-4 focus:ring-navy/5 transition-all appearance-none cursor-pointer shadow-sm"
+                  className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all appearance-none cursor-pointer shadow-sm"
                 >
                   <option value="">Select Service Type</option>
                   <option value="Residential">Residential Design</option>
@@ -177,7 +177,7 @@ export default function BookingForm() {
                 placeholder="Briefly describe your project (Optional)"
                 rows={2}
                 {...register("message")}
-                className="w-full px-5 py-4 bg-white border border-sand/30 rounded-xl text-sm text-navy placeholder:text-navy/40 focus:outline-none focus:border-navy/60 focus:ring-4 focus:ring-navy/5 transition-all resize-none shadow-sm"
+                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all resize-none shadow-sm"
               />
             </div>
 

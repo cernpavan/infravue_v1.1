@@ -138,7 +138,7 @@ function ServiceCard({
 
 export default function ServicesSection() {
   return (
-    <section className="bg-cream py-20 lg:py-28">
+    <section id="services" className="bg-white py-20 lg:py-28 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Section Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-14">

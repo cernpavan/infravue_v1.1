@@ -37,7 +37,7 @@ export default function Home() {
       <Testimonials />
 
       {/* ── Stats Strip ──────────────────────────────────────────────── */}
-      <section className="bg-cream py-20 lg:py-28 border-y border-sand/20">
+      <section className="bg-white py-20 lg:py-28 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
           <p className="text-center text-terracotta text-xs font-bold tracking-[0.25em] uppercase mb-16">
             Our Impact
@@ -52,7 +52,7 @@ export default function Home() {
               <div
                 key={label}
                 className={`text-center px-4 ${
-                  i < 3 ? "md:border-r md:border-sand/20" : ""
+                  i < 3 ? "md:border-r md:border-gray-200" : ""
                 }`}
               >
                 <p className="text-3xl lg:text-[2.75rem] font-bold text-[#1E3A6A] leading-none mb-2 tracking-tight">

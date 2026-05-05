@@ -19,7 +19,7 @@ export default function BookPage() {
       </section>
 
       {/* Form card */}
-      <section className="bg-cream py-14 lg:py-20 px-6 lg:px-20">
+      <section className="bg-white py-14 lg:py-20 px-6 lg:px-20">
         <div className="max-w-2xl mx-auto">
           <BookingForm />
         </div>

@@ -47,7 +47,7 @@ const LOOP_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS];
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#FCF9F4] py-20 lg:py-32 overflow-hidden">
+    <section className="bg-white py-20 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-16 text-center">
         <p className="text-sand text-xs font-semibold tracking-[0.2em] uppercase mb-4">
           Social Proof
@@ -59,8 +59,8 @@ export default function Testimonials() {
 
       <div className="relative">
         {/* Gradients to fade out edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 lg:w-40 bg-gradient-to-r from-[#FCF9F4] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 lg:w-40 bg-gradient-to-l from-[#FCF9F4] to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 lg:w-40 bg-gradient-to-r from-white to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 lg:w-40 bg-gradient-to-l from-white to-transparent z-10" />
 
         <motion.div
           className="flex gap-6 px-4"

@@ -29,19 +29,19 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-cream/90 backdrop-blur-md py-4 shadow-sm"
-          : "bg-cream py-6"
+          ? "bg-white/90 backdrop-blur-md py-2 shadow-sm"
+          : "bg-white py-3"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <nav className="flex items-center justify-between">
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center group">
-            <div className="relative w-32 h-12 overflow-hidden">
+            <div className="relative w-40 h-14 overflow-hidden">
               <img
                 src={logo.src}
                 alt="Infravue Interiors"
-                className="absolute top-1/2 left-0 -translate-y-1/2 w-auto h-10 object-contain"
+                className="absolute top-1/2 left-0 -translate-y-1/2 w-auto h-12 object-contain"
               />
             </div>
           </Link>
@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* ── Mobile Menu ── */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-cream border-t border-sand/10 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-100 transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0"
         }`}
       >

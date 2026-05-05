@@ -48,7 +48,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-cream cursor-pointer"
+      className="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-gray-50 cursor-pointer"
     >
       {/* ── Image ── */}
       <Image
@@ -83,7 +83,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
 
 export default function ProjectsSection() {
   return (
-    <section className="bg-[#FCF9F4] py-20 lg:py-32">
+    <section id="projects" className="bg-white py-20 lg:py-32 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Header ── */}
         <div className="max-w-2xl mb-16">
@@ -109,7 +109,7 @@ export default function ProjectsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-center p-12 bg-[#FCF9F4] rounded-2xl border-2 border-dashed border-sand/30"
+            className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl border-2 border-dashed border-gray-100"
           >
             <h3 className="text-xl font-bold text-navy text-center mb-4">
               Your Project Next?

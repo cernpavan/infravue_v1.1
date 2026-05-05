@@ -40,7 +40,7 @@ const COMPANY = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FCF9F4] text-[#1E3A6A] border-t border-sand/30">
+    <footer className="bg-white text-[#1E3A6A] border-t border-gray-100">
       {/* ── Main Grid ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-20 pt-16 pb-12 lg:pt-20 lg:pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14">
@@ -48,14 +48,14 @@ export default function Footer() {
           {/* ── Brand Column ── */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center mb-5">
-              <div style={{ width: 150, height: 80, overflow: "hidden", position: "relative" }}>
+              <div style={{ width: 200, height: 100, overflow: "hidden", position: "relative" }}>
                 <img
                   src={logo.src}
                   alt="Infravue Interiors"
                   style={{
                     position: "absolute",
                     width: "auto",
-                    height: 70,
+                    height: 90,
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",

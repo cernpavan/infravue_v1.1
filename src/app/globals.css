@@ -50,7 +50,7 @@
 
 :root {
   /* Infravue Brand — mapped to shadcn/ui token names */
-  --background: #FCF9F4;           /* warm off-white */
+  --background: #FFFFFF;           /* pure white */
   --foreground: #1A1814;           /* near-black for text */
   --card: #FFFFFF;
   --card-foreground: #1A1814;
@@ -60,13 +60,13 @@
   --primary-foreground: #FFFFFF;
   --secondary: #D8C4AD;            /* sand/beige */
   --secondary-foreground: #1E3A6A;
-  --muted: #F5F0E8;                /* slightly darker cream */
+  --muted: #F9F9F9;                /* neutral light gray for depth */
   --muted-foreground: #7A7670;     /* subdued text */
   --accent: #A1622C;               /* terracotta — hover / highlight */
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #E8E7E0;
-  --input: #E8E7E0;
+  --border: #F0F0F0;               /* lighter border for white bg */
+  --input: #F0F0F0;
   --ring: #1E3A6A;                 /* focus rings use navy */
   --chart-1: #1E3A6A;
   --chart-2: #A1622C;
@@ -74,13 +74,13 @@
   --chart-4: oklch(0.439 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.375rem;              /* 6px — premium, not playful */
-  --sidebar: #F5F0E8;
+  --sidebar: #FFFFFF;
   --sidebar-foreground: #1A1814;
   --sidebar-primary: #1E3A6A;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EDE3D6;
+  --sidebar-accent: #F5F5F5;
   --sidebar-accent-foreground: #1E3A6A;
-  --sidebar-border: #E8E7E0;
+  --sidebar-border: #F0F0F0;
   --sidebar-ring: #1E3A6A;
 }
 
@@ -124,8 +124,8 @@
   --color-navy:             #1E3A6A;
   --color-navy-light:       #2D5099;
   --color-navy-dark:        #152B52;
-  --color-cream:            #FCF9F4;
-  --color-cream-muted:      #F5F0E8;
+  --color-cream:            #FFFFFF;
+  --color-cream-muted:      #F9F9F9;
   --color-sand:             #D8C4AD;
   --color-sand-light:       #EDE3D6;
   --color-sand-dark:        #C4A88A;
@@ -153,7 +153,7 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;

@@ -39,7 +39,7 @@ const STEPS = [
 
 export default function ProcessSection() {
   return (
-    <section className="bg-cream py-24 lg:py-36 overflow-hidden">
+    <section className="bg-white py-24 lg:py-36 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         
         {/* ── Header ── */}

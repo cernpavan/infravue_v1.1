@@ -7,7 +7,6 @@ import BookingForm from "@/app/book/BookingForm";
 
 export default function ConsultationModal() {
   const { isOpen, closeModal } = useConsultationModal();
-  const overlayRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   // ── Lock body scroll when modal is open ──
@@ -39,30 +38,27 @@ export default function ConsultationModal() {
     }
   }, [isOpen]);
 
-  // ── Close when clicking the dark overlay (not the panel) ──
-  const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === overlayRef.current) closeModal();
-  };
 
   if (!isOpen) return null;
 
   return (
     <div
-      ref={overlayRef}
-      onClick={handleOverlayClick}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-label="Book Free Consultation"
     >
       {/* ── Backdrop ── */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300" />
+      <div 
+        onClick={closeModal}
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300 cursor-pointer" 
+      />
 
       {/* ── Modal Panel ── */}
       <div
         ref={panelRef}
         tabIndex={-1}
-        className="relative z-10 w-full max-w-md bg-[#FCF9F4] rounded-3xl shadow-[0_24px_80px_rgba(30,58,106,0.25)] animate-in zoom-in-95 fade-in duration-300 overflow-hidden"
+        className="relative z-10 w-full max-w-md bg-white rounded-3xl shadow-[0_24px_80px_rgba(30,58,106,0.25)] animate-in zoom-in-95 fade-in duration-300 overflow-hidden"
       >
         {/* Floating Close Button */}
         <button

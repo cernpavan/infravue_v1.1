@@ -187,7 +187,7 @@ function ServiceIcon({ name, type }: { name: string; type: string }) {
 
 export default function ServiceIconsSection() {
   return (
-    <section className="bg-cream py-20 lg:py-32">
+    <section className="bg-white py-20 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         
         {/* ── Header ── */}
