@@ -1,12 +1,11 @@
-import { Users, Factory, Home, CreditCard, Tag, ShieldCheck, Truck } from "lucide-react";
+import { Users, Home, Tag, Truck, Award, Maximize } from "lucide-react";
 
 const TRUST_ITEMS = [
+  { icon: Award, label: "10+ Years of Experience" },
+  { icon: Home, label: "50+ Homes Delivered" },
+  { icon: Maximize, label: "2M+ Sq. Ft. Delivered" },
   { icon: Users, label: "500+ Expert Designers" },
-  { icon: Factory, label: "Own Manufacturing Unit" },
-  { icon: Home, label: "10,000+ Homes Delivered" },
-  { icon: CreditCard, label: "Flexible EMI Options" },
   { icon: Tag, label: "Transparent Pricing" },
-  { icon: ShieldCheck, label: "10-Year Warranty" },
   { icon: Truck, label: "Fast & On-Time Delivery" },
 ];
 
@@ -15,7 +14,7 @@ export default function TrustBanner() {
     <section className="bg-white overflow-hidden py-10 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-8 text-center">
         <h2 className="text-sm md:text-base font-bold text-terracotta tracking-[0.15em] uppercase">
-          Trusted by 100+ Customers
+          Our Expertise
         </h2>
       </div>
 

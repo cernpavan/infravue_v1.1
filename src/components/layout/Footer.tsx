@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/app/logo.jpg";
+import logo from "@/app/logo_part1.png";
 import BookButton from "@/components/ui/BookButton";
 
 const SOCIALS = [
@@ -47,19 +47,12 @@ export default function Footer() {
 
           {/* ── Brand Column ── */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center mb-5">
-              <div style={{ width: 200, height: 100, overflow: "hidden", position: "relative" }}>
+            <Link href="/" className="flex items-center mb-6 group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
+              <div className="relative h-[42px] w-[200px]">
                 <img
                   src={logo.src}
                   alt="Infravue Interiors"
-                  style={{
-                    position: "absolute",
-                    width: "auto",
-                    height: 90,
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                  }}
+                  className="h-full w-auto object-contain object-left"
                 />
               </div>
             </Link>

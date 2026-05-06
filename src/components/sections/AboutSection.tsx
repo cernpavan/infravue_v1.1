@@ -18,7 +18,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-sand text-xs font-semibold tracking-[0.2em] uppercase mb-6">
+              <p className="text-terracotta text-sm font-bold tracking-[0.2em] uppercase mb-6">
                 Who We Are
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-navy leading-tight mb-8">
@@ -27,7 +27,7 @@ export default function AboutSection() {
               
               <div className="space-y-6 text-[#1E3A6A]/70 text-base lg:text-lg leading-relaxed">
                 <p>
-                  At Infravue Interiors, we transform ordinary spaces into refined, functional, and inspiring experiences — from elegant homes to high-performance corporate environments.
+                  At Infravue Interiors, we design and transform homes, commercial spaces, and corporate environments into refined, functional, and inspiring spaces.
                 </p>
                 
                 <div className="pt-4">
@@ -73,7 +73,7 @@ export default function AboutSection() {
                 <div className="relative h-64 w-full mb-8 rounded-xl overflow-hidden">
                   <Image 
                     src="/images/services/design.jpeg" 
-                    alt="Interior Design Guide" 
+                    alt="Interior Design Brochure" 
                     fill 
                     className="object-cover"
                   />
@@ -81,18 +81,18 @@ export default function AboutSection() {
                 </div>
                 
                 <h4 className="text-xl font-bold text-navy mb-3">
-                  Free Interior Design Guide
+                  Free Interior Design Brochure
                 </h4>
                 <p className="text-[#1E3A6A]/60 text-sm mb-8">
-                  Get our exclusive 2024 Design Trends & Budgeting Guide to plan your dream space effectively.
+                  Get our exclusive 2024 Design Trends & Budgeting Brochure to plan your dream space effectively.
                 </p>
                 
                 <button 
                   className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-navy text-white font-bold rounded-[6px] hover:bg-navy-dark transition-all duration-300 group"
-                  onClick={() => window.open('https://wa.me/917478075444?text=Hi! I would like to download the Free Interior Design Guide.', '_blank')}
+                  onClick={() => window.open('https://wa.me/917478075444?text=Hi! I would like to download the Free Interior Design Brochure.', '_blank')}
                 >
                   <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
-                  Download Guide (PDF)
+                  Download Brochure (PDF)
                 </button>
                 
                 <p className="text-[10px] text-center text-navy/40 mt-4 uppercase tracking-widest">

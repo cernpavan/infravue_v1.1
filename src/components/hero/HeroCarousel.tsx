@@ -9,23 +9,23 @@ import BookButton from "@/components/ui/BookButton";
 
 const SLIDES = [
   {
-    id: 3,
-    image: "/images/hero/hero-3.jpg",
-    alt: "Contemporary office space design",
-  },
-  {
     id: 1,
-    image: "/images/hero/hero-1.jpg",
-    alt: "Premium commercial interior design space",
+    image: "/images/hero/hero_image_1.png",
+    alt: "Premium architectural interior design - Concept 1",
   },
   {
     id: 2,
-    image: "/images/hero/hero-2.jpg",
-    alt: "Modern hospitality interior with ambient lighting",
+    image: "/images/hero/hero_image_2.png",
+    alt: "Modern luxury interior space - Concept 2",
+  },
+  {
+    id: 3,
+    image: "/images/hero/hero-3.jpg",
+    alt: "Contemporary residential and commercial design - Concept 3",
   },
 ];
 
-const AUTO_ROTATE_INTERVAL = 5000; // 5 seconds
+const AUTO_ROTATE_INTERVAL = 8000; // 8 seconds
 const CUBIC_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]; // Material Design easing
 const CUBIC_EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1]; // Fast exit easing
 
@@ -75,7 +75,7 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden pt-20">
+    <div className="relative w-full h-screen overflow-hidden pt-24">
       {/* ── Image carousel with crossfade + Ken Burns ── */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -88,7 +88,7 @@ export default function HeroCarousel() {
           exit={{ opacity: 0 }}
           transition={{
             opacity: { duration: 1.4, ease: CUBIC_EASE },
-            scale: { duration: 6.5, ease: "linear" },
+            scale: { duration: 10, ease: "linear" },
           }}
           className="absolute inset-0"
         >

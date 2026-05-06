@@ -4,6 +4,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ServiceIconsSection from "@/components/sections/ServiceIconsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import BrandsMarquee from "@/components/sections/BrandsMarquee";
 import ProcessSection from "@/components/sections/ProcessSection";
 import Testimonials from "@/components/sections/Testimonials";
 import FaqSection from "@/components/sections/FaqSection";
@@ -29,6 +30,9 @@ export default function Home() {
 
       {/* ── Projects Showcase ───────────────────────────────────────── */}
       <ProjectsSection />
+
+      {/* ── Trusted Partners (Brand Marquee) ────────────────────────── */}
+      <BrandsMarquee />
 
       {/* ── How It Works Section ────────────────────────────────────── */}
       <ProcessSection />

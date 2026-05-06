@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
 import BookButton from "@/components/ui/BookButton";
-import logo from "@/app/logo.jpg";
+import logo from "@/app/logo_part1.png";
 
 const NAV_LINKS = [
   { name: "About Us", href: "/#about" },
@@ -29,19 +29,19 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/90 backdrop-blur-md py-2 shadow-sm"
-          : "bg-white py-3"
+          ? "bg-white/95 backdrop-blur-md py-1 shadow-md"
+          : "bg-white py-1"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <nav className="flex items-center justify-between">
           {/* ── Logo ── */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-40 h-14 overflow-hidden">
+          <Link href="/" className="flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
+            <div className="relative h-[65px] w-[220px] lg:w-[260px]">
               <img
                 src={logo.src}
                 alt="Infravue Interiors"
-                className="absolute top-1/2 left-0 -translate-y-1/2 w-auto h-12 object-contain"
+                className="h-full w-auto object-contain object-left"
               />
             </div>
           </Link>
@@ -52,19 +52,19 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-[13px] font-bold text-navy/60 hover:text-navy uppercase tracking-widest transition-colors"
+                className="text-[12px] font-bold text-navy/60 hover:text-navy uppercase tracking-[0.15em] transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1.5px] after:bg-navy after:transition-all hover:after:w-full"
               >
                 {link.name}
               </Link>
             ))}
-            <BookButton className="px-6 py-2.5 bg-navy text-white text-[13px] font-bold rounded-[4px] hover:bg-navy-dark transition-all duration-300 shadow-lg shadow-navy/10 active:scale-[0.98]">
+            <BookButton className="px-7 py-2.5 bg-navy text-white text-[12px] font-bold rounded-[4px] hover:bg-navy-dark transition-all duration-300 shadow-lg shadow-navy/20 active:scale-[0.95]">
               Free Consultation
             </BookButton>
           </div>
 
           {/* ── Mobile Menu Trigger ── */}
           <button
-            className="lg:hidden text-navy p-1"
+            className="lg:hidden text-navy p-2 hover:bg-navy/5 rounded-full transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
