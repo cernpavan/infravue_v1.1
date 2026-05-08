@@ -5,10 +5,15 @@ import BookButton from "@/components/ui/BookButton";
 
 export default function CtaBanner() {
   return (
-    <section className="bg-white py-20 lg:py-24">
+    <section className="relative bg-white pt-20 pb-24 lg:pt-24 lg:pb-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[#A1622C] text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+          <div
+            aria-hidden
+            className="mx-auto mb-7 h-px w-16 bg-gradient-to-r from-transparent via-[#A1622C]/40 to-transparent"
+          />
+          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-5">
+            Let&apos;s Begin
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1E3A6A] mb-4 leading-tight">
             Ready to Transform Your Space?
@@ -23,6 +28,12 @@ export default function CtaBanner() {
           </BookButton>
         </div>
       </div>
+
+      {/* Closing hairline — signals the end of the body content before the footer */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto h-px max-w-[80%] bg-gradient-to-r from-transparent via-[#1E3A6A]/12 to-transparent"
+      />
     </section>
   );
 }

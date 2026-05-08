@@ -44,7 +44,7 @@ export default function FaqSection() {
     <section id="faq" className="bg-white py-20 lg:py-32 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-20">
         <div className="text-center mb-16">
-          <p className="text-sand text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
             Got Questions?
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-navy tracking-tight">

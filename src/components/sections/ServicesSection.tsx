@@ -142,7 +142,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Section Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-[#A1622C] text-xs font-semibold tracking-[0.15em] uppercase mb-4">
+          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
             What We Do
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1E3A6A] mb-4">

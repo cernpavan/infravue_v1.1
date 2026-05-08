@@ -25,7 +25,7 @@ const SLIDES = [
   },
 ];
 
-const AUTO_ROTATE_INTERVAL = 8000; // 8 seconds
+const AUTO_ROTATE_INTERVAL = 4000; // 8 seconds
 const CUBIC_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]; // Material Design easing
 const CUBIC_EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1]; // Fast exit easing
 

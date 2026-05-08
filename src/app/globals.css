@@ -133,8 +133,10 @@
   --color-terracotta-light: #C07A3A;
   --color-terracotta-dark:  #7A4A20;
 
-  --animate-marquee:        marquee 40s linear infinite;
-  
+  --animate-marquee:           marquee 40s linear infinite;
+  --animate-marquee-x:         marquee-x 60s linear infinite;
+  --animate-marquee-x-reverse: marquee-x-reverse 75s linear infinite;
+
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -142,6 +144,18 @@
     to {
       transform: translateX(calc(-50% - 1rem));
     }
+  }
+
+  /* Seamless marquees — paired with `padding-right` on each item (no flex gap)
+     so total track width = 2 * single-list width, and -50% lands the second
+     copy exactly where the first started. */
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-x-reverse {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
   }
 }
 

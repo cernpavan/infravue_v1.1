@@ -43,7 +43,7 @@ export default function Home() {
       {/* ── Stats Strip ──────────────────────────────────────────────── */}
       <section className="bg-white py-20 lg:py-28 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <p className="text-center text-terracotta text-xs font-bold tracking-[0.25em] uppercase mb-16">
+          <p className="text-center text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-16">
             Our Impact
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12">

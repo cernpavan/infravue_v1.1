@@ -40,19 +40,42 @@ const COMPANY = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-[#1E3A6A] border-t border-gray-100">
+    <footer className="relative bg-white text-[#1E3A6A]">
+      {/* ── Premium hairline divider — soft gradient, dissolves at the edges ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1E3A6A]/15 to-transparent"
+      />
+
+      {/* ── Centered terracotta accent on the divider — minimal luxury mark ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-0 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#A1622C]/45 to-transparent"
+      />
+
+      {/* ── Soft ambient shadow falling into the footer — creates depth without color ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#1E3A6A]/[0.035] via-[#1E3A6A]/[0.012] to-transparent"
+      />
+
       {/* ── Main Grid ── */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-20 pt-16 pb-12 lg:pt-20 lg:pb-16">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-20 pt-24 pb-14 lg:pt-32 lg:pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14">
 
           {/* ── Brand Column ── */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center mb-6 group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
-              <div className="relative h-[42px] w-[200px]">
+            <Link
+              href="/"
+              aria-label="Infravue — Home"
+              className="-ml-1 mb-8 inline-flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <div className="relative h-[68px] w-[240px] lg:h-[76px] lg:w-[270px]">
                 <img
                   src={logo.src}
                   alt="Infravue Interiors"
                   className="h-full w-auto object-contain object-left"
+                  draggable={false}
                 />
               </div>
             </Link>
@@ -153,8 +176,8 @@ export default function Footer() {
       </div>
 
       {/* ── Bottom Bar ── */}
-      <div className="border-t border-sand/20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="relative border-t border-[#1E3A6A]/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-20 py-7 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-[#1E3A6A]/40">
             © {new Date().getFullYear()} Infravue. All rights reserved.
           </p>
