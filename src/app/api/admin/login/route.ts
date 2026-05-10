@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       message: "Login successful",
     });
 
-    response.cookies.set("admin_token", username, {
+    response.cookies.set("admin_token", process.env.ADMIN_SECRET ?? username, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
