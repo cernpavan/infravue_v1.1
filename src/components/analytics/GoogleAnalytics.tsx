@@ -10,7 +10,7 @@ import { Suspense, useEffect } from "react";
  * staging). Falls back to the production property if unset.
  */
 const GA_MEASUREMENT_ID =
-  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-4BLWS4B79V";
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-ZT4GJEG43D";
 
 declare global {
   interface Window {
