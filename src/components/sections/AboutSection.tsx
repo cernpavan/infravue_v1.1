@@ -87,17 +87,24 @@ export default function AboutSection() {
                   Get our exclusive 2024 Design Trends & Budgeting Brochure to plan your dream space effectively.
                 </p>
                 
-                <button 
+                <a
+                  href="https://drive.google.com/file/d/1i8C_bSArLumj8GFkWzT-I8oFzqR_fDtT/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-navy text-white font-bold rounded-[6px] hover:bg-navy-dark transition-all duration-300 group"
-                  onClick={() => window.open('https://wa.me/917478075444?text=Hi! I would like to download the Free Interior Design Brochure.', '_blank')}
                 >
                   <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
                   Download Brochure (PDF)
-                </button>
-                
-                <p className="text-[10px] text-center text-navy/40 mt-4 uppercase tracking-widest">
+                </a>
+
+                <a
+                  href="https://drive.google.com/file/d/1i8C_bSArLumj8GFkWzT-I8oFzqR_fDtT/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-[10px] text-center text-navy/40 mt-4 uppercase tracking-widest hover:text-navy/60 transition-colors"
+                >
                   Instant Access via WhatsApp
-                </p>
+                </a>
               </div>
             </motion.div>
           </div>
