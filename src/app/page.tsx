@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroCarousel from "@/components/hero/HeroCarousel";
 import TrustBanner from "@/components/sections/TrustBanner";
 import AboutSection from "@/components/sections/AboutSection";
@@ -9,10 +10,28 @@ import ProcessSection from "@/components/sections/ProcessSection";
 import Testimonials from "@/components/sections/Testimonials";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaBanner from "@/components/sections/CtaBanner";
+import JsonLd from "@/components/seo/JsonLd";
+import { FAQS } from "@/data/faqs";
+import { faqPageSchema } from "@/lib/jsonld";
+import { DEFAULT_DESCRIPTION, SITE_NAME, TAGLINE } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: `${SITE_NAME} — ${TAGLINE}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    url: "/",
+    title: `${SITE_NAME} — ${TAGLINE}`,
+    description: DEFAULT_DESCRIPTION,
+  },
+};
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqPageSchema(FAQS)} />
       {/* ── Hero Carousel ──────────────────────────────────────────── */}
       <HeroCarousel />
 
@@ -43,12 +62,12 @@ export default function Home() {
       {/* ── Stats Strip ──────────────────────────────────────────────── */}
       <section className="bg-white py-20 lg:py-28 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <p className="text-center text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-16">
+          <p className="text-center text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-16">
             Our Impact
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12">
             {[
-              { value: "200+", label: "Projects Delivered" },
+              { value: "50+", label: "Projects Delivered" },
               { value: "8+ Yrs", label: "Experience" },
               { value: "4.9 ★", label: "Client Rating" },
               { value: "3 Cities", label: "Service Areas" },

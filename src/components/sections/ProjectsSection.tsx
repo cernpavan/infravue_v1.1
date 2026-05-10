@@ -72,7 +72,7 @@ export default function ProjectsSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Header ── */}
         <div className="max-w-2xl mb-16">
-          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
+          <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             Our Portfolio
           </p>
           <h2 className="text-3xl lg:text-5xl font-bold text-navy leading-tight mb-6">

@@ -7,21 +7,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:seed": "node prisma/seed.js"
+    "db:seed": "node prisma/seed.js",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@hookform/resolvers": "^5.2.2",
     "@neondatabase/serverless": "^0.10.4",
-    "@prisma/adapter-neon": "^6.2.1",
-    "@prisma/client": "^6.2.1",
+    "@opennextjs/cloudflare": "^1.19.8",
+    "@prisma/adapter-neon": "^6.19.3",
+    "@prisma/client": "^6.19.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
     "lucide-react": "^1.12.0",
-    "next": "16.2.4",
+    "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.74.0",
@@ -39,9 +43,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.4",
-    "prisma": "^6.2.1",
+    "eslint-config-next": "16.2.6",
+    "prisma": "^6.19.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.90.0"
   }
 }

@@ -302,7 +302,7 @@ export default function ProcessSection() {
           transition={{ duration: 0.85, ease: CINEMATIC_EASE }}
           className="mb-24 text-center"
         >
-          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-terracotta">
+          <p className="mb-4 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta">
             Our Journey
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-navy lg:text-5xl">

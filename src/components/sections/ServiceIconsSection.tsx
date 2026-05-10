@@ -385,7 +385,7 @@ export default function ServiceIconsSection() {
           transition={{ duration: 0.8, ease: CINEMATIC_EASE }}
           className="mb-16 text-center"
         >
-          <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.28em] text-terracotta">
+          <p className="mb-4 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta">
             End-to-End Solutions
           </p>
           <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-navy lg:text-4xl">

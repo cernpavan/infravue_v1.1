@@ -127,7 +127,7 @@ export default function BookingForm() {
                 type="text"
                 placeholder="Full Name"
                 {...register("name")}
-                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
               {errors.name && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.name.message}</p>}
             </div>
@@ -139,7 +139,7 @@ export default function BookingForm() {
                 type="tel"
                 placeholder="Phone Number"
                 {...register("phone")}
-                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all shadow-sm"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
               {errors.phone && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.phone.message}</p>}
             </div>
@@ -150,7 +150,8 @@ export default function BookingForm() {
                 <select
                   id="serviceType"
                   {...register("serviceType")}
-                  className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all appearance-none cursor-pointer shadow-sm"
+                  defaultValue=""
+                  className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04)] [&:has(option[value='']:checked)]:text-navy/40"
                 >
                   <option value="">Select Service Type</option>
                   <option value="Residential">Residential Design</option>
@@ -177,14 +178,14 @@ export default function BookingForm() {
                 placeholder="Briefly describe your project (Optional)"
                 rows={2}
                 {...register("message")}
-                className="w-full px-5 py-4 bg-gray-50/50 border border-navy/30 rounded-xl text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/5 transition-all resize-none shadow-sm"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center px-8 py-3.5 bg-[#1E3A6A] text-white text-sm font-bold rounded-xl hover:bg-[#152B52] disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-navy/10 active:scale-[0.98]"
+              className="group relative mt-2 w-full flex items-center justify-center px-8 py-4 bg-gradient-to-b from-navy to-navy-dark text-white text-[13px] font-bold tracking-[0.06em] uppercase rounded-xl shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55)] hover:shadow-[0_18px_42px_-10px_rgba(30,58,106,0.7)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55)] transition-[transform,box-shadow] duration-300 ease-out"
             >
               {isSubmitting ? (
                 <div className="flex items-center gap-2">

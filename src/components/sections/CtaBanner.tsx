@@ -12,7 +12,7 @@ export default function CtaBanner() {
             aria-hidden
             className="mx-auto mb-7 h-px w-16 bg-gradient-to-r from-transparent via-[#A1622C]/40 to-transparent"
           />
-          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-5">
+          <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-5">
             Let&apos;s Begin
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1E3A6A] mb-4 leading-tight">

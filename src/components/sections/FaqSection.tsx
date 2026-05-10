@@ -3,39 +3,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const FAQS = [
-  {
-    question: "What services does Infravue provide?",
-    answer:
-      "Infravue offers end-to-end interior design solutions, including residential, commercial, and design & planning services tailored to your needs.",
-  },
-  {
-    question: "Which areas do you serve?",
-    answer:
-      "We currently operate across multiple cities and are continuously expanding to serve clients in new regions.",
-  },
-  {
-    question: "What makes Infravue stand out?",
-    answer:
-      "Our focus on premium design, transparent pricing, timely delivery, and customer-centric approach sets us apart.",
-  },
-  {
-    question: "How can I get in touch with Infravue?",
-    answer:
-      "You can reach out through our website, WhatsApp, or by booking a free consultation directly.",
-  },
-  {
-    question: "Do you handle full project execution or only design?",
-    answer:
-      "We provide complete end-to-end services, from initial design concepts to final execution and delivery.",
-  },
-  {
-    question: "Can Infravue manage large-scale commercial projects?",
-    answer:
-      "Absolutely. With our experienced team and proven track record, we handle projects of any scale—delivering premium quality, on time and within budget.",
-  },
-];
+import { FAQS } from "@/data/faqs";
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -44,7 +12,7 @@ export default function FaqSection() {
     <section id="faq" className="bg-white py-20 lg:py-32 scroll-mt-24">
       <div className="max-w-4xl mx-auto px-6 lg:px-20">
         <div className="text-center mb-16">
-          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
+          <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             Got Questions?
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-navy tracking-tight">

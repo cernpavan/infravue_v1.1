@@ -1,29 +1,104 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { LeadSessionInit } from "@/components/LeadSessionInit";
+import JsonLd from "@/components/seo/JsonLd";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import {
+  DEFAULT_DESCRIPTION,
+  OG_IMAGE,
+  PRIMARY_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+  TAGLINE,
+} from "@/lib/seo";
+import {
+  localBusinessSchema,
+  organizationSchema,
+  websiteSchema,
+} from "@/lib/jsonld";
 import Providers from "./Providers";
+import { RootLayoutWrapper } from "./RootLayoutWrapper";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Infravue — Premium Interior Design",
-    template: "%s | Infravue",
+    default: `${SITE_NAME} — ${TAGLINE}`,
+    template: `%s · ${SITE_NAME}`,
   },
-  description:
-    "Premium interior design for homes, offices, and hospitality spaces. Transform your space with Infravue.",
-  keywords: ["interior design", "home design", "office design", "premium interiors", "India"],
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  generator: "Next.js",
+  keywords: PRIMARY_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Interior Design",
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — ${TAGLINE}`,
+    description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Premium Interior Design Studio in Hyderabad`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${TAGLINE}`,
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  // Drop your verification tokens here when issued.
+  // verification: {
+  //   google: "GSC_VERIFICATION_TOKEN",
+  // },
 };
 
-import { RootLayoutWrapper } from "./RootLayoutWrapper";
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0F19" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export default function RootLayout({
   children,
@@ -31,13 +106,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} h-full antialiased`}>
+    <html
+      lang="en-IN"
+      className={`${plusJakartaSans.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col bg-white text-foreground">
+        {/* ── Global structured data — Organization, LocalBusiness, WebSite ── */}
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={websiteSchema()} />
+
         <Providers>
           <LeadSessionInit />
           <RootLayoutWrapper>{children}</RootLayoutWrapper>
           <WhatsAppButton />
         </Providers>
+
+        {/* ── Google Analytics 4 — loads after interactive, tracks SPA route changes ── */}
+        <GoogleAnalytics />
       </body>
     </html>
   );

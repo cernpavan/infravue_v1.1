@@ -1,6 +1,18 @@
+import type { Metadata } from "next";
 import BookingForm from "./BookingForm";
 
-export const metadata = { title: "Book Free Consultation" };
+export const metadata: Metadata = {
+  title: "Book Free Consultation",
+  description:
+    "Book a free interior design consultation with Infravue Interiors — a premium Hyderabad-based studio. Tell us about your space and we'll connect you with the right designer.",
+  alternates: { canonical: "/book" },
+  openGraph: {
+    title: "Book a Free Consultation · Infravue Interiors",
+    description:
+      "Free, no-obligation interior design consultation with our Hyderabad studio.",
+    url: "/book",
+  },
+};
 
 export default function BookPage() {
   return (

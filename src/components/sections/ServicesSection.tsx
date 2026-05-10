@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Home, Building2, Palette, Layout } from "lucide-react";
+import ExploreProjectsLink from "./ExploreProjectsLink";
 
 const SERVICES = [
   {
@@ -9,7 +10,6 @@ const SERVICES = [
     description:
       "Expert solutions for planning, detailing, and flawless execution.",
     image: "/images/services/design.jpeg",
-    href: "/services#design",
     items: [
       "Furniture & Space Planning",
       "Lighting Design",
@@ -25,7 +25,6 @@ const SERVICES = [
     description:
       "Professional spaces designed for productivity and aesthetics.",
     image: "/images/services/commercial.jpeg",
-    href: "/services#commercial",
     items: [
       "Office Interiors",
       "F&B Commercial Interiors",
@@ -42,7 +41,6 @@ const SERVICES = [
     description:
       "High-end finishing and custom decor solutions for a refined look.",
     image: "/images/services/finishing.png",
-    href: "/services#finishing",
     items: [
       "Finishing & Decor",
       "Wallpaper Design",
@@ -58,7 +56,6 @@ const SERVICES = [
     description:
       "Complete home interior solutions tailored to your lifestyle.",
     image: "/images/services/residential.jpeg",
-    href: "/services#residential",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
       "Villa Interiors",
@@ -123,14 +120,8 @@ function ServiceCard({
           ))}
         </ul>
 
-        {/* CTA */}
-        <Link
-          href={service.href}
-          className="inline-flex items-center gap-1.5 text-[#A1622C] text-sm font-semibold group-hover:gap-2.5 transition-all duration-300"
-        >
-          Explore
-          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-        </Link>
+        {/* CTA — smooth-scrolls to the Our Projects section on the same page */}
+        <ExploreProjectsLink />
       </div>
     </div>
   );
@@ -142,7 +133,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Section Header ── */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
+          <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             What We Do
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1E3A6A] mb-4">

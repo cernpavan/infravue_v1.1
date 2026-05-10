@@ -101,7 +101,7 @@ export default function BrandsMarquee() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, delay: 0.05, ease: easeLuxury }}
-          className="mb-5 text-[13px] font-semibold uppercase tracking-[0.28em] text-terracotta"
+          className="mb-5 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta"
         >
           Trusted Partners
         </motion.p>

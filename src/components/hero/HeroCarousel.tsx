@@ -153,7 +153,19 @@ export default function HeroCarousel() {
               <ChevronRight size={16} />
             </BookButton>
             <Link
-              href="/gallery"
+              href="/#projects"
+              scroll={false}
+              onClick={(e) => {
+                // Hero is on the homepage — scroll smoothly in-page rather than
+                // doing a hash navigation that re-runs route logic.
+                if (typeof window !== "undefined" && window.location.pathname === "/") {
+                  e.preventDefault();
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  history.pushState(null, "", "#projects");
+                }
+              }}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/40 text-white font-semibold text-sm rounded-[4px] hover:border-white/70 hover:bg-white/5 transition-colors duration-200"
             >
               View Our Work

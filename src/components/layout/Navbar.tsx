@@ -7,7 +7,7 @@ import BookButton from "@/components/ui/BookButton";
 import logo from "@/app/logo_part1.png";
 
 const NAV_LINKS = [
-  { name: "About Us", href: "/#about" },
+  { name: "About Us", href: "/about" },
   { name: "Services", href: "/#services" },
   { name: "Projects", href: "/#projects" },
   { name: "FAQ", href: "/#faq" },
@@ -29,7 +29,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md py-1 shadow-md"
+          ? "bg-white backdrop-blur-md py-1 shadow-md"
           : "bg-white py-1"
       }`}
     >
@@ -37,7 +37,7 @@ export default function Navbar() {
         <nav className="flex items-center justify-between">
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
-            <div className="relative h-[65px] w-[220px] lg:w-[260px]">
+            <div className="relative h-[70px] w-[220px] lg:w-[260px]">
               <img
                 src={logo.src}
                 alt="Infravue Interiors"

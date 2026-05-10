@@ -49,7 +49,7 @@ export default function Testimonials() {
   return (
     <section className="bg-white py-20 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-16 text-center">
-        <p className="text-terracotta text-[13px] font-semibold tracking-[0.28em] uppercase mb-4">
+        <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
           Social Proof
         </p>
         <h2 className="text-3xl lg:text-4xl font-bold text-navy tracking-tight">
