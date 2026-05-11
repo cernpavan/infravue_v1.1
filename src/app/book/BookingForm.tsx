@@ -70,7 +70,7 @@ export default function BookingForm() {
         const msg = encodeURIComponent(
           `Hi! I'm interested in Infravue interior design services.\nRequest ID: ${requestId}`
         );
-        window.open(`https://wa.me/917478075444?text=${msg}`, "_blank");
+        window.open(`https://wa.me/919010709994?text=${msg}`, "_blank");
         window.location.href = "/";
       }, 1500);
     } catch (err) {

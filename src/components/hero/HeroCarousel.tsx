@@ -23,6 +23,11 @@ const SLIDES = [
     image: "/images/hero/hero-3.jpg",
     alt: "Contemporary residential and commercial design - Concept 3",
   },
+  {
+    id: 4,
+    image: "/images/hero/hero_image_4.png",
+    alt: "Corporate and commercial interior design - Concept 4",
+  },
 ];
 
 const AUTO_ROTATE_INTERVAL = 4000; // 8 seconds
@@ -126,7 +131,7 @@ export default function HeroCarousel() {
             transition={{ duration: 0.8, delay: 0.1, ease: CUBIC_EASE }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6"
           >
-            Best Interior Designers in Hyderabad
+            Transforming Corporate Spaces, Commercial Environments &amp; Homes
           </motion.h1>
 
           {/* Subheadline */}
@@ -136,7 +141,7 @@ export default function HeroCarousel() {
             transition={{ duration: 0.8, delay: 0.2, ease: CUBIC_EASE }}
             className="text-white/85 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg mx-auto"
           >
-            Hassle-free spaces designed by expert interior designers within your budget.
+            Modern interior design and turnkey solutions for corporate, commercial, and residential spaces.
           </motion.p>
 
           {/* CTAs */}

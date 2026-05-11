@@ -33,17 +33,17 @@ export const PRIMARY_KEYWORDS = [
 ];
 
 export const CONTACT = {
-  phone: "+91-7478075444",
-  phoneDisplay: "+91 7478075444",
-  email: "infravueinteriorsmarketing@gmail.com",
+  phone: "+91-9010709994",
+  phoneDisplay: "+91 90107 09994",
+  email: "info@infravueinteriors.com",
 } as const;
 
 export const ADDRESS = {
   streetAddress:
-    "10-3-347, Abhyudaya Nagar Colony, Gandipet Mandal, Ranga Reddy District",
+    "Abhyudaya nagar colony, Bandlaguda Jagir",
   addressLocality: "Hyderabad",
   addressRegion: "Telangana",
-  postalCode: "500075",
+  postalCode: "500086",
   addressCountry: "IN",
 } as const;
 

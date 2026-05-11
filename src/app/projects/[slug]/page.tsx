@@ -3,10 +3,8 @@ import { notFound } from "next/navigation";
 import { PROJECTS, getNeighbours } from "@/data/projects";
 import ProjectDetail from "@/components/projects/ProjectDetail";
 import JsonLd from "@/components/seo/JsonLd";
-import {
-  breadcrumbSchema,
-  projectCreativeWorkSchema,
-} from "@/lib/jsonld";
+import { breadcrumbSchema, projectCreativeWorkSchema } from "@/lib/jsonld";
+import { readProjectGallery, buildDetailFrames } from "@/lib/project-gallery";
 
 type RouteParams = { slug: string };
 
@@ -66,7 +64,21 @@ export default async function ProjectPage({
   const neighbours = getNeighbours(slug);
   if (!neighbours) notFound();
 
-  const project = PROJECTS[neighbours.index];
+  const base = PROJECTS[neighbours.index];
+
+  // Discover gallery images from public/images/projects/{slug}/ at build time.
+  // Falls back to the static gallery defined in projects.ts when no folder exists.
+  const dynamicGallery = readProjectGallery(slug);
+  const project =
+    dynamicGallery.length > 0
+      ? {
+          ...base,
+          gallery: dynamicGallery,
+          // Auto-generate a balanced editorial layout if the project
+          // doesn't already specify its own detailFrames.
+          detailFrames: base.detailFrames ?? buildDetailFrames(dynamicGallery.length),
+        }
+      : base;
 
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", path: "/" },

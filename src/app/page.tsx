@@ -13,18 +13,20 @@ import CtaBanner from "@/components/sections/CtaBanner";
 import JsonLd from "@/components/seo/JsonLd";
 import { FAQS } from "@/data/faqs";
 import { faqPageSchema } from "@/lib/jsonld";
-import { DEFAULT_DESCRIPTION, SITE_NAME, TAGLINE } from "@/lib/seo";
+const HOME_TITLE = "Infravue Interiors | Interior Design & Turnkey Solutions";
+const HOME_DESCRIPTION =
+  "Modern interior design and turnkey execution for corporate, commercial, and residential spaces in Hyderabad.";
 
 export const metadata: Metadata = {
   title: {
-    absolute: `${SITE_NAME} — ${TAGLINE}`,
+    absolute: HOME_TITLE,
   },
-  description: DEFAULT_DESCRIPTION,
+  description: HOME_DESCRIPTION,
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title: `${SITE_NAME} — ${TAGLINE}`,
-    description: DEFAULT_DESCRIPTION,
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
 };
 

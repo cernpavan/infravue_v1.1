@@ -17,19 +17,19 @@ const PILLARS: Pillar[] = [
     number: "01",
     icon: Compass,
     title: "Considered Design",
-    body: "Every layout, material, and finish is chosen with intent — never trend-chasing. We design for how a space will be lived in, not just how it photographs.",
+    body: "Every layout, material, and finish is thoughtfully selected to create functional, modern home interiors, office interiors, and commercial interior design spaces that balance aesthetics, comfort, and long-term practicality.",
   },
   {
     number: "02",
     icon: Layers,
     title: "Turnkey Craftsmanship",
-    body: "From concept and 3D visualization to procurement and on-site execution, we own every stage. One studio, one accountability — start to handover.",
+    body: "From concept planning and 3D visualization to procurement and turnkey interior solutions, we handle every stage with complete accountability from start to handover.",
   },
   {
     number: "03",
     icon: Sparkles,
     title: "Client-First Approach",
-    body: "Your lifestyle, vision, and budget shape the brief. We listen first, then translate it into spaces that feel unmistakably yours.",
+    body: "Your lifestyle, vision, and budget shape every customized interior solution we create. We listen first, then we translate it into spaces that feel functional, personal, and uniquely yours.",
   },
 ];
 

@@ -3,16 +3,42 @@ import type { Project } from "@/components/sections/ProjectShowcase";
 export type ProjectWithSlug = Project & { slug: string };
 
 export const PROJECTS: ProjectWithSlug[] = [
+  // ── 1. Niat ────────────────────────────────────────────────────────────────
+  {
+    slug: "niat",
+    name: "Niat",
+    category: "Corporate Office",
+    image: "/images/projects/niat.png",
+    year: "2024",
+    location: "Hyderabad, IN",
+    area: "—",
+    scope: "Office Interior",
+    style: "Modern Corporate",
+    intro:
+      "A purposeful corporate environment where clean geometry and warm detailing create a workspace that motivates from the moment you walk in.",
+    description:
+      "Niat is a modern office interior built around clarity — every element intentional, every space calibrated for the people who work there.",
+    philosophy:
+      "We designed around purpose, not decoration. The result is a workplace that feels confident, efficient, and genuinely comfortable for long working days.",
+    stats: [
+      { label: "Completed", value: "2024" },
+      { label: "Scope", value: "Office Interior" },
+      { label: "Style", value: "Modern Corporate" },
+      { label: "Location", value: "Hyderabad" },
+    ],
+    palette: [
+      { name: "Pearl White", hex: "#F2EFE9" },
+      { name: "Navy", hex: "#1E3A6A" },
+      { name: "Warm Walnut", hex: "#7A4A20" },
+      { name: "Sand", hex: "#D8C4AD" },
+    ],
+  },
+  // ── 2. Sesola ──────────────────────────────────────────────────────────────
   {
     slug: "sesola",
     name: "Sesola",
     category: "Luxury Residential",
     image: "/images/projects/sesola.png",
-    gallery: [
-      "/images/projects/SESOLA-1.jpg",
-      "/images/projects/SESOLA-2.jpg",
-      "/images/projects/sesola-3.jpg",
-    ],
     year: "2024",
     location: "Bengaluru, IN",
     area: "3,200 sqft",
@@ -37,50 +63,72 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Soft Sand", hex: "#D8C4AD" },
     ],
   },
+  // ── 3. First Source ────────────────────────────────────────────────────────
   {
-    slug: "socrates",
-    name: "Socrates",
-    category: "Modern Office",
-    image: "/images/projects/socrates.png",
-    gallery: [
-      "/images/projects/SOCRATES-1.jpg",
-      "/images/projects/SOCRATES-2.jpg",
-      "/images/projects/SOCRATES-3.jpg",
-    ],
-    year: "2024",
-    location: "Hyderabad, IN",
-    area: "5,800 sqft",
-    scope: "Workplace Design",
-    style: "Refined Minimal",
+    slug: "first-source",
+    name: "First Source",
+    category: "Commercial Space",
+    image: "/images/projects/firstsource.png",
+    year: "2023",
+    location: "Chennai, IN",
+    area: "9,200 sqft",
+    scope: "Commercial Interior",
+    style: "Refined Commercial",
     intro:
-      "A workplace that thinks clearly. Socrates pairs disciplined geometry with warm, human-scale moments to create a space teams genuinely love returning to.",
+      "A commercial floor that treats every visitor like a guest — measured spatial flow, premium finishes, and details engineered to last.",
     description:
-      "Socrates was designed around focus — long sightlines, calm surfaces, and the right amount of softness to keep an analytical environment from feeling clinical.",
+      "First Source pairs durable, high-spec finishes with a residential warmth, blurring the line between commercial efficiency and considered hospitality.",
     philosophy:
-      "The brief asked for clarity. We answered with rhythm — open work zones balanced with intimate pockets for thinking, conversation, and quiet. A workplace as a tool for better thought.",
+      "Commercial doesn't have to mean cold. We mapped the entire visitor journey, treated every threshold as a design moment, and built surfaces that wear in rather than wear out.",
     stats: [
-      { label: "Workstations", value: "84" },
-      { label: "Total Area", value: "5,800 sqft" },
-      { label: "Meeting Rooms", value: "9" },
-      { label: "Timeline", value: "4 months" },
+      { label: "Visitor Capacity", value: "240" },
+      { label: "Total Area", value: "9,200 sqft" },
+      { label: "Zones", value: "11" },
+      { label: "Timeline", value: "7 months" },
     ],
     palette: [
-      { name: "Cloud White", hex: "#F4F2EE" },
-      { name: "Graphite", hex: "#2A2D34" },
-      { name: "Brass", hex: "#A08259" },
-      { name: "Indigo", hex: "#1E3A6A" },
+      { name: "Ivory", hex: "#EDE3D6" },
+      { name: "Walnut", hex: "#7A4A20" },
+      { name: "Slate Navy", hex: "#1E3A6A" },
+      { name: "Brass", hex: "#A1622C" },
     ],
   },
+  // ── 4. SRIAS Lifespaces ────────────────────────────────────────────────────
+  {
+    slug: "srias-lifespaces",
+    name: "SRIAS Lifespaces",
+    category: "Residential",
+    image: "/images/projects/srias.png",
+    year: "2024",
+    location: "Hyderabad, IN",
+    area: "—",
+    scope: "Home Interior",
+    style: "Contemporary Living",
+    intro:
+      "A residential interior crafted around lifestyle — where every room transitions naturally into the next, and comfort is built into the architecture.",
+    description:
+      "SRIAS Lifespaces is a home interior that balances modern aesthetics with everyday functionality, tailored precisely to the family's rhythm and vision.",
+    philosophy:
+      "We started with how the family lives, not how the space looks. The design emerged from those conversations — practical, personal, and quietly beautiful.",
+    stats: [
+      { label: "Completed", value: "2024" },
+      { label: "Scope", value: "Home Interior" },
+      { label: "Style", value: "Contemporary" },
+      { label: "Location", value: "Hyderabad" },
+    ],
+    palette: [
+      { name: "Warm Ivory", hex: "#EDE3D6" },
+      { name: "Brushed Oak", hex: "#A1622C" },
+      { name: "Deep Navy", hex: "#1E3A6A" },
+      { name: "Soft Sand", hex: "#D8C4AD" },
+    ],
+  },
+  // ── 5. Uncode ──────────────────────────────────────────────────────────────
   {
     slug: "uncode",
     name: "Uncode",
     category: "Creative Studio",
     image: "/images/projects/uncode.png",
-    gallery: [
-      "/images/projects/UNCODE-1.jpg",
-      "/images/projects/UNCODE-2.jpg",
-      "/images/projects/UNCODE-3.jpg",
-    ],
     year: "2023",
     location: "Mumbai, IN",
     area: "2,400 sqft",
@@ -105,50 +153,12 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Linen", hex: "#EDE3D6" },
     ],
   },
-  {
-    slug: "unisoft",
-    name: "Unisoft",
-    category: "Corporate HQ",
-    image: "/images/projects/unisoft.png",
-    gallery: [
-      "/images/projects/UNISOFT-2.jpg",
-      "/images/projects/UNISOFT-3.jpg",
-      "/images/projects/UNISOFT-1.jpg",
-    ],
-    year: "2024",
-    location: "Bengaluru, IN",
-    area: "12,000 sqft",
-    scope: "Headquarters",
-    style: "Quiet Corporate",
-    intro:
-      "A headquarters that feels less like a corporate floor and more like a thoughtfully composed campus — calm, confident, and built for the long view.",
-    description:
-      "Unisoft's HQ uses generous proportions and a restrained palette to project authority without rigidity, creating a space that scales with the company.",
-    philosophy:
-      "We resisted the temptation to perform. Instead, we built clarity into the plan, used premium materials sparingly, and let the architecture itself do the brand work.",
-    stats: [
-      { label: "Workstations", value: "180" },
-      { label: "Total Area", value: "12,000 sqft" },
-      { label: "Floors", value: "3" },
-      { label: "Timeline", value: "9 months" },
-    ],
-    palette: [
-      { name: "Pearl", hex: "#F2EFE9" },
-      { name: "Navy", hex: "#1E3A6A" },
-      { name: "Warm Walnut", hex: "#7A4A20" },
-      { name: "Sand", hex: "#D8C4AD" },
-    ],
-  },
+  // ── 6. Wavity ──────────────────────────────────────────────────────────────
   {
     slug: "wavity",
     name: "Wavity",
     category: "Tech Workspace",
     image: "/images/projects/wavity.png",
-    gallery: [
-      "/images/projects/WAVITY-1.jpg",
-      "/images/projects/WAVITY-2.jpg",
-      "/images/projects/WAVITY-3.jpg",
-    ],
     year: "2023",
     location: "Pune, IN",
     area: "4,400 sqft",
@@ -173,16 +183,132 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Cream", hex: "#EDE3D6" },
     ],
   },
+  // ── 7. Observant ───────────────────────────────────────────────────────────
+  {
+    slug: "observant",
+    name: "Observant",
+    category: "Commercial Office",
+    image: "/images/projects/observant.png",
+    year: "2024",
+    location: "Hyderabad, IN",
+    area: "—",
+    scope: "Office Interior",
+    style: "Refined Modern",
+    intro:
+      "A commercial office interior where attention to detail defines every surface — precise, calm, and built for teams that value both form and function.",
+    description:
+      "Observant is a thoughtfully layered workspace where material choices and spatial planning work in harmony to elevate the daily working experience.",
+    philosophy:
+      "We believe great workplaces reward attention. Every corner of Observant was designed to be noticed — quietly, on the second look, the way quality always reveals itself.",
+    stats: [
+      { label: "Completed", value: "2024" },
+      { label: "Scope", value: "Office Interior" },
+      { label: "Style", value: "Refined Modern" },
+      { label: "Location", value: "Hyderabad" },
+    ],
+    palette: [
+      { name: "Cloud White", hex: "#F4F2EE" },
+      { name: "Graphite", hex: "#2A2D34" },
+      { name: "Brass", hex: "#A08259" },
+      { name: "Indigo", hex: "#1E3A6A" },
+    ],
+  },
+  // ── 8. NETS ────────────────────────────────────────────────────────────────
+  {
+    slug: "nets",
+    name: "NETS",
+    category: "Corporate Office",
+    image: "/images/projects/nets.png",
+    year: "2024",
+    location: "Hyderabad, IN",
+    area: "—",
+    scope: "Office Interior",
+    style: "Modern Corporate",
+    intro:
+      "A corporate environment designed for clarity and efficiency — where clean lines and purposeful layout support focused, high-performance work.",
+    description:
+      "NETS is a modern office interior where spatial logic and refined detailing come together to create a workplace that feels confident and considered.",
+    philosophy:
+      "We built around the work, not around the aesthetic. Every zone was mapped to how the team actually operates — with the result speaking through precision, not decoration.",
+    stats: [
+      { label: "Completed", value: "2024" },
+      { label: "Scope", value: "Office Interior" },
+      { label: "Style", value: "Modern Corporate" },
+      { label: "Location", value: "Hyderabad" },
+    ],
+    palette: [
+      { name: "Pearl White", hex: "#F2EFE9" },
+      { name: "Navy", hex: "#1E3A6A" },
+      { name: "Warm Walnut", hex: "#7A4A20" },
+      { name: "Sand", hex: "#D8C4AD" },
+    ],
+  },
+  // ── 9. Unisoft ─────────────────────────────────────────────────────────────
+  {
+    slug: "unisoft",
+    name: "Unisoft",
+    category: "Corporate HQ",
+    image: "/images/projects/unisoft.png",
+    year: "2024",
+    location: "Bengaluru, IN",
+    area: "12,000 sqft",
+    scope: "Headquarters",
+    style: "Quiet Corporate",
+    intro:
+      "A headquarters that feels less like a corporate floor and more like a thoughtfully composed campus — calm, confident, and built for the long view.",
+    description:
+      "Unisoft's HQ uses generous proportions and a restrained palette to project authority without rigidity, creating a space that scales with the company.",
+    philosophy:
+      "We resisted the temptation to perform. Instead, we built clarity into the plan, used premium materials sparingly, and let the architecture itself do the brand work.",
+    stats: [
+      { label: "Workstations", value: "180" },
+      { label: "Total Area", value: "12,000 sqft" },
+      { label: "Floors", value: "3" },
+      { label: "Timeline", value: "9 months" },
+    ],
+    palette: [
+      { name: "Pearl", hex: "#F2EFE9" },
+      { name: "Navy", hex: "#1E3A6A" },
+      { name: "Warm Walnut", hex: "#7A4A20" },
+      { name: "Sand", hex: "#D8C4AD" },
+    ],
+  },
+  // ── 10. Socrates ───────────────────────────────────────────────────────────
+  {
+    slug: "socrates",
+    name: "Socrates",
+    category: "Modern Office",
+    image: "/images/projects/socrates.png",
+    year: "2024",
+    location: "Hyderabad, IN",
+    area: "5,800 sqft",
+    scope: "Workplace Design",
+    style: "Refined Minimal",
+    intro:
+      "A workplace that thinks clearly. Socrates pairs disciplined geometry with warm, human-scale moments to create a space teams genuinely love returning to.",
+    description:
+      "Socrates was designed around focus — long sightlines, calm surfaces, and the right amount of softness to keep an analytical environment from feeling clinical.",
+    philosophy:
+      "The brief asked for clarity. We answered with rhythm — open work zones balanced with intimate pockets for thinking, conversation, and quiet. A workplace as a tool for better thought.",
+    stats: [
+      { label: "Workstations", value: "84" },
+      { label: "Total Area", value: "5,800 sqft" },
+      { label: "Meeting Rooms", value: "9" },
+      { label: "Timeline", value: "4 months" },
+    ],
+    palette: [
+      { name: "Cloud White", hex: "#F4F2EE" },
+      { name: "Graphite", hex: "#2A2D34" },
+      { name: "Brass", hex: "#A08259" },
+      { name: "Indigo", hex: "#1E3A6A" },
+    ],
+  },
+  // ── 11. Dental Speciality ──────────────────────────────────────────────────
   {
     slug: "dental-speciality",
     name: "Dental Speciality",
     category: "Premium Clinic",
     image: "/images/projects/dental.png",
-    gallery: [
-      "/images/projects/Dental-1.jpg",
-      "/images/projects/Dental-2.jpg",
-      "/images/projects/Dental-3.jpg",
-    ],
     year: "2024",
     location: "Bengaluru, IN",
     area: "1,800 sqft",
@@ -205,40 +331,6 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Sage", hex: "#A6B0A0" },
       { name: "Soft Navy", hex: "#2D5099" },
       { name: "Warm Sand", hex: "#D8C4AD" },
-    ],
-  },
-  {
-    slug: "first-source",
-    name: "First Source",
-    category: "Commercial Space",
-    image: "/images/projects/firstsource.png",
-    gallery: [
-      "/images/projects/FIRST-1.jpg",
-      "/images/projects/FIRST-2.jpg",
-      "/images/projects/FIRST-3.jpg",
-    ],
-    year: "2023",
-    location: "Chennai, IN",
-    area: "9,200 sqft",
-    scope: "Commercial Interior",
-    style: "Refined Commercial",
-    intro:
-      "A commercial floor that treats every visitor like a guest — measured spatial flow, premium finishes, and details engineered to last.",
-    description:
-      "First Source pairs durable, high-spec finishes with a residential warmth, blurring the line between commercial efficiency and considered hospitality.",
-    philosophy:
-      "Commercial doesn't have to mean cold. We mapped the entire visitor journey, treated every threshold as a design moment, and built surfaces that wear in rather than wear out.",
-    stats: [
-      { label: "Visitor Capacity", value: "240" },
-      { label: "Total Area", value: "9,200 sqft" },
-      { label: "Zones", value: "11" },
-      { label: "Timeline", value: "7 months" },
-    ],
-    palette: [
-      { name: "Ivory", hex: "#EDE3D6" },
-      { name: "Walnut", hex: "#7A4A20" },
-      { name: "Slate Navy", hex: "#1E3A6A" },
-      { name: "Brass", hex: "#A1622C" },
     ],
   },
 ];

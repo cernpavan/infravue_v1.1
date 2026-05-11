@@ -33,6 +33,7 @@ export type Project = {
   name: string;
   category: string;
   image: string;
+  folderName?: string;
   gallery?: string[];
   year?: string;
   location?: string;
@@ -591,13 +592,27 @@ function DetailGallery({
   frames: ProjectDetailFrame[];
   onOpen: (i: number) => void;
 }) {
-  // Pair each frame with an image. If gallery is shorter than frames,
-  // we cycle through the gallery so each frame gets a backing image.
-  const items = frames.map((frame, i) => ({
-    frame,
-    image: images[i % images.length],
-    galleryIndex: i % images.length,
-  }));
+  // If we have more images than predefined frames, we map over images
+  // to ensure every image from the folder is displayed.
+  const items = images.map((image, i) => {
+    // Cycle through predefined frames for titles/captions/spans
+    const baseFrame = frames[i % frames.length];
+    
+    // To make the layout dynamic and interesting, we can cycle through spans
+    const spans: Array<"wide" | "tall" | "square"> = ["wide", "tall", "square", "square", "tall"];
+    const dynamicSpan = spans[i % spans.length];
+
+    return {
+      frame: {
+        ...baseFrame,
+        title: `Detail ${String(i + 1).padStart(2, "0")}`,
+        caption: baseFrame.caption,
+        span: dynamicSpan,
+      },
+      image,
+      galleryIndex: i,
+    };
+  });
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-6">

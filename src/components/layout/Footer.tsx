@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/app/logo_part1.png";
 import BookButton from "@/components/ui/BookButton";
+import { CONTACT, ADDRESS } from "@/lib/seo";
 
 const SOCIALS = [
   {
@@ -152,16 +153,16 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm text-[#1E3A6A]/60">+91 98765 43210</span>
+                <span className="text-sm text-[#1E3A6A]/60">{CONTACT.phoneDisplay}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm text-[#1E3A6A]/60">hello@infravue.in</span>
+                <span className="text-sm text-[#1E3A6A]/60">{CONTACT.email}</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
                 <span className="text-sm text-[#1E3A6A]/60 leading-relaxed">
-                  Mumbai · Pune · Bangalore
+                  {ADDRESS.streetAddress}, {ADDRESS.addressLocality}, {ADDRESS.postalCode}
                 </span>
               </li>
             </ul>

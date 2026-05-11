@@ -27,15 +27,15 @@ export default function AboutSection() {
               
               <div className="space-y-6 text-[#1E3A6A]/70 text-base lg:text-lg leading-relaxed">
                 <p>
-                  At Infravue Interiors, we design and transform homes, commercial spaces, and corporate environments into refined, functional, and inspiring spaces.
+                  At Infravue Interiors, we design and transform corporate spaces, commercial environments, and homes into refined, functional, and inspiring spaces with customized interior solutions, modern home interiors, and luxury interiors.
                 </p>
-                
+
                 <div className="pt-4">
                   <h3 className="text-xl font-bold text-navy mb-4">Interior Designers in Hyderabad</h3>
                   <p className="mb-6">
-                    Based in Hyderabad, we offer end-to-end interior design and turnkey solutions — from concept planning to final execution. Our approach combines:
+                    Based in Hyderabad, we offer end-to-end interior design and turnkey interior solutions — from concept planning to final execution. As interior designers in Hyderabad, our approach combines:
                   </p>
-                  
+
                   <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {[
                       "Thoughtful Design",
@@ -49,9 +49,9 @@ export default function AboutSection() {
                     ))}
                   </ul>
                 </div>
-                
+
                 <p className="pt-4">
-                  Every project is crafted to reflect your style, purpose, and budget, while maintaining a strong focus on quality and timely delivery.
+                  Every project is crafted to reflect your style, purpose, and budget while maintaining a strong focus on quality, timely delivery, and affordable interiors.
                 </p>
               </div>
             </motion.div>

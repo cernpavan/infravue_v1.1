@@ -78,21 +78,24 @@ export default function BrandStory() {
               <p>
                 At Infravue Interiors, we believe every space should feel
                 functional, refined, and thoughtfully designed. Based in
-                Hyderabad, we specialize in transforming corporate spaces,
-                commercial environments, and homes through modern interior
-                design and turnkey execution solutions tailored to each
-                client&apos;s vision and lifestyle.
+                Hyderabad, we specialize in corporate interior design,
+                commercial interior design, and modern home interiors through
+                customized interior solutions and turnkey interior solutions
+                tailored to each client&apos;s vision and lifestyle.
               </p>
               <p>
                 Backed by a dedicated team of designers and execution
-                professionals, we focus on creating spaces that balance
-                aesthetics, comfort, and practicality — while ensuring quality
-                workmanship and smooth project delivery.
+                professionals, we focus on creating office interiors, luxury
+                interiors, home interiors, and modular kitchen spaces that
+                balance comfort, functionality, and modern aesthetics while
+                ensuring quality workmanship and smooth project delivery.
               </p>
               <p>
                 From concept planning and 3D designs to complete execution, we
                 handle every stage with attention to detail and a client-first
-                approach.
+                approach. As interior designers in Hyderabad, we focus on
+                delivering affordable interiors without compromising on quality
+                and design standards.
               </p>
             </div>
 
@@ -103,7 +106,8 @@ export default function BrandStory() {
               </p>
               <p className="mt-3 text-navy/55 text-sm lg:text-base leading-relaxed max-w-md">
                 We bring the same design commitment and execution standards to
-                projects nationwide.
+                corporate spaces, commercial environments, and residential
+                interior projects across India.
               </p>
             </div>
           </motion.div>

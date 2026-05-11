@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "May 11, 2026";
-const CONTACT_EMAIL = "infravueinteriorsmarketing@gmail.com";
+const CONTACT_EMAIL = "info@infravueinteriors.com";
 
 const TOC = [
   { num: "01", id: "section-1", title: "What information do we collect?" },
@@ -633,11 +633,11 @@ export default function PrivacyPolicyPage() {
                 <address className="mt-1 not-italic text-sm font-light leading-relaxed text-navy/75">
                   Infravue Interiors and Constructions Private Limited
                   <br />
-                  10-3-347, Abhyudaya Nagar Colony
+                  Abhyudaya nagar colony, Bandlaguda Jagir
                   <br />
-                  Gandipet Mandal, Ranga Reddy District
+                  Ranga Reddy District
                   <br />
-                  Hyderabad, Telangana 500075
+                  Hyderabad, Telangana 500086
                   <br />
                   India
                 </address>

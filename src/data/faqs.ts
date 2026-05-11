@@ -6,38 +6,46 @@ export type Faq = {
 /**
  * Public-facing FAQ. Used by `FaqSection` to render the accordion and by the
  * homepage to emit FAQPage JSON-LD for Google rich results.
- *
- * Answers are written for users first; keywords are folded in naturally.
  */
 export const FAQS: ReadonlyArray<Faq> = [
   {
-    question: "What services does Infravue Interiors provide?",
+    question: "What interior design services does Infravue Interiors provide?",
     answer:
-      "Infravue Interiors offers end-to-end interior design solutions in Hyderabad — including residential interiors, modular kitchens, commercial offices, hospitality spaces, and complete design + execution services tailored to your needs.",
+      "Infravue Interiors provides home interiors, office interior design, modular kitchen design, luxury interiors, commercial interior design, and customized interior solutions for residential and corporate spaces.",
   },
   {
-    question: "Which areas does Infravue Interiors serve?",
+    question: "Does Infravue offer turnkey interior solutions in Hyderabad?",
     answer:
-      "We are headquartered in Hyderabad and serve clients across Hyderabad, Secunderabad, Bengaluru, Mumbai, Pune, and Chennai. We are continuously expanding to support new regions.",
+      "Yes, Infravue offers end-to-end turnkey interior solutions in Hyderabad, covering design planning, material selection, execution, and final installation for homes, offices, and commercial spaces.",
   },
   {
-    question: "What makes Infravue stand out among interior designers in Hyderabad?",
+    question: "Does Infravue design corporate spaces, commercial interiors, and homes?",
     answer:
-      "Our focus on premium materials, considered design, transparent pricing, on-time delivery, and a customer-centric approach is what positions Infravue among the best interior designers in Hyderabad.",
+      "Yes, Infravue specializes in corporate interior design, commercial interior design, and modern home interiors tailored to functionality, aesthetics, and space requirements.",
   },
   {
-    question: "How can I get in touch with Infravue Interiors?",
+    question: "What makes Infravue one of the best interior designers in Hyderabad?",
     answer:
-      "You can reach out through our website's booking form, WhatsApp, or by booking a free consultation directly. Our team typically responds within one business day.",
+      "Infravue combines modern interior design, customized interior solutions, quality materials, and timely project execution to create affordable interiors and luxury interiors in Hyderabad.",
   },
   {
-    question: "Does Infravue handle full project execution or only design?",
+    question: "Does Infravue provide office interior design and modular kitchen solutions?",
     answer:
-      "We provide complete end-to-end services — from initial design concepts and 3D visualisation to procurement, on-site execution, and final delivery.",
+      "Yes, Infravue provides office interior design, modular kitchen solutions, home interiors, and customized residential interior design services.",
   },
   {
-    question: "Can Infravue manage large-scale commercial interior projects?",
+    question: "Can Infravue handle large-scale commercial interior design projects?",
     answer:
-      "Yes. With an experienced team and a proven track record across corporate HQs, tech workspaces, and hospitality interiors, we deliver projects of any scale — premium quality, on time and within budget.",
+      "Yes, Infravue handles large-scale commercial interior design and corporate interior projects with complete turnkey execution and customized space planning solutions.",
+  },
+  {
+    question: "Do you offer customized interior solutions for homes and offices?",
+    answer:
+      "Yes, we offer customized interior solutions for modern home interiors, office interiors, commercial spaces, and residential interior projects based on your style, functionality, and budget.",
+  },
+  {
+    question: "How can I contact Infravue Interiors for a free consultation?",
+    answer:
+      "You can contact Infravue Interiors through our website, phone, or inquiry form to book a free consultation for home interiors, office interior design, luxury interiors, and turnkey interior solutions in Hyderabad.",
   },
 ];
