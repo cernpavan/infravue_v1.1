@@ -1,16 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { PROJECTS, type ProjectWithSlug } from "@/data/projects";
+import ProjectGalleryModal from "@/components/projects/ProjectGalleryModal";
 
 function ProjectCard({
   project,
   index,
+  onOpen,
 }: {
   project: ProjectWithSlug;
   index: number;
+  onOpen: (project: ProjectWithSlug) => void;
 }) {
   return (
     <motion.div
@@ -26,7 +30,13 @@ function ProjectCard({
       <Link
         href={`/projects/${project.slug}`}
         prefetch
-        aria-label={`Open ${project.name} showcase`}
+        aria-label={`Open ${project.name} gallery`}
+        onClick={(e) => {
+          // Let modifier-clicks (Ctrl/Cmd/Shift/middle-click) fall through to the deep page
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+          e.preventDefault();
+          onOpen(project);
+        }}
         className="group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-50 cursor-pointer text-left"
       >
         {/* ── Image ── */}
@@ -53,8 +63,10 @@ function ProjectCard({
 }
 
 export default function ProjectsSection() {
+  const [selected, setSelected] = useState<ProjectWithSlug | null>(null);
+
   return (
-    <section id="projects" className="bg-white py-12 lg:py-20 scroll-mt-24">
+    <section id="projects" className="bg-white py-8 lg:py-12 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Header ── */}
         <div className="text-center max-w-4xl mx-auto mb-10">
@@ -72,7 +84,12 @@ export default function ProjectsSection() {
         {/* ── Projects Grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, index) => (
-            <ProjectCard key={project.slug} project={project} index={index} />
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              index={index}
+              onOpen={setSelected}
+            />
           ))}
 
           {/* Final CTA Card */}
@@ -97,6 +114,9 @@ export default function ProjectsSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* ── Project Gallery Modal ── */}
+      <ProjectGalleryModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

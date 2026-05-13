@@ -373,7 +373,7 @@ function AmbientBackdrop() {
 
 export default function ServiceIconsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-12 lg:py-20">
+    <section className="relative overflow-hidden bg-white py-8 lg:py-12">
       <AmbientBackdrop />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-20">

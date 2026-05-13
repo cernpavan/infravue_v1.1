@@ -47,7 +47,7 @@ const LOOP_TESTIMONIALS = [...TESTIMONIALS, ...TESTIMONIALS];
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-12 lg:py-20 overflow-hidden">
+    <section className="bg-white py-8 lg:py-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-10 text-center">
         <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
           Social Proof

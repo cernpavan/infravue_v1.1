@@ -11,7 +11,7 @@ const TRUST_ITEMS = [
 
 export default function TrustBanner() {
   return (
-    <section className="bg-white overflow-hidden py-10 border-b border-gray-100">
+    <section className="bg-[#FAFAF9] overflow-hidden py-10 border-y border-[#F0EDE9]">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-8 text-center">
         <h2 className="text-sm md:text-base font-bold text-terracotta tracking-[0.15em] uppercase">
           why choose infravue interiors
@@ -20,8 +20,8 @@ export default function TrustBanner() {
 
       <div className="relative flex overflow-hidden group">
         {/* Fading edges matching the white background */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 lg:w-28 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 lg:w-28 bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 lg:w-28 bg-gradient-to-r from-[#F7F5F2] to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 lg:w-28 bg-gradient-to-l from-[#F7F5F2] to-transparent" />
 
         {/* Marquee container */}
         <div className="flex gap-4 px-4 w-max animate-marquee hover:[animation-play-state:paused] pb-4">

@@ -13,6 +13,14 @@ const bookingSchema = z.object({
   phone: z
     .string()
     .regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit Indian mobile number"),
+  // Validates only when a value is entered; empty string passes as-is
+  email: z
+    .string()
+    .refine(
+      (val) => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
+      "Please enter a valid email address"
+    )
+    .optional(),
   serviceType: z
     .enum(["Residential", "Commercial", "Hospitality", "Design & Planning", "Finishing & Decor"])
     .refine((val) => val, "Please select a service type"),
@@ -51,10 +59,9 @@ export default function BookingForm() {
           requestId,
           name: data.name,
           phone: data.phone,
+          email: data.email || null,
           serviceType: data.serviceType,
           message: data.message || null,
-          // Sending null for removed fields to maintain API compatibility if needed
-          email: null,
           city: null,
         }),
       });
@@ -121,31 +128,89 @@ export default function BookingForm() {
             )}
 
             {/* Name */}
-            <div className="space-y-1">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="name"
+                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+              >
+                Full Name{" "}
+                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+              </label>
               <input
                 id="name"
                 type="text"
-                placeholder="Full Name"
+                placeholder="e.g. Pavan Kumar"
+                autoComplete="name"
                 {...register("name")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
-              {errors.name && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.name.message}</p>}
+              {errors.name && (
+                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             {/* Phone */}
-            <div className="space-y-1">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="phone"
+                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+              >
+                Phone Number{" "}
+                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+              </label>
               <input
                 id="phone"
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="10-digit mobile number"
+                autoComplete="tel"
+                inputMode="numeric"
+                maxLength={10}
                 {...register("phone")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
-              {errors.phone && <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.phone.message}</p>}
+              {errors.phone && (
+                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="email"
+                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+              >
+                Email Address{" "}
+                <span className="text-navy/35 font-normal">(Optional)</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                autoComplete="email"
+                inputMode="email"
+                {...register("email")}
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+              />
+              {errors.email && (
+                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Service Type */}
-            <div className="space-y-1">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="serviceType"
+                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+              >
+                Service Type{" "}
+                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+              </label>
               <div className="relative">
                 <select
                   id="serviceType"
@@ -153,32 +218,41 @@ export default function BookingForm() {
                   defaultValue=""
                   className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04)] [&:has(option[value='']:checked)]:text-navy/40"
                 >
-                  <option value="">Select Service Type</option>
+                  <option value="" disabled>Choose your service</option>
                   <option value="Residential">Residential Design</option>
                   <option value="Commercial">Commercial Design</option>
                   <option value="Hospitality">Hospitality Design</option>
-                  <option value="Design & Planning">Design & Planning</option>
-                  <option value="Finishing & Decor">Finishing & Decor</option>
+                  <option value="Design & Planning">Design &amp; Planning</option>
+                  <option value="Finishing & Decor">Finishing &amp; Decor</option>
                 </select>
                 <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-navy/40">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
               </div>
               {errors.serviceType && (
-                <p className="text-[9px] font-bold text-red-500 ml-2 uppercase">{errors.serviceType.message}</p>
+                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                  {errors.serviceType.message}
+                </p>
               )}
             </div>
 
             {/* Message */}
-            <div className="space-y-1">
+            <div className="space-y-1.5">
+              <label
+                htmlFor="message"
+                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+              >
+                Project Description{" "}
+                <span className="text-navy/35 font-normal">(Optional)</span>
+              </label>
               <textarea
                 id="message"
-                placeholder="Briefly describe your project (Optional)"
+                placeholder="Briefly describe your space, budget range, or any specific requirements…"
                 rows={2}
                 {...register("message")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/40 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
               />
             </div>
 

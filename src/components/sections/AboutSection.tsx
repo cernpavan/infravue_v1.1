@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="bg-white py-12 lg:py-20 scroll-mt-24">
+    <section id="about" className="bg-white py-8 lg:py-12 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 

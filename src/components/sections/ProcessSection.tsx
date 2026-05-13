@@ -290,7 +290,7 @@ export default function ProcessSection() {
   const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-14 lg:py-24">
+    <section className="relative overflow-hidden bg-white py-10 lg:py-16">
       <AmbientBackdrop />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-20">

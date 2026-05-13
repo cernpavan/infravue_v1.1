@@ -85,7 +85,7 @@ function MarqueeRow({ brands }: { brands: Brand[] }) {
 
 export default function BrandsMarquee() {
   return (
-    <section className="relative overflow-hidden bg-white py-10 lg:py-14">
+    <section className="relative overflow-hidden bg-white py-8 lg:py-10">
       {/* ── Header ── */}
       <div className="relative mx-auto mb-8 max-w-7xl px-6 text-center lg:mb-10 lg:px-20">
         <motion.div
