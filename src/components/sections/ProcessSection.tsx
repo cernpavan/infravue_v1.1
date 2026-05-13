@@ -290,7 +290,7 @@ export default function ProcessSection() {
   const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="relative overflow-hidden bg-white py-24 lg:py-36">
+    <section className="relative overflow-hidden bg-white py-14 lg:py-24">
       <AmbientBackdrop />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-20">
@@ -300,7 +300,7 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.85, ease: CINEMATIC_EASE }}
-          className="mb-24 text-center"
+          className="mb-14 text-center"
         >
           <p className="mb-4 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta">
             Our Journey
@@ -362,7 +362,7 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.85, ease: CINEMATIC_EASE, delay: 0.15 }}
-          className="mt-24 text-center"
+          className="mt-14 text-center"
         >
           <BookButton className="inline-flex items-center justify-center rounded-full bg-terracotta px-10 py-5 font-bold text-white shadow-xl shadow-terracotta/20 transition-all duration-300 hover:-translate-y-1 hover:bg-terracotta-dark hover:shadow-terracotta/30 active:scale-95">
             Book Free Consultation

@@ -18,17 +18,17 @@ import Wavity from "@/components/brands/Wavity.jpg";
 type Brand = { src: StaticImageData; alt: string };
 
 const BRANDS: Brand[] = [
-  { src: BRC, alt: "BRC" },
-  { src: FS, alt: "FS" },
-  { src: Liquidnitro, alt: "Liquid Nitro" },
-  { src: NIAT, alt: "NIAT" },
-  { src: NXTWave, alt: "NXT Wave" },
-  { src: Optim, alt: "Optim" },
-  { src: Rockwell, alt: "Rockwell" },
-  { src: Sesola, alt: "Sesola" },
-  { src: SRIAS, alt: "SRIAS" },
-  { src: ST, alt: "ST" },
-  { src: Wavity, alt: "Wavity" },
+  { src: BRC, alt: "BRC — trusted client of Infravue Interiors for commercial interior design" },
+  { src: FS, alt: "First Source — commercial interior design project completed by Infravue Interiors" },
+  { src: Liquidnitro, alt: "Liquid Nitro — Infravue Interiors client, corporate workspace design" },
+  { src: NIAT, alt: "NIAT — corporate office interior designed by Infravue Interiors, Hyderabad" },
+  { src: NXTWave, alt: "NXT Wave — modern tech office interior designed by Infravue Interiors" },
+  { src: Optim, alt: "Optim — commercial space interior client of Infravue Interiors" },
+  { src: Rockwell, alt: "Rockwell — trusted brand partner of Infravue Interiors for workspace design" },
+  { src: Sesola, alt: "Sesola — luxury residential interior project by Infravue Interiors, Bengaluru" },
+  { src: SRIAS, alt: "SRIAS Lifespaces — residential interior design client of Infravue Interiors, Hyderabad" },
+  { src: ST, alt: "ST — corporate interior design partner of Infravue Interiors" },
+  { src: Wavity, alt: "Wavity — tech workspace interior designed by Infravue Interiors, Pune" },
 ];
 
 const easeLuxury = [0.22, 1, 0.36, 1] as const;
@@ -85,15 +85,15 @@ function MarqueeRow({ brands }: { brands: Brand[] }) {
 
 export default function BrandsMarquee() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-white py-10 lg:py-14">
       {/* ── Header ── */}
-      <div className="relative mx-auto mb-12 max-w-7xl px-6 text-center lg:mb-16 lg:px-20">
+      <div className="relative mx-auto mb-8 max-w-7xl px-6 text-center lg:mb-10 lg:px-20">
         <motion.div
           initial={{ opacity: 0, scaleX: 0.4 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, ease: easeLuxury }}
-          className="mx-auto mb-7 h-px w-20 origin-center bg-gradient-to-r from-transparent via-terracotta to-transparent"
+          className="mx-auto mb-5 h-px w-20 origin-center bg-gradient-to-r from-transparent via-terracotta to-transparent"
         />
 
         <motion.p

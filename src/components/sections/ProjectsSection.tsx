@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { PROJECTS, type ProjectWithSlug } from "@/data/projects";
 
 function ProjectCard({
@@ -33,33 +32,20 @@ function ProjectCard({
         {/* ── Image ── */}
         <Image
           src={project.image}
-          alt={project.name}
+          alt={`${project.name} — ${project.category} interior design project by Infravue Interiors${project.location ? `, ${project.location}` : ""}`}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
         />
 
-        {/* ── Overlay ── */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/85 via-navy-dark/15 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        {/* ── Permanent bottom gradient for text legibility ── */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 to-transparent" />
 
-        {/* ── Always-visible bottom badge ── */}
-        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-          <div className="translate-y-3 transition-transform duration-500 group-hover:translate-y-0">
-            <p className="text-sand text-[10px] sm:text-xs font-semibold uppercase tracking-[0.28em] mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              {project.category}
-            </p>
-            <div className="flex items-end justify-between gap-4">
-              <h3 className="text-2xl font-light text-white drop-shadow-md">
-                {project.name}
-              </h3>
-              <div className="flex items-center gap-2 text-white text-xs font-medium opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                <span className="tracking-[0.2em] uppercase">View</span>
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-md transition-all group-hover:border-white group-hover:bg-white group-hover:text-navy">
-                  <ArrowUpRight size={15} />
-                </span>
-              </div>
-            </div>
-          </div>
+        {/* ── Project name ── */}
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
+          <h3 className="text-xl font-light text-white drop-shadow-sm">
+            {project.name}
+          </h3>
         </div>
       </Link>
     </motion.div>
@@ -68,10 +54,10 @@ function ProjectCard({
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-white py-20 lg:py-32 scroll-mt-24">
+    <section id="projects" className="bg-white py-12 lg:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Header ── */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10">
           <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             Our Portfolio
           </p>

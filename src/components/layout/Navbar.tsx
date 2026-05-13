@@ -40,7 +40,7 @@ export default function Navbar() {
             <div className="relative h-[70px] w-[220px] lg:w-[260px]">
               <img
                 src={logo.src}
-                alt="Infravue Interiors"
+                alt="Infravue Interiors — Premium Interior Designers in Hyderabad"
                 className="h-full w-auto object-contain object-left"
               />
             </div>

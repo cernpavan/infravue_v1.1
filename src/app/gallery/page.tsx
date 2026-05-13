@@ -103,7 +103,7 @@ export default function GalleryPage() {
                 >
                   <Image
                     src={project.image}
-                    alt={project.name}
+                    alt={`${project.name} — ${project.category} interior design by Infravue Interiors${project.location ? `, ${project.location}` : ""}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -146,7 +146,7 @@ export default function GalleryPage() {
                       >
                         <Image
                           src={img}
-                          alt={`${project.name} ${iIdx + 1}`}
+                          alt={`${project.name} interior view ${iIdx + 1} — ${project.category} project by Infravue Interiors`}
                           fill
                           sizes="56px"
                           className="object-cover hover:scale-110 transition-transform duration-300"
@@ -203,7 +203,7 @@ export default function GalleryPage() {
             <div className="relative h-full w-full max-h-[85vh]">
               <Image
                 src={lbGallery[lightbox.imgIdx]}
-                alt={`${lbProject.name} ${lightbox.imgIdx + 1}`}
+                alt={`${lbProject.name} — image ${lightbox.imgIdx + 1} of ${lbGallery.length}, ${lbProject.category} interior by Infravue Interiors`}
                 fill
                 sizes="100vw"
                 className="object-contain"

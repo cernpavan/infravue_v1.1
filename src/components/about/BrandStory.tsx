@@ -29,7 +29,7 @@ export default function BrandStory() {
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] shadow-[0_30px_70px_-30px_rgba(30,58,106,0.35)]">
                 <Image
                   src="/images/services/residential.jpeg"
-                  alt="A refined residential interior crafted by Infravue Interiors"
+                  alt="Refined luxury residential interior designed by Infravue Interiors — premium home interior designers based in Hyderabad"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"

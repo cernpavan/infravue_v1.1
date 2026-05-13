@@ -11,22 +11,22 @@ const SLIDES = [
   {
     id: 1,
     image: "/images/hero/hero_image_1.png",
-    alt: "Premium architectural interior design - Concept 1",
+    alt: "Luxury corporate office interior designed by Infravue Interiors, Hyderabad — turnkey workspace solution",
   },
   {
     id: 2,
     image: "/images/hero/hero_image_2.png",
-    alt: "Modern luxury interior space - Concept 2",
+    alt: "Modern residential interior with premium finishes crafted by Infravue Interiors, Hyderabad",
   },
   {
     id: 3,
     image: "/images/hero/hero-3.jpg",
-    alt: "Contemporary residential and commercial design - Concept 3",
+    alt: "Contemporary commercial space interior design in Hyderabad by Infravue Interiors — refined and functional",
   },
   {
     id: 4,
     image: "/images/hero/hero_image_4.png",
-    alt: "Corporate and commercial interior design - Concept 4",
+    alt: "Premium turnkey corporate workspace interior by Infravue Interiors — modern office design in Hyderabad",
   },
 ];
 

@@ -13,9 +13,9 @@ import CtaBanner from "@/components/sections/CtaBanner";
 import JsonLd from "@/components/seo/JsonLd";
 import { FAQS } from "@/data/faqs";
 import { faqPageSchema } from "@/lib/jsonld";
-const HOME_TITLE = "Infravue Interiors | Interior Design & Turnkey Solutions";
+const HOME_TITLE = "Interior Designers in Hyderabad | Infravue Interiors";
 const HOME_DESCRIPTION =
-  "Modern interior design and turnkey execution for corporate, commercial, and residential spaces in Hyderabad.";
+  "Infravue Interiors offers modern residential, commercial, and corporate interior design solutions in Hyderabad with customized designs, premium finishes, and turnkey execution. Get luxury, affordable, and customized interiors for your dream space.";
 
 export const metadata: Metadata = {
   title: {
@@ -62,12 +62,12 @@ export default function Home() {
       <Testimonials />
 
       {/* ── Stats Strip ──────────────────────────────────────────────── */}
-      <section className="bg-white py-20 lg:py-28 border-y border-gray-200">
+      <section className="bg-white py-12 lg:py-16 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-20">
-          <p className="text-center text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-16">
+          <p className="text-center text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-10">
             Our Impact
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8">
             {[
               { value: "50+", label: "Projects Delivered" },
               { value: "8+ Yrs", label: "Experience" },

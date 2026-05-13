@@ -5,7 +5,7 @@ import BookButton from "@/components/ui/BookButton";
 
 export default function CtaBanner() {
   return (
-    <section className="relative bg-white pt-20 pb-24 lg:pt-24 lg:pb-28">
+    <section className="relative bg-white pt-12 pb-16 lg:pt-16 lg:pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <div className="max-w-2xl mx-auto text-center">
           <div

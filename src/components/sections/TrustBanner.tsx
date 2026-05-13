@@ -14,7 +14,7 @@ export default function TrustBanner() {
     <section className="bg-white overflow-hidden py-10 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-8 text-center">
         <h2 className="text-sm md:text-base font-bold text-terracotta tracking-[0.15em] uppercase">
-          Our Expertise
+          why choose infravue interiors
         </h2>
       </div>
 

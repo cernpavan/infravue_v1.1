@@ -7,6 +7,7 @@ const SERVICES = [
   {
     icon: Layout,
     title: "Design & Planning Services",
+    alt: "Interior design planning and space layout services by Infravue Interiors, Hyderabad — 2D plans, 3D renders, and structural detailing",
     description:
       "Expert solutions for planning, detailing, and flawless execution.",
     image: "/images/services/design.jpeg",
@@ -22,6 +23,7 @@ const SERVICES = [
   {
     icon: Building2,
     title: "Commercial Interiors",
+    alt: "Modern commercial and corporate office interior design by Infravue Interiors, Hyderabad — retail, F&B, and workspace solutions",
     description:
       "Professional spaces designed for productivity and aesthetics.",
     image: "/images/services/commercial.jpeg",
@@ -38,6 +40,7 @@ const SERVICES = [
   {
     icon: Palette,
     title: "Finishing & Decor",
+    alt: "Premium interior finishing and custom decor solutions by Infravue Interiors — wallpaper, art curation, and luxury material sourcing in Hyderabad",
     description:
       "High-end finishing and custom decor solutions for a refined look.",
     image: "/images/services/finishing.png",
@@ -53,6 +56,7 @@ const SERVICES = [
   {
     icon: Home,
     title: "Residential Interiors",
+    alt: "Luxury residential interior design for homes and villas by Infravue Interiors, Hyderabad — modular kitchens, bedrooms, and full home turnkey solutions",
     description:
       "Complete home interior solutions tailored to your lifestyle.",
     image: "/images/services/residential.jpeg",
@@ -80,7 +84,7 @@ function ServiceCard({
       <div className="relative h-[220px] overflow-hidden">
         <Image
           src={service.image}
-          alt={service.title}
+          alt={service.alt}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
           sizes="(max-width: 768px) 100vw, 33vw"
@@ -129,10 +133,10 @@ function ServiceCard({
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-white py-20 lg:py-28 scroll-mt-24">
+    <section id="services" className="bg-white py-12 lg:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Section Header ── */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-10">
           <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             What We Do
           </p>
@@ -153,7 +157,7 @@ export default function ServicesSection() {
         </div>
 
         {/* ── Bottom CTA ── */}
-        <div className="text-center mt-14">
+        <div className="text-center mt-10">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#1E3A6A] text-white font-semibold text-sm rounded-[6px] hover:bg-[#152B52] transition-colors duration-200"

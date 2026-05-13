@@ -17,6 +17,7 @@ const SERVICES = [
     icon: Home,
     tag: "For Homes",
     title: "Residential Interiors",
+    alt: "Luxury residential interior design for homes and villas by Infravue Interiors, Hyderabad — full-home turnkey execution with modular kitchens, bedrooms, and living spaces",
     description:
       "Complete home interior solutions tailored to your lifestyle — from a single room to full-home turnkey execution. Every space designed around how you actually live.",
     image: "/images/services/residential.jpeg",
@@ -34,6 +35,7 @@ const SERVICES = [
     icon: Building2,
     tag: "For Businesses",
     title: "Commercial Interiors",
+    alt: "Modern corporate and commercial office interior design by Infravue Interiors, Hyderabad — co-working spaces, retail fit-outs, and F&B restaurant interiors",
     description:
       "Professional environments designed for productivity, brand identity, and lasting impressions. From startup offices to large corporate headquarters.",
     image: "/images/services/commercial.jpeg",
@@ -51,6 +53,7 @@ const SERVICES = [
     icon: Palette,
     tag: "Hospitality & Luxury",
     title: "Finishing & Decor",
+    alt: "Premium interior finishing and luxury decor services by Infravue Interiors — custom wallpaper, art curation, bespoke furniture sourcing, and lighting design in Hyderabad",
     description:
       "High-end finishing touches and custom décor that elevate any space to a truly refined experience. Every material and detail chosen with intention.",
     image: "/images/services/finishing.png",
@@ -68,6 +71,7 @@ const SERVICES = [
     icon: Layout,
     tag: "Design & Planning",
     title: "Design & Planning Services",
+    alt: "End-to-end interior design planning services by Infravue Interiors, Hyderabad — 2D floor plans, 3D renders, electrical layouts, and complete project management",
     description:
       "Expert solutions covering the full design process — from initial space planning and detailed drawings through to flawless on-site execution.",
     image: "/images/services/design.jpeg",
@@ -142,7 +146,7 @@ export default function ServicesPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-[0_24px_60px_-12px_rgba(30,58,106,0.18)]">
                   <Image
                     src={service.image}
-                    alt={service.title}
+                    alt={service.alt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"

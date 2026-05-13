@@ -6,7 +6,7 @@ export const PROJECTS: ProjectWithSlug[] = [
   // ── 1. Niat ────────────────────────────────────────────────────────────────
   {
     slug: "niat",
-    name: "Niat",
+    name: "NIAT",
     category: "Corporate Office",
     image: "/images/projects/niat.png",
     gallery: [

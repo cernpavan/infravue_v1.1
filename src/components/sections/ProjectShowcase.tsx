@@ -309,7 +309,7 @@ export function ShowcaseContent({
         >
           <Image
             src={project.image}
-            alt={project.name}
+            alt={`${project.name} — ${project.category} interior design project by Infravue Interiors${project.location ? `, ${project.location}` : ""}`}
             fill
             sizes="100vw"
             preload
@@ -469,6 +469,8 @@ export function ShowcaseContent({
             images={gallery}
             frames={detailFrames}
             onOpen={onOpenImage}
+            projectName={project.name}
+            projectCategory={project.category}
           />
         </div>
       </section>
@@ -587,10 +589,14 @@ function DetailGallery({
   images,
   frames,
   onOpen,
+  projectName,
+  projectCategory,
 }: {
   images: string[];
   frames: ProjectDetailFrame[];
   onOpen: (i: number) => void;
+  projectName: string;
+  projectCategory: string;
 }) {
   // If we have more images than predefined frames, we map over images
   // to ensure every image from the folder is displayed.
@@ -648,7 +654,7 @@ function DetailGallery({
           >
             <Image
               src={item.image}
-              alt={item.frame.title}
+              alt={`${projectName} interior detail ${i + 1} — ${projectCategory} design by Infravue Interiors`}
               fill
               sizes="(min-width: 1024px) 60vw, 100vw"
               style={{ objectPosition: item.frame.position ?? "center" }}
@@ -746,7 +752,7 @@ export function Lightbox({
             <div className="relative h-full w-full">
               <Image
                 src={gallery[activeIndex]}
-                alt={`${project.name} ${activeIndex + 1}`}
+                alt={`${project.name} — gallery image ${activeIndex + 1} of ${gallery.length}, ${project.category} interior by Infravue Interiors`}
                 fill
                 sizes="100vw"
                 className="object-contain"

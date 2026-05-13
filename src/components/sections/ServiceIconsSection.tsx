@@ -373,7 +373,7 @@ function AmbientBackdrop() {
 
 export default function ServiceIconsSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-32">
+    <section className="relative overflow-hidden bg-white py-12 lg:py-20">
       <AmbientBackdrop />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-20">
@@ -383,7 +383,7 @@ export default function ServiceIconsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease: CINEMATIC_EASE }}
-          className="mb-16 text-center"
+          className="mb-10 text-center"
         >
           <p className="mb-4 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta">
             End-to-End Solutions
