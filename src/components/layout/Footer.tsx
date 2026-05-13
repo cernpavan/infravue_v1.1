@@ -80,7 +80,7 @@ export default function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-[#1E3A6A] text-sm leading-relaxed mb-7">
+            <p className="text-[#1E3A6A] text-sm font-medium leading-relaxed mb-7">
               Premium interior design for homes, offices, and hospitality spaces — crafted with purpose and precision.
             </p>
             {/* Social links */}
@@ -117,7 +117,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200"
+                    className="text-sm font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -136,7 +136,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-sm text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200"
+                    className="text-sm font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -153,15 +153,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm text-[#1E3A6A]">{CONTACT.phoneDisplay}</span>
+                <span className="text-sm font-medium text-[#1E3A6A]">{CONTACT.phoneDisplay}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm text-[#1E3A6A]">{CONTACT.email}</span>
+                <span className="text-sm font-medium text-[#1E3A6A]">{CONTACT.email}</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm text-[#1E3A6A] leading-relaxed">
+                <span className="text-sm font-medium text-[#1E3A6A] leading-relaxed">
                   {ADDRESS.streetAddress}, {ADDRESS.addressLocality}, {ADDRESS.postalCode}
                 </span>
               </li>
@@ -185,10 +185,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Infravue. All rights reserved.
           </p>
           <div className="flex gap-5">
-            <Link href="/privacy" className="text-xs text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
+            <Link href="/privacy" className="text-xs font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-xs text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
+            <Link href="/terms" className="text-xs font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
               Terms of Service
             </Link>
           </div>
