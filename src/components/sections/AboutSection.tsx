@@ -81,10 +81,10 @@ export default function AboutSection() {
                 </div>
                 
                 <h4 className="text-xl font-bold text-navy mb-3">
-                  Free Interior Design Brochure
+                  Download Our Premium Design Guide
                 </h4>
                 <p className="text-[#1E3A6A]/60 text-sm mb-8">
-                  Get our exclusive 2024 Design Trends & Budgeting Brochure to plan your dream space effectively.
+                  Discover curated interior inspirations, smart space planning insights, and luxury design trends — crafted for discerning clients.
                 </p>
                 
                 <a

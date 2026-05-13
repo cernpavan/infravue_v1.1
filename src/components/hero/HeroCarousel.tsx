@@ -113,7 +113,13 @@ export default function HeroCarousel() {
 
       {/* ── Static Content Overlay ── */}
       <div className="relative h-full z-10 flex flex-col items-center justify-center px-6 lg:px-20 text-center">
-        <div className="max-w-2xl">
+        {/*
+          max-w-5xl (1024 px) gives the headline enough horizontal room to
+          sit in exactly 2 lines on desktop.  The sub-headline and CTAs are
+          already self-constrained with their own max-width, so widening this
+          wrapper has zero visual effect on them.
+        */}
+        <div className="w-full max-w-5xl">
           {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -124,14 +130,20 @@ export default function HeroCarousel() {
             Premium Interior Designers in Hyderabad
           </motion.p>
 
-          {/* Headline */}
+          {/* Headline — 2-line layout on md+ screens
+              Line 1: "Transforming Corporate Spaces,"
+              Line 2: "Commercial Environments & Homes"
+              The <br> is hidden on mobile so it wraps naturally at small sizes.
+          */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: CUBIC_EASE }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6"
+            className="text-[1.75rem] sm:text-[2.125rem] md:text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] font-bold text-white leading-[1.1] tracking-tight mb-6"
           >
-            Transforming Corporate Spaces, Commercial Environments &amp; Homes
+            Transforming Corporate Spaces,
+            <br className="hidden md:block" />
+            {" "}Commercial Environments &amp; Homes
           </motion.h1>
 
           {/* Subheadline */}
@@ -139,7 +151,7 @@ export default function HeroCarousel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: CUBIC_EASE }}
-            className="text-white/85 text-lg lg:text-xl leading-relaxed mb-10 max-w-lg mx-auto"
+            className="text-white/85 text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto"
           >
             Modern interior design and turnkey solutions for corporate, commercial, and residential spaces.
           </motion.p>

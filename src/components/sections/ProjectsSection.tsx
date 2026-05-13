@@ -71,15 +71,15 @@ export default function ProjectsSection() {
     <section id="projects" className="bg-white py-20 lg:py-32 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         {/* ── Header ── */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-16">
           <p className="text-terracotta text-[14px] font-bold tracking-[0.28em] uppercase mb-4">
             Our Portfolio
           </p>
           <h2 className="text-3xl lg:text-5xl font-bold text-navy leading-tight mb-6">
             Our Projects
           </h2>
-          <p className="text-[#1E3A6A]/60 text-lg leading-relaxed">
-            Explore our portfolio of corporate interior designers, commercial interior design, and modern home interiors featuring turnkey interior solutions, customized interior solutions, luxury interiors, and office interior design.
+          <p className="text-[#1E3A6A]/60 text-lg leading-relaxed max-w-[860px] mx-auto">
+            Explore our portfolio of corporate, commercial, and residential interiors — crafted with turnkey precision, luxury finishes, and customized solutions delivered across India.
           </p>
         </div>
 
