@@ -10,22 +10,26 @@ import BookButton from "@/components/ui/BookButton";
 const SLIDES = [
   {
     id: 1,
-    image: "/images/hero/hero_image_1.png",
+    image: "/images/hero/hero_image_1.webp",
+    fallback: "/images/hero/hero_image_1.png",
     alt: "Luxury corporate office interior designed by Infravue Interiors, Hyderabad — turnkey workspace solution",
   },
   {
     id: 2,
-    image: "/images/hero/hero_image_2.png",
+    image: "/images/hero/hero_image_2.webp",
+    fallback: "/images/hero/hero_image_2.png",
     alt: "Modern residential interior with premium finishes crafted by Infravue Interiors, Hyderabad",
   },
   {
     id: 3,
-    image: "/images/hero/hero-3.jpg",
+    image: "/images/hero/hero-3.webp",
+    fallback: "/images/hero/hero-3.jpg",
     alt: "Contemporary commercial space interior design in Hyderabad by Infravue Interiors — refined and functional",
   },
   {
     id: 4,
-    image: "/images/hero/hero_image_4.png",
+    image: "/images/hero/hero_image_4.webp",
+    fallback: "/images/hero/hero_image_4.png",
     alt: "Premium turnkey corporate workspace interior by Infravue Interiors — modern office design in Hyderabad",
   },
 ];
@@ -38,6 +42,7 @@ export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [imgError, setImgError] = useState(false);
 
   // Auto-rotation effect
   useEffect(() => {
@@ -59,16 +64,19 @@ export default function HeroCarousel() {
   };
 
   const handleNext = () => {
+    setImgError(false);
     setCurrent((prev) => (prev + 1) % SLIDES.length);
     pauseAndResume();
   };
 
   const handlePrev = () => {
+    setImgError(false);
     setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
     pauseAndResume();
   };
 
   const handleDot = (index: number) => {
+    setImgError(false);
     pauseAndResume(index);
   };
 
@@ -98,12 +106,13 @@ export default function HeroCarousel() {
           className="absolute inset-0"
         >
           <Image
-            src={SLIDES[current].image}
+            src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
             alt={SLIDES[current].alt}
             fill
             className="object-cover"
             priority
             quality={90}
+            onError={() => setImgError(true)}
           />
         </motion.div>
       </AnimatePresence>

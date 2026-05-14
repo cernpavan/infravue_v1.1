@@ -36,7 +36,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
         <nav className="flex items-center justify-between">
           {/* ── Logo ── */}
-          <Link href="/" className="flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
+          <Link
+            href="/"
+            onClick={(e) => {
+              setIsMobileMenuOpen(false);
+              // If we're already on the home page, Link won't re-navigate,
+              // so smooth-scroll to top manually. Other routes will be
+              // handled by Next.js's default scroll-to-top on navigation.
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+          >
             <div className="relative h-[70px] w-[220px] lg:w-[260px]">
               <img
                 src={logo.src}
