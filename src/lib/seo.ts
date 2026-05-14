@@ -60,6 +60,7 @@ export const SERVICE_AREAS = [
 export const SOCIAL = {
   instagram: "https://www.instagram.com/infravue_interiors/",
   linkedin: "https://www.linkedin.com/company/infravueinteriors",
+  facebook: "https://www.facebook.com/people/Infravueinteriors/61575375477723/",
 } as const;
 
 export const OG_IMAGE = `${SITE_URL}/logo.jpg`;

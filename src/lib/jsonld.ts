@@ -35,7 +35,7 @@ export function organizationSchema() {
     email: CONTACT.email,
     telephone: CONTACT.phone,
     address: postalAddress(),
-    sameAs: [SOCIAL.instagram, SOCIAL.linkedin],
+    sameAs: [SOCIAL.instagram, SOCIAL.linkedin, SOCIAL.facebook],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -69,7 +69,7 @@ export function localBusinessSchema() {
       "@type": "City",
       name,
     })),
-    sameAs: [SOCIAL.instagram, SOCIAL.linkedin],
+    sameAs: [SOCIAL.instagram, SOCIAL.linkedin, SOCIAL.facebook],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

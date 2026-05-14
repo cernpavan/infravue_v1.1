@@ -8,7 +8,7 @@ export default function AboutHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#FBF9F5] pt-40 pb-24 lg:pt-48 lg:pb-36">
+    <section className="relative overflow-hidden bg-[#FBF9F5] pt-28 pb-16 lg:pt-36 lg:pb-24">
       {/* ── Ambient backdrop ── */}
       <motion.div
         aria-hidden
@@ -46,7 +46,7 @@ export default function AboutHero() {
             transition={{ duration: 1, ease: CINEMATIC_EASE }}
             className="lg:col-span-8"
           >
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-6">
               <span aria-hidden className="h-px w-12 bg-terracotta/60" />
               <p className="text-terracotta text-[12px] font-bold tracking-[0.32em] uppercase">
                 About Infravue
@@ -71,14 +71,14 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: CINEMATIC_EASE, delay: 0.2 }}
-            className="lg:col-span-4 mt-10 lg:mt-6 lg:pt-6"
+            className="lg:col-span-4 mt-8 lg:mt-4 lg:pt-4"
           >
             <p className="text-navy/65 text-base lg:text-lg leading-[1.85] max-w-md">
               A Hyderabad-rooted interior design studio crafting refined,
               functional environments for homes, workplaces, and commercial
               spaces — delivered across India.
             </p>
-            <div className="mt-8 flex items-center gap-6 text-[11px] tracking-[0.28em] uppercase text-navy/50 font-semibold">
+            <div className="mt-6 flex items-center gap-6 text-[11px] tracking-[0.28em] uppercase text-navy/50 font-semibold">
               <span>Est. Hyderabad</span>
               <span aria-hidden className="h-1 w-1 rounded-full bg-terracotta/70" />
               <span>PAN India</span>
@@ -91,7 +91,7 @@ export default function AboutHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mt-20 lg:mt-28 flex items-center justify-between"
+          className="mt-12 lg:mt-16 flex items-center justify-between"
         >
           <div className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-navy/40 font-semibold">
             <span aria-hidden className="h-px w-8 bg-navy/30" />

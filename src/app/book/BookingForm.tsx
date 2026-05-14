@@ -43,15 +43,17 @@ export default function BookingForm() {
   });
 
   const onSubmit = async (data: BookingFormData) => {
+    // Guard against double-submit even if React re-fires the handler.
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setError(null);
 
-    try {
-      const requestId = getRequestId();
-      if (!requestId) {
-        throw new Error("Session not initialized");
-      }
+    // requestId is best-effort — the backend accepts null. Don't block the
+    // submission just because sessionStorage is unavailable (Safari ITP,
+    // incognito, third-party-cookies blocked, etc.).
+    const requestId = getRequestId();
 
+    try {
       const response = await fetch("/api/leads/form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,22 +69,33 @@ export default function BookingForm() {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to save lead");
+        const errorData: { error?: string; issues?: Array<{ message: string }> } =
+          await response.json().catch(() => ({}));
+        const fieldMessage = errorData.issues?.[0]?.message;
+        throw new Error(
+          fieldMessage ||
+            errorData.error ||
+            `Submission failed (${response.status}). Please try again.`
+        );
       }
 
       setShowSuccess(true);
 
       setTimeout(() => {
+        const idForMessage = requestId ?? "n/a";
         const msg = encodeURIComponent(
-          `Hi! I'm interested in Infravue interior design services.\nRequest ID: ${requestId}`
+          `Hi! I'm interested in Infravue interior design services.\nRequest ID: ${idForMessage}`
         );
         window.open(`https://wa.me/919010709994?text=${msg}`, "_blank");
         window.location.href = "/";
       }, 1500);
     } catch (err) {
       console.error("Form submission error:", err);
-      setError("Failed to submit form. Please try again.");
+      const message =
+        err instanceof Error && err.message
+          ? err.message
+          : "Failed to submit form. Please try again.";
+      setError(message);
       setIsSubmitting(false);
     }
   };

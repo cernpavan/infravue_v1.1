@@ -3,7 +3,10 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { LeadSessionInit } from "@/components/LeadSessionInit";
 import JsonLd from "@/components/seo/JsonLd";
-import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "@/components/analytics/GoogleTagManager";
 import {
   DEFAULT_DESCRIPTION,
   OG_IMAGE,
@@ -115,6 +118,10 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-foreground">
+        {/* ── GTM noscript fallback — must be the first child of <body> per
+            Google's install spec. Captures users with JS disabled. ── */}
+        <GoogleTagManagerNoScript />
+
         {/* ── Global structured data — Organization, LocalBusiness, WebSite ── */}
         <JsonLd data={organizationSchema()} />
         <JsonLd data={localBusinessSchema()} />
@@ -126,8 +133,10 @@ export default function RootLayout({
           <WhatsAppButton />
         </Providers>
 
-        {/* ── Google Analytics 4 — loads after interactive, tracks SPA route changes ── */}
-        <GoogleAnalytics />
+        {/* ── Google Tag Manager — loads gtm.js after interactive, fires
+            page_view dataLayer pushes on every App Router navigation.
+            All GA4/Ads/pixel tags are configured inside the GTM container. ── */}
+        <GoogleTagManager />
       </body>
     </html>
   );
