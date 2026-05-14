@@ -63,8 +63,113 @@ export const SOCIAL = {
 } as const;
 
 export const OG_IMAGE = `${SITE_URL}/logo.jpg`;
+// Actual on-disk dimensions of /public/logo.jpg (1.905:1 — essentially the
+// OG-recommended 1.91:1 aspect). Reporting accurate dimensions lets crawlers
+// render previews without re-fetching to probe the image.
+export const OG_IMAGE_WIDTH = 1685;
+export const OG_IMAGE_HEIGHT = 885;
+export const OG_IMAGE_ALT = `${SITE_NAME} — Premium Interior Design Studio in Hyderabad`;
 
 export function absoluteUrl(path: string): string {
   if (!path.startsWith("/")) return `${SITE_URL}/${path}`;
   return `${SITE_URL}${path}`;
+}
+
+/**
+ * Build a complete `Metadata` object for a page.
+ *
+ * Why this exists: Next.js does NOT deep-merge metadata. If a child page
+ * exports `openGraph: { title, description }`, it REPLACES the layout's
+ * full openGraph block — silently dropping the og:image. This helper
+ * guarantees every page emits a full openGraph + twitter block with the
+ * site default image, so social previews never break.
+ */
+import type { Metadata } from "next";
+
+export type PageMetaInput = {
+  /** Page <title> — runs through the layout title template ("%s · Infravue Interiors"). */
+  title?: string;
+  /** Exact <title>, bypassing the template. Use for the home page. */
+  titleAbsolute?: string;
+  /** Page <meta name="description">. Defaults to DEFAULT_DESCRIPTION. */
+  description?: string;
+  /** Canonical path, default "/". Becomes both alternates.canonical and og:url. */
+  path?: string;
+  /** Override OG/Twitter title (else falls back to titleAbsolute / title). */
+  ogTitle?: string;
+  /** Override OG/Twitter description (else falls back to description). */
+  ogDescription?: string;
+  /** Image path (root-relative or absolute). Defaults to OG_IMAGE. */
+  image?: string;
+  /** Image alt text. */
+  imageAlt?: string;
+  /** Image width — required for correct rendering on FB/LinkedIn. */
+  imageWidth?: number;
+  /** Image height. */
+  imageHeight?: number;
+  /** og:type. "website" for index/landing, "article" for project/blog pages. */
+  type?: "website" | "article";
+};
+
+export function pageMetadata(input: PageMetaInput = {}): Metadata {
+  const {
+    title,
+    titleAbsolute,
+    description = DEFAULT_DESCRIPTION,
+    path = "/",
+    ogTitle,
+    ogDescription,
+    image,
+    imageAlt = OG_IMAGE_ALT,
+    type = "website",
+  } = input;
+
+  // OG/Twitter title: explicit override > absolute > templated > site default.
+  const socialTitle =
+    ogTitle ?? titleAbsolute ?? (title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — ${TAGLINE}`);
+  const socialDescription = ogDescription ?? description;
+  // Crawlers (especially WhatsApp/Telegram) sometimes fail to follow
+  // metadataBase resolution. Emit absolute URLs explicitly.
+  const finalImage = image ?? OG_IMAGE;
+  const absImage = finalImage.startsWith("http") ? finalImage : absoluteUrl(finalImage);
+  const absUrl = absoluteUrl(path);
+
+  // Only attach width/height when we know them. When a page overrides the
+  // image without supplying dimensions we omit the fields so crawlers probe
+  // the file rather than being told an inaccurate size.
+  const usingSiteDefaultImage = !image;
+  const ogImageEntry: {
+    url: string;
+    alt: string;
+    width?: number;
+    height?: number;
+  } = { url: absImage, alt: imageAlt };
+  if (usingSiteDefaultImage) {
+    ogImageEntry.width = OG_IMAGE_WIDTH;
+    ogImageEntry.height = OG_IMAGE_HEIGHT;
+  } else {
+    if (input.imageWidth !== undefined) ogImageEntry.width = input.imageWidth;
+    if (input.imageHeight !== undefined) ogImageEntry.height = input.imageHeight;
+  }
+
+  return {
+    title: titleAbsolute ? { absolute: titleAbsolute } : title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type,
+      locale: SITE_LOCALE,
+      url: absUrl,
+      siteName: SITE_NAME,
+      title: socialTitle,
+      description: socialDescription,
+      images: [ogImageEntry],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description: socialDescription,
+      images: [absImage],
+    },
+  };
 }

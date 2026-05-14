@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import HeroCarousel from "@/components/hero/HeroCarousel";
 import TrustBanner from "@/components/sections/TrustBanner";
 import AboutSection from "@/components/sections/AboutSection";
@@ -17,18 +18,11 @@ const HOME_TITLE = "Interior Designers in Hyderabad | Infravue Interiors";
 const HOME_DESCRIPTION =
   "Infravue Interiors offers modern residential, commercial, and corporate interior design solutions in Hyderabad with customized designs, premium finishes, and turnkey execution. Get luxury, affordable, and customized interiors for your dream space.";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: HOME_TITLE,
-  },
+export const metadata: Metadata = pageMetadata({
+  titleAbsolute: HOME_TITLE,
   description: HOME_DESCRIPTION,
-  alternates: { canonical: "/" },
-  openGraph: {
-    url: "/",
-    title: HOME_TITLE,
-    description: HOME_DESCRIPTION,
-  },
-};
+  path: "/",
+});
 
 export default function Home() {
   return (

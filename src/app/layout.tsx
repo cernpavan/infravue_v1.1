@@ -7,7 +7,11 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import {
   DEFAULT_DESCRIPTION,
   OG_IMAGE,
+  OG_IMAGE_ALT,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
   PRIMARY_KEYWORDS,
+  SITE_LOCALE,
   SITE_NAME,
   SITE_URL,
   TAGLINE,
@@ -64,7 +68,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_IN",
+    locale: SITE_LOCALE,
     url: SITE_URL,
     siteName: SITE_NAME,
     title: `${SITE_NAME} — ${TAGLINE}`,
@@ -72,9 +76,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: `${SITE_NAME} — Premium Interior Design Studio in Hyderabad`,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt: OG_IMAGE_ALT,
       },
     ],
   },

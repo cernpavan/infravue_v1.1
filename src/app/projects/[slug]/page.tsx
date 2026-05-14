@@ -5,6 +5,7 @@ import ProjectDetail from "@/components/projects/ProjectDetail";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, projectCreativeWorkSchema } from "@/lib/jsonld";
 import { readProjectGallery, buildDetailFrames } from "@/lib/project-gallery";
+import { pageMetadata } from "@/lib/seo";
 
 type RouteParams = { slug: string };
 
@@ -25,34 +26,15 @@ export async function generateMetadata({
   const title = `${project.name} — ${project.category}`;
   const description =
     project.intro ?? project.description ?? `${project.name} by Infravue.`;
-  const canonical = `/projects/${slug}`;
-  const ogImage = project.image;
 
-  return {
+  return pageMetadata({
     title,
     description,
-    alternates: { canonical },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "article",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${project.name} — ${project.category} interior by Infravue`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+    path: `/projects/${slug}`,
+    image: project.image,
+    imageAlt: `${project.name} — ${project.category} interior by Infravue`,
+    type: "article",
+  });
 }
 
 export default async function ProjectPage({
