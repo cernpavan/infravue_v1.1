@@ -110,7 +110,11 @@ export async function POST(request: Request) {
         { status: 409 }
       );
     }
-    if (err instanceof Prisma.PrismaClientInitializationError) {
+    if (
+      err instanceof Prisma.PrismaClientInitializationError ||
+      (err instanceof Error &&
+        (err as Error & { code?: string }).code === "MISSING_DATABASE_URL")
+    ) {
       // DB unreachable / DATABASE_URL missing / migrations not applied.
       return NextResponse.json(
         { error: "Service temporarily unavailable. Please try again shortly." },

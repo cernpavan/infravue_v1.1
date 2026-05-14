@@ -38,7 +38,11 @@ export async function POST(request: Request) {
       requestId,
     });
 
-    if (err instanceof Prisma.PrismaClientInitializationError) {
+    if (
+      err instanceof Prisma.PrismaClientInitializationError ||
+      (err instanceof Error &&
+        (err as Error & { code?: string }).code === "MISSING_DATABASE_URL")
+    ) {
       return NextResponse.json(
         { error: "Service temporarily unavailable. Please try again shortly." },
         { status: 503 }
