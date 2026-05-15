@@ -21,7 +21,16 @@
       "zone_name": "infravueinteriors.com",
       "custom_domain": true
     }
-  ]
+  ],
+  // Runtime logs — surfaces console.error/log from route handlers in the
+  // Cloudflare dashboard (Workers → infravue → Logs) and gives `wrangler tail`
+  // full request context. Required to actually see why /api/leads/form 500s.
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
   // DATABASE_URL is set as a Worker SECRET (not a Plaintext var) —
   // secrets persist across deploys; Plaintext vars get overwritten.
   //   npx wrangler secret put DATABASE_URL

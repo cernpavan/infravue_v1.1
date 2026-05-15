@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
+import { PrismaNeonHTTP } from "@prisma/adapter-neon";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -20,7 +20,7 @@ function createClient(): PrismaClient {
   }
 
   return new PrismaClient({
-    adapter: new PrismaNeon({ connectionString }),
+    adapter: new PrismaNeonHTTP(connectionString),
     log:
       process.env.NODE_ENV === "development"
         ? ["query", "error", "warn"]
