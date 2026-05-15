@@ -10,7 +10,7 @@ export default function FounderSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative bg-white py-28 lg:py-40 overflow-hidden">
+    <section className="relative bg-white py-12 lg:py-20 overflow-hidden">
       {/* Ambient backdrop tints */}
       <motion.div
         aria-hidden
@@ -40,7 +40,7 @@ export default function FounderSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.9, ease: CINEMATIC_EASE }}
-          className="text-center max-w-2xl mx-auto mb-20 lg:mb-24"
+          className="text-center max-w-2xl mx-auto mb-12 lg:mb-16"
         >
           <div className="mx-auto mb-6 h-px w-12 bg-gradient-to-r from-transparent via-terracotta/60 to-transparent" />
           <p className="text-terracotta text-[11px] font-bold tracking-[0.32em] uppercase mb-5">

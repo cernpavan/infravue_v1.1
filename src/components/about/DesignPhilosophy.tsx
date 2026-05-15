@@ -51,7 +51,7 @@ const cardVariants: Variants = {
 
 export default function DesignPhilosophy() {
   return (
-    <section className="relative bg-[#FBF9F5] py-24 lg:py-36 overflow-hidden">
+    <section className="relative bg-[#FBF9F5] py-12 lg:py-16 overflow-hidden">
       {/* Soft ambient glow */}
       <div
         aria-hidden
@@ -65,7 +65,7 @@ export default function DesignPhilosophy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.9, ease: CINEMATIC_EASE }}
-          className="max-w-3xl mb-20 lg:mb-24"
+          className="max-w-3xl mb-12 lg:mb-16"
         >
           <div className="flex items-center gap-4 mb-7">
             <span aria-hidden className="h-px w-10 bg-terracotta/60" />

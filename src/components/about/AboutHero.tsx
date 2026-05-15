@@ -8,7 +8,7 @@ export default function AboutHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-[#FBF9F5] pt-28 pb-16 lg:pt-36 lg:pb-24">
+    <section className="relative overflow-hidden bg-[#FBF9F5] pt-28 pb-12 lg:pt-32 lg:pb-16">
       {/* ── Ambient backdrop ── */}
       <motion.div
         aria-hidden

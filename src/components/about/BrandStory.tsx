@@ -8,7 +8,7 @@ const CINEMATIC_EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function BrandStory() {
   return (
-    <section className="relative bg-white py-24 lg:py-36">
+    <section className="relative bg-white py-12 lg:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-start">
           {/* ── Left: Editorial image stack ── */}
