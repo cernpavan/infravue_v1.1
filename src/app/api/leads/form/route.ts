@@ -106,7 +106,7 @@ export async function POST(request: Request) {
     if (err instanceof Prisma.PrismaClientKnownRequestError) {
       // Unique constraint, FK violation, etc. — treat as a client problem.
       return NextResponse.json(
-        { error: "Could not save submission. Please verify your details.", details: message },
+        { error: "Could not save submission. Please verify your details." },
         { status: 409 }
       );
     }
@@ -117,13 +117,13 @@ export async function POST(request: Request) {
     ) {
       // DB unreachable / DATABASE_URL missing / migrations not applied.
       return NextResponse.json(
-        { error: "Service temporarily unavailable. Please try again shortly.", details: message },
+        { error: "Service temporarily unavailable. Please try again shortly." },
         { status: 503 }
       );
     }
 
     return NextResponse.json(
-      { error: "Could not save submission. Please try again.", details: message, stack },
+      { error: "Could not save submission. Please try again." },
       { status: 500 }
     );
   }

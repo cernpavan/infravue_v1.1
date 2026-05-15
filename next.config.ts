@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverExternalPackages: ["@prisma/client", ".prisma/client"],
+  },
   images: {
     // Cloudflare Workers does not support the /_next/image optimization API.
     // Serving images unoptimized bypasses that endpoint and lets Cloudflare's
