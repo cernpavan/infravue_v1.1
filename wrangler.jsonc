@@ -8,6 +8,11 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  // Keep the *.workers.dev URL alive (handy for smoke-testing alongside
+  // the custom domain). Set to false if you want production traffic ONLY
+  // through infravueinteriors.com.
+  "workers_dev": true,
+  "preview_urls": true,
   // Custom domain — declared here so `wrangler deploy` doesn't strip it.
   // The matching DNS record / zone must already exist in Cloudflare.
   "routes": [
