@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, MapPin, ArrowRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import type { ProjectWithSlug } from "@/data/projects";
 
 interface Props {
@@ -99,34 +99,15 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
             exit={{ opacity: 0, scale: 0.96, y: 24, transition: { duration: 0.25 } }}
             className="relative z-10 w-full h-full sm:h-[92dvh] max-w-6xl bg-white sm:rounded-2xl shadow-[0_40px_120px_-20px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col focus:outline-none"
           >
-            {/* ── Sticky Header ── */}
-            <header className="shrink-0 z-20 flex items-center justify-between gap-4 px-5 sm:px-8 py-4 sm:py-5 bg-white/95 backdrop-blur-md border-b border-[#1E3A6A]/8">
-              <div className="min-w-0 flex-1">
-                <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.28em] text-[#A1622C] mb-1">
-                  {project.category}
-                </p>
-                <h2 className="text-lg sm:text-2xl font-bold text-[#1E3A6A] leading-tight truncate">
-                  {project.name}
-                </h2>
-                {(project.location || project.year) && (
-                  <p className="hidden sm:flex items-center gap-1.5 mt-1 text-xs text-[#1E3A6A]/45">
-                    {project.location && (
-                      <>
-                        <MapPin size={11} strokeWidth={2} />
-                        <span>{project.location}</span>
-                      </>
-                    )}
-                    {project.location && project.year && (
-                      <span className="text-[#1E3A6A]/25 mx-1">·</span>
-                    )}
-                    {project.year && <span>{project.year}</span>}
-                  </p>
-                )}
-              </div>
+            {/* ── Header — minimal, project name only ── */}
+            <header className="relative shrink-0 z-20 px-5 sm:px-8 py-5 sm:py-7 bg-white/95 backdrop-blur-md border-b border-[#1E3A6A]/8">
+              <h2 className="px-12 sm:px-14 text-center text-xl sm:text-2xl md:text-[28px] font-light tracking-[0.02em] text-[#1E3A6A] leading-tight truncate">
+                {project.name}
+              </h2>
               <button
                 onClick={onClose}
                 aria-label="Close project gallery"
-                className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#1E3A6A]/5 text-[#1E3A6A]/60 hover:bg-[#1E3A6A]/12 hover:text-[#1E3A6A] active:scale-95 transition-all duration-200"
+                className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-[#1E3A6A]/5 text-[#1E3A6A]/60 hover:bg-[#1E3A6A]/12 hover:text-[#1E3A6A] active:scale-95 transition-all duration-200"
               >
                 <X size={16} strokeWidth={2.5} />
               </button>
@@ -138,13 +119,6 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
               className="flex-1 overflow-y-auto overscroll-contain bg-[#FAFAF9]"
             >
               <div className="px-3 sm:px-6 md:px-8 py-6 md:py-10">
-                {/* Intro */}
-                {project.intro && (
-                  <p className="mb-7 sm:mb-10 mx-auto max-w-2xl text-center text-[14px] sm:text-[15px] text-[#1E3A6A]/65 leading-[1.75] px-2">
-                    {project.intro}
-                  </p>
-                )}
-
                 {/* Image grid — first image is a full-width hero */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   {gallery.map((src, idx) => {
