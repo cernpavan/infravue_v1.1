@@ -20,7 +20,11 @@ function createClient(): PrismaClient {
   }
 
   return new PrismaClient({
-    adapter: new PrismaNeonHTTP(connectionString),
+    adapter: new PrismaNeonHTTP(connectionString, {
+      fetchOptions: {
+        cache: "no-store",
+      },
+    }),
     log:
       process.env.NODE_ENV === "development"
         ? ["query", "error", "warn"]
