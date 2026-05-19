@@ -25,7 +25,7 @@ export default function AboutSection() {
                 Designing spaces that seamlessly blend comfort, functionality, and modern aesthetics.
               </h2>
 
-              <div className="space-y-4 text-[#1E3A6A]/70 text-base lg:text-lg leading-relaxed">
+              <div className="space-y-4 text-[#1E3A6A] text-base lg:text-lg leading-relaxed">
                 <p>
                   At Infravue Interiors, we design and transform corporate spaces, commercial environments, and homes into refined, functional, and inspiring spaces with customized interior solutions, modern home interiors, and luxury interiors.
                 </p>

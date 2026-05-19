@@ -17,10 +17,10 @@ const SERVICES = [
     icon: Home,
     tag: "For Homes",
     title: "Residential Interiors",
-    alt: "Luxury residential interior design for homes and villas by Infravue Interiors, Hyderabad — full-home turnkey execution with modular kitchens, bedrooms, and living spaces",
+    alt: "Luxury residential living room with marble TV wall and warm walnut joinery by Infravue Interiors, Hyderabad — full-home turnkey execution with modular kitchens, bedrooms, and living spaces",
     description:
       "Complete home interior solutions tailored to your lifestyle — from a single room to full-home turnkey execution. Every space designed around how you actually live.",
-    image: "/images/services/residential.jpeg",
+    image: "/images/services/commercial.jpeg",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
       "Villa & Bungalow Interiors",
@@ -35,10 +35,10 @@ const SERVICES = [
     icon: Building2,
     tag: "For Businesses",
     title: "Commercial Interiors",
-    alt: "Modern corporate and commercial office interior design by Infravue Interiors, Hyderabad — co-working spaces, retail fit-outs, and F&B restaurant interiors",
+    alt: "Modern corporate office breakout lounge with engineered ceiling by Infravue Interiors, Hyderabad — co-working spaces, retail fit-outs, and F&B restaurant interiors",
     description:
       "Professional environments designed for productivity, brand identity, and lasting impressions. From startup offices to large corporate headquarters.",
-    image: "/images/services/commercial.jpeg",
+    image: "/images/projects/first-source/first-source-01.jpg",
     items: [
       "Corporate Office Fit-Outs",
       "Tech & Co-working Spaces",

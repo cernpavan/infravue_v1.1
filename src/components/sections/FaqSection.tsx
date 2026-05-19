@@ -55,7 +55,7 @@ export default function FaqSection() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    <div className="px-7 pb-8 text-[#1E3A6A]/65 text-[15px] lg:text-[16px] leading-[1.7] font-light max-w-[90%]">
+                    <div className="px-7 pb-8 text-[#1E3A6A] text-[15px] lg:text-[16px] leading-[1.7] font-light max-w-[90%]">
                       {faq.answer}
                     </div>
                   </motion.div>

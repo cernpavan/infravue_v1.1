@@ -23,10 +23,10 @@ const SERVICES = [
   {
     icon: Building2,
     title: "Commercial Interiors",
-    alt: "Modern commercial and corporate office interior design by Infravue Interiors, Hyderabad — retail, F&B, and workspace solutions",
+    alt: "Modern corporate office interior with breakout lounge by Infravue Interiors, Hyderabad — workspaces, retail, and F&B environments",
     description:
       "Professional spaces designed for productivity and aesthetics.",
-    image: "/images/services/commercial.jpeg",
+    image: "/images/projects/first-source/first-source-01.jpg",
     items: [
       "Office Interiors",
       "F&B Commercial Interiors",
@@ -56,10 +56,10 @@ const SERVICES = [
   {
     icon: Home,
     title: "Residential Interiors",
-    alt: "Luxury residential interior design for homes and villas by Infravue Interiors, Hyderabad — modular kitchens, bedrooms, and full home turnkey solutions",
+    alt: "Luxury living room interior with marble TV wall and warm walnut joinery by Infravue Interiors, Hyderabad — full home turnkey design, modular kitchens and bedrooms",
     description:
       "Complete home interior solutions tailored to your lifestyle.",
-    image: "/images/services/residential.jpeg",
+    image: "/images/services/commercial.jpeg",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
       "Villa Interiors",

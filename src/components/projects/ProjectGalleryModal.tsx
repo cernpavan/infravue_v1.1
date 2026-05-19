@@ -4,7 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  Calendar,
+  MapPin,
+  Maximize2,
+  Layers,
+} from "lucide-react";
 import type { ProjectWithSlug } from "@/data/projects";
 
 interface Props {
@@ -112,6 +121,9 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
                 <X size={16} strokeWidth={2.5} />
               </button>
             </header>
+
+            {/* ── Project Metadata — premium info grid ── */}
+            <ProjectMetaBand project={project} />
 
             {/* ── Scrollable Gallery Body ── */}
             <div
@@ -250,5 +262,72 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
         </div>
       )}
     </AnimatePresence>
+  );
+}
+
+/* ──────────────────────────────────────────────────────────────────────── */
+/*  Project Metadata Band — premium info grid                              */
+/*  Sits between the title and the gallery; always visible.                */
+/* ──────────────────────────────────────────────────────────────────────── */
+
+type MetaIcon = React.ComponentType<{ size?: number; strokeWidth?: number }>;
+
+function ProjectMetaBand({ project }: { project: ProjectWithSlug }) {
+  const items: { label: string; value?: string; Icon: MetaIcon }[] = [
+    { label: "Year", value: project.year, Icon: Calendar },
+    { label: "Location", value: project.location, Icon: MapPin },
+    { label: "Area", value: project.area, Icon: Maximize2 },
+    { label: "Scope", value: project.scope, Icon: Layers },
+  ];
+
+  return (
+    <section
+      aria-label={`${project.name} project details`}
+      className="shrink-0 bg-white border-b border-[#1E3A6A]/10"
+    >
+      <dl className="grid grid-cols-2 md:grid-cols-4">
+        {items.map((item, i) => (
+          <MetaCell key={item.label} {...item} pos={i} />
+        ))}
+      </dl>
+    </section>
+  );
+}
+
+function MetaCell({
+  label,
+  value,
+  Icon,
+  pos,
+}: {
+  label: string;
+  value?: string;
+  Icon: MetaIcon;
+  pos: number;
+}) {
+  return (
+    <div
+      className={[
+        "px-5 py-5 sm:px-6 sm:py-6 md:px-7 md:py-7",
+        // Mobile (2-col): odd cells get a left rule, second row gets a top rule
+        pos % 2 === 1 ? "border-l border-[#1E3A6A]/10" : "",
+        pos >= 2 ? "border-t border-[#1E3A6A]/10" : "",
+        // Desktop (4-col): no top rule; left rule on every cell except the first
+        "md:border-t-0",
+        pos === 0 ? "md:border-l-0" : "md:border-l md:border-[#1E3A6A]/10",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <dt className="flex items-center gap-2 mb-2 sm:mb-2.5 text-[#A1622C]">
+        <Icon size={13} strokeWidth={1.75} />
+        <span className="text-[10px] sm:text-[11px] tracking-[0.3em] uppercase font-medium">
+          {label}
+        </span>
+      </dt>
+      <dd className="text-base md:text-lg font-light text-[#1E3A6A] leading-snug break-words">
+        {value || "—"}
+      </dd>
+    </div>
   );
 }

@@ -75,8 +75,8 @@ export default function AboutHero() {
           >
             <p className="text-navy/65 text-base lg:text-lg leading-[1.85] max-w-md">
               A Hyderabad-rooted interior design studio crafting refined,
-              functional environments for homes, workplaces, and commercial
-              spaces — delivered across India.
+              functional environments for workplaces, commercial spaces, and
+              homes — delivered across India.
             </p>
             <div className="mt-6 flex items-center gap-6 text-[11px] tracking-[0.28em] uppercase text-navy/50 font-semibold">
               <span>Est. Hyderabad</span>

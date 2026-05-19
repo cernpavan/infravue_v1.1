@@ -16,11 +16,11 @@ export default function CtaBanner() {
             Let&apos;s Begin
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1E3A6A] mb-4 leading-tight">
-            Ready to Transform Your Space?
+            Your Space, Our Promise
           </h2>
           <p className="text-[#1E3A6A]/55 text-base lg:text-lg leading-relaxed mb-10">
-            Book a free consultation — no obligation, just great ideas crafted
-            around your vision and budget.
+            Ready to transform your space? Book a free consultation for
+            customized interior solutions tailored to your vision and budget.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <BookButton className="inline-flex items-center gap-2.5 px-10 py-4 bg-[#A1622C] text-white font-semibold text-sm rounded-[6px] hover:bg-[#7A4A20] shadow-[0_4px_16px_rgba(161,98,44,0.25)] hover:shadow-[0_8px_24px_rgba(161,98,44,0.35)] transition-all duration-300 cursor-pointer">

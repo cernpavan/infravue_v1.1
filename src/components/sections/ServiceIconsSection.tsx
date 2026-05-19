@@ -12,21 +12,21 @@ import {
 import { useRef, type PointerEvent } from "react";
 
 const SERVICES = [
-  { name: "Modular Kitchen", icon: "kitchen" },
-  { name: "Storage and Wardrobe", icon: "wardrobe" },
-  { name: "Crockery Unit", icon: "crockery" },
-  { name: "Space Saving Furniture", icon: "space-saving" },
-  { name: "TV Unit", icon: "tv" },
-  { name: "Study Table", icon: "study" },
-  { name: "False Ceiling", icon: "ceiling" },
-  { name: "Lights", icon: "lights" },
-  { name: "Wallpaper", icon: "wallpaper" },
-  { name: "Paints", icon: "paints" },
-  { name: "Bathroom", icon: "bathroom" },
-  { name: "Pooja Unit", icon: "pooja" },
-  { name: "Foyer", icon: "foyer" },
-  { name: "Movable Furniture", icon: "movable" },
-  { name: "Kids Bedroom", icon: "kids" },
+  { name: "Civil Works", icon: "civil" },
+  { name: "Painting", icon: "painting" },
+  { name: "Ceiling Solutions", icon: "ceiling" },
+  { name: "Flooring", icon: "flooring" },
+  { name: "Partitions", icon: "partitions" },
+  { name: "Modular Furniture", icon: "modular" },
+  { name: "Electrical & HVAC", icon: "electrical" },
+  { name: "Glass & Glazing", icon: "glass" },
+  { name: "Interior Design", icon: "design" },
+  { name: "3D Visualization", icon: "viz" },
+  { name: "MEP Services", icon: "mep" },
+  { name: "Turnkey Execution", icon: "turnkey" },
+  { name: "Restaurant Interiors", icon: "restaurant" },
+  { name: "Bar & Lounge Fit-Outs", icon: "bar" },
+  { name: "Home Interiors", icon: "home" },
 ];
 
 // Cinematic easing — a slower, more "settling" curve than the default.
@@ -48,142 +48,171 @@ function renderIcon(type: string) {
   const accent = "#A1622C";
 
   switch (type) {
-    case "kitchen":
+    case "civil":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="10" y="10" width="44" height="44" rx="2" strokeWidth="2" />
-          <line x1="10" y1="28" x2="54" y2="28" strokeWidth="2" />
-          <line x1="32" y1="28" x2="32" y2="54" strokeWidth="2" />
-          <circle cx="21" cy="41" r="2" fill={accent} stroke="none" />
-          <circle cx="43" cy="41" r="2" fill={accent} stroke="none" />
-          <path d="M18 18h8v2h-8z" fill="currentColor" stroke="none" />
-          <path d="M38 18h8v2h-8z" fill="currentColor" stroke="none" />
+          <rect x="10" y="14" width="44" height="36" rx="1" strokeWidth="2" />
+          <line x1="10" y1="26" x2="54" y2="26" strokeWidth="1.5" />
+          <line x1="10" y1="38" x2="54" y2="38" strokeWidth="1.5" />
+          <line x1="22" y1="14" x2="22" y2="26" strokeWidth="1.5" />
+          <line x1="42" y1="14" x2="42" y2="26" strokeWidth="1.5" />
+          <line x1="16" y1="26" x2="16" y2="38" strokeWidth="1.5" />
+          <line x1="32" y1="26" x2="32" y2="38" strokeWidth="1.5" />
+          <line x1="48" y1="26" x2="48" y2="38" strokeWidth="1.5" />
+          <line x1="22" y1="38" x2="22" y2="50" strokeWidth="1.5" />
+          <line x1="42" y1="38" x2="42" y2="50" strokeWidth="1.5" />
+          <rect x="26" y="29" width="4" height="6" fill={accent} stroke="none" />
         </svg>
       );
-    case "wardrobe":
+    case "painting":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="12" y="8" width="40" height="48" rx="2" strokeWidth="2" />
-          <line x1="32" y1="8" x2="32" y2="56" strokeWidth="2" />
-          <rect x="24" y="24" width="2" height="8" rx="1" fill={accent} stroke="none" />
-          <rect x="38" y="24" width="2" height="8" rx="1" fill={accent} stroke="none" />
-        </svg>
-      );
-    case "crockery":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="14" y="10" width="36" height="44" rx="2" strokeWidth="2" />
-          <line x1="14" y1="24" x2="50" y2="24" strokeWidth="2" />
-          <line x1="14" y1="38" x2="50" y2="38" strokeWidth="2" />
-          <circle cx="25" cy="17" r="2" stroke={accent} strokeWidth="1.5" />
-          <circle cx="39" cy="17" r="2" stroke={accent} strokeWidth="1.5" />
-          <path d="M20 31h24M20 45h24" strokeWidth="1.5" />
-        </svg>
-      );
-    case "space-saving":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M12 44h40v6H12z" strokeWidth="2" />
-          <path d="M16 20h32v24H16z" strokeWidth="2" />
-          <circle cx="32" cy="32" r="4" stroke={accent} strokeWidth="2" />
-          <path d="M10 50l4 4M54 50l-4 4" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      );
-    case "tv":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="8" y="14" width="48" height="28" rx="2" strokeWidth="2" />
-          <rect x="22" y="20" width="20" height="12" rx="1" stroke={accent} strokeWidth="1.5" />
-          <line x1="8" y1="48" x2="56" y2="48" strokeWidth="2" />
-          <line x1="16" y1="42" x2="16" y2="54" strokeWidth="2" />
-          <line x1="48" y1="42" x2="48" y2="54" strokeWidth="2" />
-        </svg>
-      );
-    case "study":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M10 24h44v4H10z" fill="currentColor" stroke="none" />
-          <path d="M14 28h36v20H14z" strokeWidth="2" />
-          <line x1="18" y1="20" x2="30" y2="20" stroke={accent} strokeWidth="2" />
-          <circle cx="32" cy="38" r="3" stroke={accent} strokeWidth="1.5" />
+          <rect x="16" y="12" width="32" height="10" rx="2" strokeWidth="2" />
+          <line x1="20" y1="17" x2="44" y2="17" stroke={accent} strokeWidth="2" />
+          <path d="M32 22v6" strokeWidth="2" />
+          <path d="M24 28h16" strokeWidth="2" />
+          <path d="M32 28v22" strokeWidth="2" />
+          <rect x="28" y="50" width="8" height="6" rx="1" strokeWidth="2" />
         </svg>
       );
     case "ceiling":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M10 16l22-8 22 8v8H10v-8z" strokeWidth="2" />
-          <circle cx="32" cy="24" r="3" fill={accent} stroke="none" />
-          <path d="M32 27v10" stroke={accent} strokeWidth="1.5" strokeDasharray="2 2" />
-          <circle cx="32" cy="40" r="2" stroke={accent} strokeWidth="1" />
+          <path d="M8 14h48" strokeWidth="2" strokeLinecap="round" />
+          <path d="M8 14v6h48v-6" strokeWidth="2" strokeLinejoin="round" />
+          <line x1="32" y1="20" x2="32" y2="34" strokeWidth="1.5" strokeDasharray="2 2" />
+          <path d="M22 34h20l-3 12H25z" strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="32" cy="44" r="2" fill={accent} stroke="none" />
         </svg>
       );
-    case "lights":
+    case "flooring":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M32 10v10" strokeWidth="2" />
-          <path d="M18 36c0-7.7 6.3-14 14-14s14 6.3 14 14H18z" strokeWidth="2" />
-          <circle cx="32" cy="42" r="3" fill={accent} stroke="none" />
+          <rect x="10" y="14" width="44" height="36" strokeWidth="2" />
+          <line x1="10" y1="26" x2="54" y2="26" strokeWidth="1.5" />
+          <line x1="10" y1="38" x2="54" y2="38" strokeWidth="1.5" />
+          <line x1="25" y1="14" x2="25" y2="50" strokeWidth="1.5" />
+          <line x1="39" y1="14" x2="39" y2="50" strokeWidth="1.5" />
+          <rect x="25" y="26" width="14" height="12" fill={accent} fillOpacity="0.25" stroke="none" />
         </svg>
       );
-    case "wallpaper":
+    case "partitions":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
+          <rect x="10" y="14" width="14" height="36" strokeWidth="2" />
+          <rect x="26" y="14" width="14" height="36" strokeWidth="2" />
+          <rect x="42" y="14" width="14" height="36" strokeWidth="2" />
+          <circle cx="17" cy="32" r="1.5" fill={accent} stroke="none" />
+          <circle cx="33" cy="32" r="1.5" fill={accent} stroke="none" />
+          <circle cx="49" cy="32" r="1.5" fill={accent} stroke="none" />
+          <line x1="6" y1="52" x2="58" y2="52" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "modular":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
+          <path d="M8 30h12v18H8z" strokeWidth="2" />
+          <path d="M22 30h20v18H22z" strokeWidth="2" />
+          <path d="M44 30h12v18H44z" strokeWidth="2" />
+          <path d="M6 48h52v6H6z" strokeWidth="2" />
+          <rect x="12" y="34" width="4" height="10" rx="1" fill={accent} fillOpacity="0.6" stroke="none" />
+          <rect x="48" y="34" width="4" height="10" rx="1" fill={accent} fillOpacity="0.6" stroke="none" />
+        </svg>
+      );
+    case "electrical":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
+          <path d="M22 8 L10 32 L20 32 L14 56 L34 30 L24 30 L28 8 Z" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M40 18h16" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+          <path d="M42 28h14" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+          <path d="M40 38h16" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+          <path d="M42 48h14" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "glass":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
           <rect x="14" y="10" width="36" height="44" rx="2" strokeWidth="2" />
-          <path d="M20 18h4v4h-4zM30 18h4v4h-4zM40 18h4v4h-4z" fill={accent} stroke="none" />
-          <path d="M20 28h4v4h-4zM30 28h4v4h-4zM40 28h4v4h-4z" fill="currentColor" fillOpacity="0.3" stroke="none" />
-          <path d="M14 44h36" strokeWidth="2" />
+          <line x1="32" y1="10" x2="32" y2="54" strokeWidth="1.5" />
+          <line x1="14" y1="32" x2="50" y2="32" strokeWidth="1.5" />
+          <path d="M18 14l4 8" stroke={accent} strokeWidth="2" strokeLinecap="round" />
+          <path d="M36 36l4 8" stroke={accent} strokeWidth="2" strokeLinecap="round" />
         </svg>
       );
-    case "paints":
+    case "design":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="24" y="10" width="16" height="30" rx="2" strokeWidth="2" />
-          <path d="M28 40v10a2 2 0 002 2h4a2 2 0 002-2V40" strokeWidth="2" />
-          <path d="M24 20h16" stroke={accent} strokeWidth="4" />
+          <rect x="10" y="10" width="44" height="44" rx="2" strokeWidth="2" />
+          <line x1="10" y1="22" x2="54" y2="22" strokeWidth="1.5" />
+          <line x1="22" y1="22" x2="22" y2="54" strokeWidth="1.5" />
+          <rect x="28" y="28" width="18" height="12" stroke={accent} strokeWidth="1.5" />
+          <circle cx="44" cy="46" r="2" fill={accent} stroke="none" />
         </svg>
       );
-    case "bathroom":
+    case "viz":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M10 32c0 8.8 7.2 16 16 16h12c8.8 0 16-7.2 16-16H10z" strokeWidth="2" />
-          <path d="M46 14v18M42 14h8" strokeWidth="2" />
-          <circle cx="46" cy="18" r="2" fill={accent} stroke="none" />
+          <path d="M32 8l20 12-20 12-20-12z" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M12 20v22l20 12v-22" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M52 20v22l-20 12" strokeWidth="2" strokeLinejoin="round" />
+          <line x1="32" y1="32" x2="32" y2="54" strokeWidth="1" strokeDasharray="2 2" />
+          <circle cx="32" cy="20" r="2.5" fill={accent} stroke="none" />
         </svg>
       );
-    case "pooja":
+    case "mep":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <rect x="16" y="16" width="32" height="40" rx="2" strokeWidth="2" />
-          <path d="M16 16l16-10 16 10" strokeWidth="2" />
-          <circle cx="32" cy="32" r="4" stroke={accent} strokeWidth="2" />
-          <path d="M32 28v-2" stroke={accent} strokeWidth="1.5" />
+          <rect x="4" y="32" width="22" height="10" strokeWidth="2" />
+          <rect x="38" y="32" width="22" height="10" strokeWidth="2" />
+          <rect x="26" y="28" width="12" height="18" strokeWidth="2" />
+          <line x1="32" y1="28" x2="32" y2="18" strokeWidth="2" />
+          <circle cx="32" cy="14" r="4" stroke={accent} strokeWidth="2" />
+          <line x1="28" y1="14" x2="36" y2="14" stroke={accent} strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="32" y1="10" x2="32" y2="18" stroke={accent} strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       );
-    case "foyer":
+    case "turnkey":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M12 52h40" strokeWidth="2" />
-          <rect x="18" y="16" width="28" height="36" strokeWidth="2" />
-          <circle cx="40" cy="34" r="2" fill={accent} stroke="none" />
-          <rect x="22" y="22" width="20" height="2" fill="currentColor" fillOpacity="0.2" stroke="none" />
+          <circle cx="20" cy="32" r="10" strokeWidth="2" />
+          <circle cx="20" cy="32" r="3" stroke={accent} strokeWidth="1.5" />
+          <path d="M30 32h22" strokeWidth="2" strokeLinecap="round" />
+          <path d="M44 32v6" strokeWidth="2" strokeLinecap="round" />
+          <path d="M50 32v8" strokeWidth="2" strokeLinecap="round" />
         </svg>
       );
-    case "movable":
+    case "restaurant":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M14 40h36v8H14z" strokeWidth="2" />
-          <path d="M18 20c0-4 3-7 7-7h18a7 7 0 017 7v20H18V20z" strokeWidth="2" />
-          <circle cx="28" cy="44" r="2" fill={accent} stroke="none" />
-          <circle cx="40" cy="44" r="2" fill={accent} stroke="none" />
+          <line x1="18" y1="8" x2="18" y2="22" strokeWidth="2" strokeLinecap="round" />
+          <line x1="22" y1="8" x2="22" y2="22" strokeWidth="2" strokeLinecap="round" />
+          <line x1="26" y1="8" x2="26" y2="22" strokeWidth="2" strokeLinecap="round" />
+          <path d="M16 22h12v4a4 4 0 01-4 4h-4a4 4 0 01-4-4z" strokeWidth="2" strokeLinejoin="round" />
+          <line x1="22" y1="30" x2="22" y2="56" strokeWidth="2" strokeLinecap="round" />
+          <path d="M44 8c-3 0-5 4-5 12s2 12 5 12" strokeWidth="2" strokeLinejoin="round" />
+          <line x1="44" y1="8" x2="44" y2="56" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="22" cy="48" r="1.5" fill={accent} stroke="none" />
+          <circle cx="44" cy="48" r="1.5" fill={accent} stroke="none" />
         </svg>
       );
-    case "kids":
+    case "bar":
       return (
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
-          <path d="M12 40h40v8H12z" strokeWidth="2" />
-          <path d="M16 20h12v20H16zM36 24h12v16H36z" strokeWidth="2" />
-          <circle cx="22" cy="28" r="2" fill={accent} stroke="none" />
-          <circle cx="42" cy="30" r="2" fill={accent} stroke="none" />
+          <path d="M14 12h36L32 36z" strokeWidth="2" strokeLinejoin="round" />
+          <line x1="32" y1="36" x2="32" y2="52" strokeWidth="2" />
+          <line x1="22" y1="52" x2="42" y2="52" strokeWidth="2" strokeLinecap="round" />
+          <line x1="34" y1="14" x2="40" y2="22" stroke={accent} strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx="40" cy="22" r="2.5" fill={accent} stroke="none" />
+        </svg>
+      );
+    case "home":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" stroke="currentColor">
+          <path d="M10 30L32 12l22 18v22H10z" strokeWidth="2" strokeLinejoin="round" />
+          <rect x="26" y="36" width="12" height="16" strokeWidth="2" />
+          <rect x="14" y="34" width="8" height="6" stroke={accent} strokeWidth="1.5" />
+          <rect x="42" y="34" width="8" height="6" stroke={accent} strokeWidth="1.5" />
+          <circle cx="34" cy="44" r="1.2" fill={accent} stroke="none" />
         </svg>
       );
     default:

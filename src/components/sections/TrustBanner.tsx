@@ -1,8 +1,8 @@
-import { Users, Home, Tag, Truck, Award, Maximize } from "lucide-react";
+import { Users, Briefcase, Tag, Truck, Award, Maximize } from "lucide-react";
 
 const TRUST_ITEMS = [
   { icon: Award, label: "8+ Years of Experience" },
-  { icon: Home, label: "50+ Homes Delivered" },
+  { icon: Briefcase, label: "50+ Projects Delivered" },
   { icon: Maximize, label: "2M+ Sq. Ft. Delivered" },
   { icon: Users, label: "Top Expert Designers" },
   { icon: Tag, label: "Transparent Pricing" },

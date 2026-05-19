@@ -85,10 +85,12 @@ export default function BrandStory() {
               </p>
               <p>
                 Backed by a dedicated team of designers and execution
-                professionals, we focus on creating office interiors, luxury
-                interiors, home interiors, and modular kitchen spaces that
-                balance comfort, functionality, and modern aesthetics while
-                ensuring quality workmanship and smooth project delivery.
+                professionals, we specialize in corporate interior design,
+                office interiors, workspace planning, commercial interior
+                design, and turnkey interior solutions while also creating
+                luxury interiors, modern home interiors, and modular kitchen
+                solutions with a focus on functionality, quality, and seamless
+                execution.
               </p>
               <p>
                 From concept planning and 3D designs to complete execution, we
