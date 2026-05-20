@@ -127,27 +127,32 @@ export default function BookingForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white p-6 sm:p-8 space-y-4"
+            className="bg-white px-6 sm:px-8 pt-7 sm:pt-8 pb-7 sm:pb-8 space-y-[18px]"
           >
-            <div className="text-center mb-2">
-              <h2 className="text-xl font-bold text-navy">Free Consultation</h2>
-              <p className="text-[10px] text-navy/40 uppercase tracking-widest mt-1">Get your dream space designed</p>
+            <div className="text-center mb-3">
+              <h2 className="text-[1.5rem] sm:text-[1.625rem] font-bold text-navy tracking-[-0.015em] leading-tight">
+                Free Consultation
+              </h2>
+              <div className="mx-auto mt-2.5 h-px w-10 bg-gradient-to-r from-transparent via-terracotta/60 to-transparent" aria-hidden="true" />
+              <p className="text-[10px] font-semibold text-navy/45 uppercase tracking-[0.22em] mt-2.5">
+                Get your dream space designed
+              </p>
             </div>
 
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-[10px] font-medium">
+              <div role="alert" className="px-3.5 py-2.5 bg-red-50/80 border border-red-200/80 rounded-lg text-red-700 text-[12px] font-medium leading-relaxed">
                 {error}
               </div>
             )}
 
             {/* Name */}
-            <div className="space-y-1.5">
+            <div className="space-y-[7px]">
               <label
                 htmlFor="name"
-                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+                className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
               >
                 Full Name{" "}
-                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+                <span className="text-terracotta" aria-hidden="true">*</span>
               </label>
               <input
                 id="name"
@@ -155,23 +160,23 @@ export default function BookingForm() {
                 placeholder="e.g. Pavan Kumar"
                 autoComplete="name"
                 {...register("name")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.name && (
-                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
                   {errors.name.message}
                 </p>
               )}
             </div>
 
             {/* Phone */}
-            <div className="space-y-1.5">
+            <div className="space-y-[7px]">
               <label
                 htmlFor="phone"
-                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+                className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
               >
                 Phone Number{" "}
-                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+                <span className="text-terracotta" aria-hidden="true">*</span>
               </label>
               <input
                 id="phone"
@@ -181,23 +186,23 @@ export default function BookingForm() {
                 inputMode="numeric"
                 maxLength={10}
                 {...register("phone")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.04em] tabular-nums caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.phone && (
-                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
                   {errors.phone.message}
                 </p>
               )}
             </div>
 
             {/* Email */}
-            <div className="space-y-1.5">
+            <div className="space-y-[7px]">
               <label
                 htmlFor="email"
-                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+                className="flex items-baseline gap-1.5 text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
               >
-                Email Address{" "}
-                <span className="text-navy/35 font-normal">(Optional)</span>
+                Email Address
+                <span className="text-[10px] font-normal text-navy/35 tracking-[0.01em]">(Optional)</span>
               </label>
               <input
                 id="email"
@@ -206,30 +211,30 @@ export default function BookingForm() {
                 autoComplete="email"
                 inputMode="email"
                 {...register("email")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.email && (
-                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
                   {errors.email.message}
                 </p>
               )}
             </div>
 
             {/* Service Type */}
-            <div className="space-y-1.5">
+            <div className="space-y-[7px]">
               <label
                 htmlFor="serviceType"
-                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+                className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
               >
                 Service Type{" "}
-                <span className="text-[#A1622C]" aria-hidden="true">*</span>
+                <span className="text-terracotta" aria-hidden="true">*</span>
               </label>
-              <div className="relative">
+              <div className="relative group">
                 <select
                   id="serviceType"
                   {...register("serviceType")}
                   defaultValue=""
-                  className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04)] [&:has(option[value='']:checked)]:text-navy/40"
+                  className="w-full pl-[18px] pr-12 py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)] [&:has(option[value='']:checked)]:text-navy/40 [&:has(option[value='']:checked)]:font-normal"
                 >
                   <option value="" disabled>Choose your service</option>
                   <option value="Residential">Residential Design</option>
@@ -238,53 +243,54 @@ export default function BookingForm() {
                   <option value="Design & Planning">Design &amp; Planning</option>
                   <option value="Finishing & Decor">Finishing &amp; Decor</option>
                 </select>
-                <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-navy/40">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <div className="absolute right-[14px] top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center w-6 h-6 rounded-md text-navy/55 group-hover:text-navy/75 group-focus-within:text-navy transition-colors duration-200">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
               </div>
               {errors.serviceType && (
-                <p role="alert" className="text-[9px] font-bold text-red-500 ml-1 uppercase">
+                <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
                   {errors.serviceType.message}
                 </p>
               )}
             </div>
 
             {/* Message */}
-            <div className="space-y-1.5">
+            <div className="space-y-[7px]">
               <label
                 htmlFor="message"
-                className="block text-xs font-semibold text-navy tracking-[0.04em]"
+                className="flex items-baseline gap-1.5 text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
               >
-                Project Description{" "}
-                <span className="text-navy/35 font-normal">(Optional)</span>
+                Project Description
+                <span className="text-[10px] font-normal text-navy/35 tracking-[0.01em]">(Optional)</span>
               </label>
               <textarea
                 id="message"
                 placeholder="Briefly describe your space, budget range, or any specific requirements…"
                 rows={2}
                 {...register("message")}
-                className="w-full px-5 py-4 bg-white border border-navy/15 rounded-xl text-sm text-navy placeholder:text-navy/30 placeholder:font-normal hover:border-navy/30 focus:outline-none focus:border-navy/70 focus:ring-4 focus:ring-navy/10 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04)]"
+                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] leading-relaxed caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal placeholder:leading-relaxed hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group relative mt-2 w-full flex items-center justify-center px-8 py-4 bg-gradient-to-b from-navy to-navy-dark text-white text-[13px] font-bold tracking-[0.06em] uppercase rounded-xl shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55)] hover:shadow-[0_18px_42px_-10px_rgba(30,58,106,0.7)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55)] transition-[transform,box-shadow] duration-300 ease-out"
+              className="group relative mt-3 w-full flex items-center justify-center overflow-hidden px-8 py-[15px] bg-gradient-to-b from-navy-light/95 via-navy to-navy-dark text-white text-[13px] font-bold tracking-[0.08em] uppercase rounded-[12px] shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] hover:shadow-[0_20px_44px_-12px_rgba(30,58,106,0.75),inset_0_1px_0_rgba(255,255,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-navy/25 transition-[transform,box-shadow] duration-300 ease-out"
             >
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" aria-hidden="true" />
               {isSubmitting ? (
-                <div className="flex items-center gap-2">
+                <span className="flex items-center gap-2">
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Sending...</span>
-                </div>
+                  <span>Sending…</span>
+                </span>
               ) : (
-                "Get Free Consultation"
+                <span>Get Free Consultation</span>
               )}
             </button>
 
-            <p className="text-[9px] text-navy/40 text-center uppercase tracking-widest mt-2">
+            <p className="text-[10px] font-semibold text-navy/45 text-center uppercase tracking-[0.22em] mt-2">
               Instant Response via WhatsApp
             </p>
           </motion.form>

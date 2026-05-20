@@ -90,12 +90,13 @@ export default function ConsultationModal() {
             <button
               onClick={closeModal}
               aria-label="Close consultation modal"
-              className="absolute top-4 right-4 z-30 w-8 h-8 flex items-center justify-center rounded-full
-                         bg-white/20 text-white hover:bg-white/30
-                         md:bg-[#1E3A6A]/8 md:text-[#1E3A6A]/50 md:hover:bg-[#1E3A6A]/15 md:hover:text-[#1E3A6A]
-                         transition-all duration-200"
+              className="absolute top-4 right-4 z-30 w-9 h-9 flex items-center justify-center rounded-full
+                         bg-white/15 text-white/90 hover:bg-white/25 hover:text-white hover:scale-105 active:scale-95
+                         md:bg-[#1E3A6A]/[0.06] md:text-[#1E3A6A]/55 md:hover:bg-[#1E3A6A]/12 md:hover:text-[#1E3A6A]
+                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:focus-visible:ring-navy/25
+                         transition-[background-color,color,transform,box-shadow] duration-200 ease-out"
             >
-              <X size={15} strokeWidth={2.5} />
+              <X size={16} strokeWidth={2.25} />
             </button>
 
             {/* ══════════════════════════════════════════
