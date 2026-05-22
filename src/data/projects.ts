@@ -475,6 +475,53 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Warm Sand", hex: "#D8C4AD" },
     ],
   },
+  // ── 12. Float-Cover ────────────────────────────────────────────────────────
+  {
+    slug: "float-cover",
+    name: "Float-Cover",
+    category: "Commercial Interior",
+    image: "/images/projects/float-cover.png",
+    gallery: [
+      "/images/projects/Float-Cover/float-cover-01.png",
+      "/images/projects/Float-Cover/float-cover-02.png",
+      "/images/projects/Float-Cover/float-cover-03.png",
+      "/images/projects/Float-Cover/float-cover-04.png",
+      "/images/projects/Float-Cover/float-cover-05.png",
+      "/images/projects/Float-Cover/float-cover-06.png",
+      "/images/projects/Float-Cover/float-cover-07.png",
+      "/images/projects/Float-Cover/float-cover-08.png",
+      "/images/projects/Float-Cover/float-cover-09.png",
+      "/images/projects/Float-Cover/float-cover-10.png",
+      "/images/projects/Float-Cover/float-cover-11.png",
+    ],
+    year: "2025",
+    location: "Hyderabad, IN",
+    area: "2,800 sq ft",
+    scope: "Office Interiors",
+    style: "Contemporary Commercial",
+    intro:
+      "A workspace shaped by clean architectural lines, layered materials, and a quietly confident palette — designed to feel composed from the first glance.",
+    description:
+      "Float-Cover is a refined commercial interior where considered geometry and warm finishes come together to create a workspace built around clarity, focus, and brand presence.",
+    overview: [
+      "A modern commercial interior balancing disciplined planning with warm, textural detailing for a calm, focused work environment.",
+      "Crafted with premium finishes and thoughtful spatial flow to deliver a polished, brand-aligned workspace experience.",
+    ],
+    philosophy:
+      "We approached Float-Cover as an environment that should feel measured, never busy. The architecture leads, the materials whisper, and every detail earns its place — quietly elevating the daily experience of the space.",
+    stats: [
+      { label: "Completed", value: "2025" },
+      { label: "Scope", value: "Office Interior" },
+      { label: "Style", value: "Contemporary Commercial" },
+      { label: "Location", value: "Hyderabad" },
+    ],
+    palette: [
+      { name: "Pearl White", hex: "#F2EFE9" },
+      { name: "Deep Navy", hex: "#1E3A6A" },
+      { name: "Warm Walnut", hex: "#7A4A20" },
+      { name: "Soft Sand", hex: "#D8C4AD" },
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectWithSlug | undefined {

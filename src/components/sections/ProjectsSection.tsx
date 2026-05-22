@@ -91,27 +91,6 @@ export default function ProjectsSection() {
               onOpen={setSelected}
             />
           ))}
-
-          {/* Final CTA Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl border-2 border-dashed border-gray-100"
-          >
-            <h3 className="text-xl font-bold text-navy text-center mb-4">
-              Your Project Next?
-            </h3>
-            <p className="text-navy/50 text-sm text-center mb-8">
-              Let&apos;s create something extraordinary together.
-            </p>
-            <Link
-              href="/book"
-              className="px-8 py-4 bg-terracotta text-white font-bold rounded-[4px] hover:bg-terracotta-dark transition-colors shadow-lg shadow-terracotta/20"
-            >
-              Start Your Journey
-            </Link>
-          </motion.div>
         </div>
       </div>
 
