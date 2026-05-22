@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { X, CheckCircle2, Sparkles, Clock3, ShieldCheck } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useConsultationModal } from "@/context/ModalContext";
@@ -35,6 +36,16 @@ const EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1];
 export default function ConsultationModal() {
   const { isOpen, closeModal } = useConsultationModal();
   const panelRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  // Close the modal whenever the user navigates (e.g. /thank-you after submit)
+  // so it doesn't linger on top of the next page.
+  useEffect(() => {
+    if (isOpen) closeModal();
+    // Intentionally depend only on pathname — the close should fire on
+    // navigation, regardless of whether the modal is open at this instant.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   // Lock body scroll
   useEffect(() => {

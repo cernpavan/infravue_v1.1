@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logo from "@/app/logo_part1.png";
 import BookButton from "@/components/ui/BookButton";
-import { CONTACT, ADDRESS, SOCIAL } from "@/lib/seo";
+import { CONTACT, ADDRESS, SOCIAL, MAPS_URL } from "@/lib/seo";
 
 const SOCIALS = [
   {
@@ -83,28 +83,36 @@ export default function Footer() {
             <p className="text-[#1E3A6A] text-sm font-medium leading-relaxed mb-7">
               Premium interior design for homes, offices, and hospitality spaces — crafted with purpose and precision.
             </p>
-            {/* Social links */}
-            <div className="flex gap-3">
+            {/* ── Social links ──
+                Brand-correct solid glyphs on a soft navy tinted disk.
+                On hover: fills with navy, lifts slightly, picks up a
+                soft terracotta halo + deeper navy shadow for premium
+                tactility. Focus-visible shows a terracotta accessibility
+                ring on a white offset so keyboard users get a clean
+                indicator on the light footer background. */}
+            <ul className="flex items-center gap-2.5" aria-label="Infravue Interiors on social media">
               {SOCIALS.map(({ label, href, path }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-full border border-[#1E3A6A]/40 text-[#1E3A6A] hover:bg-[#1E3A6A] hover:text-white hover:border-[#1E3A6A] transition-colors duration-200"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-[18px] h-[18px]"
-                    aria-hidden="true"
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Follow Infravue Interiors on ${label}`}
+                    className="group inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#1E3A6A]/[0.06] text-[#1E3A6A] border border-[#1E3A6A]/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#1E3A6A] hover:text-white hover:border-[#1E3A6A] hover:-translate-y-0.5 hover:scale-[1.06] hover:shadow-[0_0_0_4px_rgba(161,98,44,0.10),0_14px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.15)] active:translate-y-0 active:scale-[0.96] transition-[transform,background-color,color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A1622C]/55 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:hover:transform-none"
                   >
-                    <path d={path} />
-                  </svg>
-                </a>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-[18px] h-[18px] transition-transform duration-300 ease-out group-hover:scale-110"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d={path} />
+                    </svg>
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* ── Services ── */}
@@ -150,20 +158,57 @@ export default function Footer() {
             <h3 className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1622C] mb-6">
               Get in Touch
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm font-medium text-[#1E3A6A]">{CONTACT.phoneDisplay}</span>
+            {/* ── Contact rows ──
+                All three are actionable links (phone → tel:, email → mailto:,
+                address → Google Maps). Each carries data-gtm / data-event
+                attributes so GTM Click triggers can fire Google Ads, GA4,
+                and Meta Pixel events for engagement/conversion tracking. */}
+            <ul className="space-y-3.5">
+              <li>
+                <a
+                  href={`tel:${CONTACT.phone}`}
+                  aria-label={`Call Infravue Interiors at ${CONTACT.phoneDisplay}`}
+                  data-gtm="phone-click"
+                  data-event="phone_call"
+                  data-contact-source="footer"
+                  className="group flex items-start gap-3 -mx-1 px-1 py-0.5 rounded-md text-sm font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A1622C]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  <Phone size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70 group-hover:text-[#A1622C] transition-colors" />
+                  <span className="leading-relaxed">{CONTACT.phoneDisplay}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm font-medium text-[#1E3A6A]">{CONTACT.email}</span>
+              <li>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  aria-label={`Email Infravue Interiors at ${CONTACT.email}`}
+                  data-gtm="email-click"
+                  data-event="email_open"
+                  data-contact-source="footer"
+                  className="group flex items-start gap-3 -mx-1 px-1 py-0.5 rounded-md text-sm font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A1622C]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  <Mail size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70 group-hover:text-[#A1622C] transition-colors" />
+                  <span className="leading-relaxed break-all">{CONTACT.email}</span>
+                </a>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70" />
-                <span className="text-sm font-medium text-[#1E3A6A] leading-relaxed">
-                  {ADDRESS.streetAddress}, {ADDRESS.addressLocality}, {ADDRESS.postalCode}
-                </span>
+              <li>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open Infravue Interiors studio in Google Maps — ${ADDRESS.streetAddress}, ${ADDRESS.addressLocality} ${ADDRESS.postalCode}`}
+                  data-gtm="address-click"
+                  data-event="maps_open"
+                  data-contact-source="footer"
+                  className="group flex items-start gap-3 -mx-1 px-1 py-0.5 rounded-md text-sm font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A1622C]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  <MapPin size={15} className="mt-0.5 shrink-0 text-[#A1622C]/70 group-hover:text-[#A1622C] transition-colors" />
+                  <address className="not-italic leading-relaxed">
+                    {ADDRESS.streetAddress}, {ADDRESS.addressLocality}, {ADDRESS.postalCode}
+                    <span className="ml-1 inline-block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#A1622C]/0 group-hover:text-[#A1622C]/85 translate-x-0 group-hover:translate-x-0.5 transition-[color,transform] duration-300">
+                      ↗
+                    </span>
+                  </address>
+                </a>
               </li>
             </ul>
 

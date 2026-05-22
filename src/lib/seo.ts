@@ -47,6 +47,16 @@ export const ADDRESS = {
   addressCountry: "IN",
 } as const;
 
+/**
+ * Canonical Google Maps deep link for the studio. Uses Google's documented
+ * universal Maps URL — on mobile this opens the native Maps app, on desktop
+ * it opens maps.google.com. Address is URI-encoded; the brand-name prefix
+ * helps Maps match the business listing pin when one exists.
+ */
+export const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `${SITE_NAME}, ${ADDRESS.streetAddress}, ${ADDRESS.addressLocality}, ${ADDRESS.addressRegion} ${ADDRESS.postalCode}, India`
+)}`;
+
 export const SERVICE_AREAS = [
   "Hyderabad",
   "Secunderabad",

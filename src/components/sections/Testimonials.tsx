@@ -3,42 +3,47 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
+// Testimonials are tied to real projects from our portfolio so the section
+// reads as a continuation of the work shown in /#projects rather than a
+// disconnected social-proof strip. Two residential voices anchor positions
+// 2 and 5; the remaining four span corporate, luxury workspace, education,
+// and hospitality sectors — mirroring the breadth of work in the projects grid.
 const TESTIMONIALS = [
+  {
+    name: "First Source",
+    location: "Hyderabad",
+    review:
+      "Across a 35,000 sq ft floor plate, Infravue held the same standard of finish and discipline from reception through to the cafeteria. Their turnkey approach removed the usual friction of a project this size — we moved in on schedule, and the space is performing beautifully.",
+  },
   {
     name: "Dr. Reddy & Family",
     location: "Hyderabad",
     review:
-      "The transformation exceeded our expectations. The team created a perfect balance of functionality and aesthetics. Highly professional and detail-oriented.",
+      "Our home feels properly thought-through — every storage detail, lighting layer, and finish choice belongs. Infravue worked with the way we actually live, and the result has only grown on us through the first year.",
   },
   {
-    name: "FirstSource Management",
+    name: "Sesola Studio",
     location: "Hyderabad",
     review:
-      "Outstanding office interiors. The design is modern, efficient, and truly reflects our brand. A noticeable boost in team productivity.",
+      "The brief was simple: a quiet, premium workspace that doesn't shout. Infravue delivered exactly that — restrained materials, considered lighting, glass partitions that feel architectural rather than added. The kind of office our team is genuinely proud to walk into.",
   },
   {
-    name: "Wavity Tech Team",
-    location: "Hyderabad",
+    name: "NIAT Institute",
+    location: "Pune",
     review:
-      "A perfect workspace transformation for our startup. Creative, practical, and delivered on time. Great experience working with the team.",
-  },
-  {
-    name: "Suresh Kumar & Family",
-    location: "Hyderabad",
-    review:
-      "Our home interiors turned out exactly as we imagined. The quality, finishing, and execution were exceptional. Truly satisfied.",
+      "We needed an interior that supported focused learning and easy collaboration in equal measure. Infravue's planning across 15,000 sq ft — classrooms, faculty zones, circulation — is exceptional. Students respond to the space, and the day-to-day operations run noticeably smoother.",
   },
   {
     name: "Lakshmi Priya",
     location: "Hyderabad",
     review:
-      "Beautifully designed living space with great attention to detail. The team was responsive and ensured everything was perfect.",
+      "Modular kitchen, wardrobes, false ceilings, finishes — all handled by one team with care and consistency. The styling is timeless without ever feeling staged. Genuinely the smoothest project we could have asked for.",
   },
   {
-    name: "Ramesh Naidu",
+    name: "Float Brewery",
     location: "Hyderabad",
     review:
-      "From design to execution, everything was smooth and professional. The final outcome was elegant and well within budget.",
+      "Hospitality interiors live or die on first impressions, and Infravue understood that from day one. The textured walls, sculptural ceiling, customized bar counters and lounge zones come together into a single, immersive guest experience. Brilliant execution end to end.",
   },
 ];
 
@@ -95,7 +100,7 @@ export default function Testimonials() {
                 </div>
               </div>
               <p className="text-[#1E3A6A]/80 text-sm md:text-base leading-relaxed italic">
-                "{t.review}"
+                &ldquo;{t.review}&rdquo;
               </p>
             </div>
           ))}

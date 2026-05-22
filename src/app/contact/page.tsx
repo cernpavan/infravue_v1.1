@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ArrowRight, Clock } from "lucide-react";
-import { CONTACT, ADDRESS, SOCIAL, SITE_NAME } from "@/lib/seo";
+import { CONTACT, ADDRESS, SOCIAL, SITE_NAME, MAPS_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -58,7 +58,11 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`tel:${CONTACT.phone}`}
-                    className="text-base font-semibold text-[#1E3A6A] hover:text-[#A1622C] transition-colors"
+                    aria-label={`Call Infravue Interiors at ${CONTACT.phoneDisplay}`}
+                    data-gtm="phone-click"
+                    data-event="phone_call"
+                    data-contact-source="contact"
+                    className="text-base font-semibold text-[#1E3A6A] hover:text-[#A1622C] transition-colors focus-visible:outline-none focus-visible:underline"
                   >
                     {CONTACT.phoneDisplay}
                   </a>
@@ -75,7 +79,11 @@ export default function ContactPage() {
                   </p>
                   <a
                     href={`mailto:${CONTACT.email}`}
-                    className="text-base font-semibold text-[#1E3A6A] hover:text-[#A1622C] transition-colors"
+                    aria-label={`Email Infravue Interiors at ${CONTACT.email}`}
+                    data-gtm="email-click"
+                    data-event="email_open"
+                    data-contact-source="contact"
+                    className="text-base font-semibold text-[#1E3A6A] hover:text-[#A1622C] transition-colors focus-visible:outline-none focus-visible:underline"
                   >
                     {CONTACT.email}
                   </a>
@@ -90,10 +98,25 @@ export default function ContactPage() {
                   <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#1E3A6A]/40">
                     Studio
                   </p>
-                  <p className="text-base font-semibold text-[#1E3A6A] leading-relaxed">
-                    {ADDRESS.streetAddress},<br />
-                    {ADDRESS.addressLocality}, {ADDRESS.addressRegion} — {ADDRESS.postalCode}
-                  </p>
+                  <a
+                    href={MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open Infravue Interiors studio in Google Maps — ${ADDRESS.streetAddress}, ${ADDRESS.addressLocality} ${ADDRESS.postalCode}`}
+                    data-gtm="address-click"
+                    data-event="maps_open"
+                    data-contact-source="contact"
+                    className="group inline-flex flex-col text-base font-semibold text-[#1E3A6A] hover:text-[#A1622C] transition-colors focus-visible:outline-none focus-visible:underline"
+                  >
+                    <address className="not-italic leading-relaxed">
+                      {ADDRESS.streetAddress},<br />
+                      {ADDRESS.addressLocality}, {ADDRESS.addressRegion} — {ADDRESS.postalCode}
+                    </address>
+                    <span className="mt-1.5 inline-flex items-center gap-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-[#A1622C]/85 group-hover:text-[#A1622C] transition-colors">
+                      View on Google Maps
+                      <ArrowRight size={11} strokeWidth={2.4} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                  </a>
                 </div>
               </div>
 

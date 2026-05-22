@@ -15,7 +15,6 @@ import {
   ArrowRight,
   MapPin,
   Calendar,
-  Maximize2,
   Ruler,
   Sparkles,
 } from "lucide-react";
@@ -599,50 +598,49 @@ function DetailGallery({
   projectName: string;
   projectCategory: string;
 }) {
-  // If we have more images than predefined frames, we map over images
-  // to ensure every image from the folder is displayed.
-  const items = images.map((image, i) => {
-    // Cycle through predefined frames for titles/captions/spans
-    const baseFrame = frames[i % frames.length];
-    
-    // To make the layout dynamic and interesting, we can cycle through spans
-    const spans: Array<"wide" | "tall" | "square"> = ["wide", "tall", "square", "square", "tall"];
-    const dynamicSpan = spans[i % spans.length];
+  // Image-first gallery: text overlays removed for a clean, minimal,
+  // luxury feel. `frames` is retained only as a source of layout hints
+  // (span + objectPosition) so the editorial rhythm is preserved.
+  const SPAN_CYCLE: Array<"wide" | "tall" | "square"> = [
+    "wide",
+    "tall",
+    "square",
+    "square",
+    "tall",
+  ];
 
+  const items = images.map((image, i) => {
+    const baseFrame = frames[i % frames.length];
     return {
-      frame: {
-        ...baseFrame,
-        title: `Detail ${String(i + 1).padStart(2, "0")}`,
-        caption: baseFrame.caption,
-        span: dynamicSpan,
-      },
       image,
       galleryIndex: i,
+      span: SPAN_CYCLE[i % SPAN_CYCLE.length],
+      position: baseFrame?.position,
     };
   });
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-12 sm:gap-6">
       {items.map((item, i) => {
-        const span = item.frame.span ?? "square";
         const colSpan =
-          span === "wide"
+          item.span === "wide"
             ? "sm:col-span-12"
-            : span === "tall"
+            : item.span === "tall"
             ? "sm:col-span-5"
             : "sm:col-span-7";
         const aspect =
-          span === "wide"
+          item.span === "wide"
             ? "aspect-[16/9]"
-            : span === "tall"
+            : item.span === "tall"
             ? "aspect-[3/4]"
             : "aspect-[4/3]";
 
         return (
           <motion.button
-            key={`${item.frame.title}-${i}`}
+            key={`${item.image}-${i}`}
             type="button"
             onClick={() => onOpen(item.galleryIndex)}
+            aria-label={`Open ${projectName} image ${i + 1} of ${images.length}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -651,39 +649,22 @@ function DetailGallery({
               delay: i * 0.06,
               ease: easeLuxury,
             }}
-            className={`group relative ${colSpan} ${aspect} overflow-hidden rounded-xl bg-white/5 cursor-zoom-in`}
+            className={`group relative ${colSpan} ${aspect} overflow-hidden rounded-xl bg-white/5 cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F19]`}
           >
             <Image
               src={item.image}
               alt={`${projectName} interior detail ${i + 1} — ${projectCategory} design by Infravue Interiors`}
               fill
               sizes="(min-width: 1024px) 60vw, 100vw"
-              style={{ objectPosition: item.frame.position ?? "center" }}
+              style={{ objectPosition: item.position ?? "center" }}
               className="object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
             />
 
-            {/* Gradient overlay for legibility */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-90" />
-
-            {/* Hover label */}
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-7">
-              <div className="text-left">
-                <p className="text-[10px] tracking-[0.32em] uppercase text-sand mb-1.5 opacity-90">
-                  Detail · {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="text-lg sm:text-xl font-light text-white">
-                  {item.frame.title}
-                </p>
-                {item.frame.caption ? (
-                  <p className="mt-1 text-xs font-light text-white/55 max-w-xs">
-                    {item.frame.caption}
-                  </p>
-                ) : null}
-              </div>
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-black/30 text-white/90 backdrop-blur-md transition-all duration-500 group-hover:border-white group-hover:bg-white group-hover:text-navy">
-                <Maximize2 size={14} />
-              </div>
-            </div>
+            {/* Subtle hover veil — pure visual feedback, no text */}
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            />
           </motion.button>
         );
       })}

@@ -63,7 +63,7 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8">
             {[
-              { value: "50+", label: "Projects Delivered" },
+              { value: "100+", label: "Projects Delivered" },
               { value: "8+ Yrs", label: "Experience" },
               { value: "4.9 ★", label: "Client Rating" },
               { value: "4 States", label: "Pan-India Presence" },

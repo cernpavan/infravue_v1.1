@@ -8,6 +8,7 @@ import {
   Note,
   Bullets,
 } from "@/components/legal/LegalBlocks";
+import { MAPS_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -409,7 +410,11 @@ export default function TermsPage() {
             {/* Email card */}
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)]"
+              aria-label={`Email Infravue Interiors at ${CONTACT_EMAIL}`}
+              data-gtm="email-click"
+              data-event="email_open"
+              data-contact-source="terms"
+              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/55 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
                 <Mail size={16} />
@@ -431,7 +436,11 @@ export default function TermsPage() {
             {/* Phone card */}
             <a
               href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`}
-              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)]"
+              aria-label={`Call Infravue Interiors at ${CONTACT_PHONE}`}
+              data-gtm="phone-click"
+              data-event="phone_call"
+              data-contact-source="terms"
+              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/55 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
                 <Phone size={16} />
@@ -450,8 +459,17 @@ export default function TermsPage() {
               />
             </a>
 
-            {/* Address card — full width on sm+ */}
-            <div className="flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] sm:col-span-2">
+            {/* Address card — clickable, opens Google Maps in a new tab */}
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Infravue Interiors studio in Google Maps — Abhyudaya Nagar Colony, Bandlaguda Jagir, Hyderabad 500086"
+              data-gtm="address-click"
+              data-event="maps_open"
+              data-contact-source="terms"
+              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta/55 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:col-span-2"
+            >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
                 <MapPin size={16} />
               </span>
@@ -459,7 +477,7 @@ export default function TermsPage() {
                 <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-navy/45">
                   Postal Address
                 </p>
-                <address className="mt-1 not-italic text-sm font-light leading-relaxed text-navy/75">
+                <address className="mt-1 not-italic text-sm font-light leading-relaxed text-navy/75 group-hover:text-navy transition-colors">
                   Infravue Interiors and Constructions Private Limited
                   <br />
                   Abhyudaya nagar colony, Bandlaguda Jagir
@@ -470,8 +488,15 @@ export default function TermsPage() {
                   <br />
                   India
                 </address>
+                <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-terracotta/85 group-hover:text-terracotta">
+                  View on Google Maps
+                </p>
               </div>
-            </div>
+              <ArrowUpRight
+                size={16}
+                className="mt-1 shrink-0 text-navy/30 transition group-hover:text-terracotta group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
           </div>
         </Section>
       </div>

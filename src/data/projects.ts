@@ -2,12 +2,25 @@ import type { Project } from "@/components/sections/ProjectShowcase";
 
 export type ProjectWithSlug = Project & { slug: string };
 
+/**
+ * Single source of truth for every project.
+ *
+ * Field → surface mapping:
+ *   • intro        → hero subhead under the project name (route page)
+ *   • description  → "The Story" lead paragraph (route page)
+ *   • philosophy   → secondary paragraph below the story (route page)
+ *   • overview     → preserved 2-paragraph version (used by JSON-LD / future surfaces)
+ *   • year / location / area / scope → meta strip (route page)
+ *   • category     → eyebrow above the hero title (route page) + JSON-LD label
+ *   • image        → homepage card thumbnail + hero background
+ *   • gallery      → modal grid + lightbox + detail frames
+ */
 export const PROJECTS: ProjectWithSlug[] = [
-  // ── 1. Niat ────────────────────────────────────────────────────────────────
+  // ── 1. NIAT ──────────────────────────────────────────────────────────────
   {
     slug: "niat",
     name: "NIAT",
-    category: "Corporate Office",
+    category: "Edtech Institute",
     image: "/images/projects/niat.png",
     gallery: [
       "/images/projects/niat/niat-01.jpg",
@@ -25,22 +38,22 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Pune, IN",
     area: "15,000 sq ft",
     scope: "Edtech Institute",
-    style: "Modern Corporate",
+    style: "Educational Interiors",
     intro:
-      "A purposeful corporate environment where clean geometry and warm detailing create a workspace that motivates from the moment you walk in.",
+      "NIAT is a modern upskilling and training institute interior design project created to deliver a focused, collaborative, and engaging learning environment.",
     description:
-      "Niat is a modern office interior built around clarity — every element intentional, every space calibrated for the people who work there.",
-    overview: [
-      "A modern training institute interior designed to encourage focused learning, collaboration, and effortless functionality.",
-      "Shaped by clean architectural detailing and refined educational spaces to support a productive, future-ready environment.",
-    ],
+      "Designed with contemporary educational interiors, functional classroom planning, and clean architectural aesthetics, the space supports learning, student interaction, and everyday functionality.",
     philosophy:
-      "We designed around purpose, not decoration. The result is a workplace that feels confident, efficient, and genuinely comfortable for long working days.",
+      "The project features spacious training classrooms, collaborative learning areas, faculty workspaces, modern seating layouts, and organized circulation spaces designed to enhance comfort, productivity, and seamless movement within the institute. Through customized interior solutions and turnkey interior execution, Infravue Interiors delivered a smart educational space tailored to the institute's operational and learning requirements.",
+    overview: [
+      "Designed with contemporary educational interiors, functional classroom planning, and clean architectural aesthetics, the space supports learning, student interaction, and everyday functionality.",
+      "The project features spacious training classrooms, collaborative learning areas, faculty workspaces, modern seating layouts, and organized circulation spaces — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Completed", value: "2024" },
-      { label: "Scope", value: "Office Interior" },
-      { label: "Style", value: "Modern Corporate" },
-      { label: "Location", value: "Hyderabad" },
+      { label: "Completed", value: "2025" },
+      { label: "Total Area", value: "15,000 sq ft" },
+      { label: "Scope", value: "Edtech Institute" },
+      { label: "Location", value: "Pune" },
     ],
     palette: [
       { name: "Pearl White", hex: "#F2EFE9" },
@@ -49,11 +62,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 2. Sesola ──────────────────────────────────────────────────────────────
+  // ── 2. Sesola ────────────────────────────────────────────────────────────
   {
     slug: "sesola",
     name: "Sesola",
-    category: "Luxury Residential",
+    category: "Commercial Workspace",
     image: "/images/projects/sesola.png",
     gallery: [
       "/images/projects/sesola/sesola-01.jpg",
@@ -69,22 +82,22 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Hyderabad, IN",
     area: "3,200 sq ft",
     scope: "Office Interiors",
-    style: "Contemporary Luxe",
+    style: "Luxury Commercial",
     intro:
-      "A residence composed of soft daylight, layered textures, and quiet luxury — designed to feel grounded yet unmistakably elevated.",
+      "Sesola is a luxury commercial interior design project developed with a modern, minimalist, and functional design approach to create a refined workplace environment.",
     description:
-      "Sesola is a study in restrained richness — a home where every surface, line and shadow has been considered, and nothing is louder than it needs to be.",
-    overview: [
-      "A refined commercial interior shaped by minimal lines, premium textures, and a quietly luxurious material palette.",
-      "Balanced workspace planning meets elegant detailing to deliver a sophisticated, brand-aligned office environment.",
-    ],
+      "The space combines premium textures, warm lighting, contemporary workspace planning, and customized furniture to deliver a sophisticated and welcoming office experience.",
     philosophy:
-      "We approached Sesola as a series of atmospheres rather than rooms. Light became the architecture; materials became the storyteller. The result is a residence that ages beautifully and lives quietly, every day.",
+      "The project features elegant reception interiors, thoughtfully designed office interiors, glass partition systems, and seamless architectural detailing that enhance functionality, professionalism, and visual balance. Through customized interior solutions and turnkey interior execution, Infravue Interiors delivered a modern commercial workspace tailored to the client's brand identity and operational requirements.",
+    overview: [
+      "The space combines premium textures, warm lighting, contemporary workspace planning, and customized furniture to deliver a sophisticated and welcoming office experience.",
+      "Elegant reception interiors, glass partition systems, and refined architectural detailing — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Completed", value: "2024" },
-      { label: "Total Area", value: "3,200 sqft" },
-      { label: "Spaces", value: "12" },
-      { label: "Timeline", value: "6 months" },
+      { label: "Completed", value: "2025" },
+      { label: "Total Area", value: "3,200 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Warm Ivory", hex: "#EDE3D6" },
@@ -93,11 +106,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Soft Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 3. First Source ────────────────────────────────────────────────────────
+  // ── 3. First Source ─────────────────────────────────────────────────────
   {
     slug: "first-source",
     name: "First Source",
-    category: "Commercial Space",
+    category: "Corporate Office",
     image: "/images/projects/firstsource.png",
     gallery: [
       "/images/projects/first-source/first-source-01.jpg",
@@ -113,22 +126,22 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Hyderabad, IN",
     area: "35,000 sq ft",
     scope: "Office Interiors",
-    style: "Refined Commercial",
+    style: "Modern Commercial",
     intro:
-      "A commercial floor that treats every visitor like a guest — measured spatial flow, premium finishes, and details engineered to last.",
+      "First Source is a modern commercial interior design project created to deliver a collaborative, functional, and experience-driven workplace environment.",
     description:
-      "First Source pairs durable, high-spec finishes with a residential warmth, blurring the line between commercial efficiency and considered hospitality.",
-    overview: [
-      "A modern commercial interior balancing collaborative spaces, hospitality-inspired warmth, and refined architectural detailing.",
-      "Designed to elevate the workplace experience through premium finishes, thoughtful planning, and a seamless visitor journey.",
-    ],
+      "Designed with contemporary office interiors, smart workspace planning, and hospitality-inspired spaces, the project enhances employee comfort, productivity, and workplace efficiency through practical and modern design.",
     philosophy:
-      "Commercial doesn't have to mean cold. We mapped the entire visitor journey, treated every threshold as a design moment, and built surfaces that wear in rather than wear out.",
+      "The space features premium reception interiors, spacious cafeteria seating, collaborative meeting spaces, breakout zones, lounge areas, and clean architectural detailing that create a balanced and engaging office atmosphere. Through customized interior solutions, modern lighting concepts, premium finishes, and turnkey interior execution, Infravue Interiors delivered a refined commercial workspace tailored to the client's operational and brand requirements.",
+    overview: [
+      "Designed with contemporary office interiors, smart workspace planning, and hospitality-inspired spaces, the project enhances employee comfort, productivity, and workplace efficiency.",
+      "Premium reception interiors, cafeteria seating, collaborative meeting spaces, breakout zones, and lounge areas — crafted with modern lighting, premium finishes, and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Visitor Capacity", value: "240" },
-      { label: "Total Area", value: "9,200 sqft" },
-      { label: "Zones", value: "11" },
-      { label: "Timeline", value: "7 months" },
+      { label: "Completed", value: "2024" },
+      { label: "Total Area", value: "35,000 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Ivory", hex: "#EDE3D6" },
@@ -137,11 +150,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Brass", hex: "#A1622C" },
     ],
   },
-  // ── 4. SRIAS Lifespaces ────────────────────────────────────────────────────
+  // ── 4. SRIAS Lifespaces ─────────────────────────────────────────────────
   {
     slug: "srias-lifespaces",
     name: "SRIAS Lifespaces",
-    category: "Residential",
+    category: "Commercial Workspace",
     image: "/images/projects/srias.png",
     gallery: [
       "/images/projects/srias-lifespaces/srias-lifespaces-01.jpg",
@@ -155,21 +168,21 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Hyderabad, IN",
     area: "5,500 sq ft",
     scope: "Office Interiors",
-    style: "Contemporary Living",
+    style: "Refined Commercial",
     intro:
-      "A residential interior crafted around lifestyle — where every room transitions naturally into the next, and comfort is built into the architecture.",
+      "SRIAS Lifespaces is a modern commercial interior design project that combines architectural elegance with functional workspace interiors.",
     description:
-      "SRIAS Lifespaces is a home interior that balances modern aesthetics with everyday functionality, tailored precisely to the family's rhythm and vision.",
-    overview: [
-      "A contemporary commercial interior defined by architectural elegance, premium finishes, and spacious, light-filled layouts.",
-      "Crafted to deliver a refined and welcoming environment built for long-term functionality and modern design standards.",
-    ],
+      "Designed with contemporary aesthetics, premium finishes, and spacious layouts, the project creates a sophisticated and welcoming commercial environment tailored for modern business spaces.",
     philosophy:
-      "We started with how the family lives, not how the space looks. The design emerged from those conversations — practical, personal, and quietly beautiful.",
+      "The project features a grand entrance lobby, modern glass partitions, refined seating areas, high ceilings, elegant lighting concepts, and textured wall finishes that enhance openness, functionality, and visual appeal. Through customized interior solutions and turnkey interior execution, Infravue Interiors delivered a refined commercial space designed for long-term functionality, seamless workplace experience, and modern design standards.",
+    overview: [
+      "Designed with contemporary aesthetics, premium finishes, and spacious layouts, the project creates a sophisticated and welcoming commercial environment tailored for modern business spaces.",
+      "A grand entrance lobby, glass partitions, refined seating areas, and textured wall finishes — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Completed", value: "2024" },
-      { label: "Scope", value: "Home Interior" },
-      { label: "Style", value: "Contemporary" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "5,500 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
       { label: "Location", value: "Hyderabad" },
     ],
     palette: [
@@ -179,11 +192,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Soft Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 5. Uncode ──────────────────────────────────────────────────────────────
+  // ── 5. Uncode ────────────────────────────────────────────────────────────
   {
     slug: "uncode",
     name: "Uncode",
-    category: "Creative Studio",
+    category: "Creative Workspace",
     image: "/images/projects/uncode.png",
     gallery: [
       "/images/projects/uncode/uncode-01.jpg",
@@ -199,22 +212,22 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Hyderabad, IN",
     area: "3,300 sq ft",
     scope: "Office Interiors",
-    style: "Industrial Warmth",
+    style: "Industrial Modern",
     intro:
-      "A studio with a heartbeat — where exposed structure meets considered detail, and creativity has room to be a little messy.",
+      "Uncode is a modern creative workspace and commercial interior design project developed to create a collaborative, energetic, and visually engaging office environment.",
     description:
-      "Uncode embraces honest materials and unfinished textures, balanced by warm lighting and tactile finishes that make long studio days feel inviting.",
-    overview: [
-      "A creative workspace interior shaped by industrial textures, open layouts, and an energetic, collaborative atmosphere.",
-      "Designed to support modern teamwork through bold detailing, premium lighting, and a confident architectural identity.",
-    ],
+      "Designed with contemporary office interiors, industrial-style elements, and open workspace planning, the project balances functionality, creativity, and workplace flexibility.",
     philosophy:
-      "Creative work doesn't happen in sterile rooms. We left the bones visible, brought in real wood and woven fabrics, and let the space age with the team that lives in it.",
+      "The interiors feature collaborative workstation layouts, modern meeting spaces, exposed ceiling concepts, premium lighting, creative wall graphics, and customized furniture solutions designed to enhance productivity and team interaction. Through customized interior solutions and turnkey interior execution, Infravue Interiors delivered a modern commercial workspace tailored to the client's creative culture, operational requirements, and brand identity.",
+    overview: [
+      "Designed with contemporary office interiors, industrial-style elements, and open workspace planning, the project balances functionality, creativity, and workplace flexibility.",
+      "Collaborative workstation layouts, exposed ceiling concepts, premium lighting, and creative wall graphics — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Workspaces", value: "32" },
-      { label: "Total Area", value: "2,400 sqft" },
-      { label: "Zones", value: "7" },
-      { label: "Timeline", value: "3 months" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "3,300 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Raw Concrete", hex: "#9C9A95" },
@@ -223,7 +236,7 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Linen", hex: "#EDE3D6" },
     ],
   },
-  // ── 6. Wavity ──────────────────────────────────────────────────────────────
+  // ── 6. Wavity ────────────────────────────────────────────────────────────
   {
     slug: "wavity",
     name: "Wavity",
@@ -241,22 +254,22 @@ export const PROJECTS: ProjectWithSlug[] = [
     location: "Hyderabad, IN",
     area: "2,500 sq ft",
     scope: "Office Interiors",
-    style: "Soft Modern",
+    style: "Modern Tech",
     intro:
-      "A tech workspace tuned for focus and flow — quiet zones, soft acoustics, and small architectural surprises that keep the day interesting.",
+      "Wavity is a modern tech office interior design project created to build a productive, collaborative, and employee-focused workspace environment.",
     description:
-      "Wavity blends modern lines with organic warmth — curved corners, fluted wood, and pools of light that change how each space feels at different times of day.",
-    overview: [
-      "A modern tech workspace tuned for focus, flow, and effortless collaboration across every zone.",
-      "Defined by soft architectural detailing, refined materials, and a calm, productive environment built around the team.",
-    ],
+      "Designed with contemporary office interiors, smart workspace planning, and functional layouts, the project supports modern work culture, team interaction, and operational efficiency.",
     philosophy:
-      "Engineering teams need both stillness and serendipity. We mapped the day — heads-down hours, sync-ups, breaks — and shaped a floor plan that supports each mode without compromise.",
+      "The space features glass meeting cabins, collaborative workstation layouts, modern conference rooms, breakout areas, minimal reception interiors, and open office planning designed to enhance comfort, flexibility, and productivity. Through customized interior solutions, premium finishes, modern lighting concepts, and turnkey interior solutions, Infravue Interiors delivered a refined workspace tailored to the client's operational requirements, workplace culture, and brand environment.",
+    overview: [
+      "Designed with contemporary office interiors, smart workspace planning, and functional layouts, the project supports modern work culture, team interaction, and operational efficiency.",
+      "Glass meeting cabins, collaborative workstations, conference rooms, breakout areas, and minimal reception interiors — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Workstations", value: "62" },
-      { label: "Total Area", value: "4,400 sqft" },
-      { label: "Pods", value: "8" },
-      { label: "Timeline", value: "5 months" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "2,500 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Soft White", hex: "#F4F1EC" },
@@ -265,11 +278,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Cream", hex: "#EDE3D6" },
     ],
   },
-  // ── 7. Observant ───────────────────────────────────────────────────────────
+  // ── 7. Observant ─────────────────────────────────────────────────────────
   {
     slug: "observant",
     name: "Observant",
-    category: "Commercial Office",
+    category: "Corporate Office",
     image: "/images/projects/observant.png",
     gallery: [
       "/images/projects/observant/observant-01.png",
@@ -285,19 +298,19 @@ export const PROJECTS: ProjectWithSlug[] = [
     scope: "Office Interiors",
     style: "Refined Modern",
     intro:
-      "A commercial office interior where attention to detail defines every surface — precise, calm, and built for teams that value both form and function.",
+      "Observant is a modern office interior design project created to deliver a calm, professional, and visually refined workspace environment.",
     description:
-      "Observant is a thoughtfully layered workspace where material choices and spatial planning work in harmony to elevate the daily working experience.",
-    overview: [
-      "A calm, refined office interior shaped by premium materials, warm lighting, and considered architectural detailing.",
-      "Designed to support focused work with a quietly confident workspace tailored to long, high-performance days.",
-    ],
+      "Designed with contemporary office interiors, premium materials, warm lighting concepts, and smart workspace planning, the project balances functionality, comfort, and modern corporate aesthetics.",
     philosophy:
-      "We believe great workplaces reward attention. Every corner of Observant was designed to be noticed — quietly, on the second look, the way quality always reveals itself.",
+      "The project features elegant reception interiors, executive workspaces, collaborative office areas, contemporary meeting rooms, and customized furniture solutions designed to enhance productivity and workplace efficiency. Through customized interior solutions, premium finishes, and turnkey interior solutions, Infravue Interiors delivered a sophisticated office space tailored to the client's operational needs, workplace culture, and brand identity.",
+    overview: [
+      "Designed with contemporary office interiors, premium materials, warm lighting concepts, and smart workspace planning, the project balances functionality, comfort, and modern corporate aesthetics.",
+      "Elegant reception interiors, executive workspaces, collaborative office areas, and contemporary meeting rooms — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Completed", value: "2024" },
-      { label: "Scope", value: "Office Interior" },
-      { label: "Style", value: "Refined Modern" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "3,000 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
       { label: "Location", value: "Hyderabad" },
     ],
     palette: [
@@ -307,7 +320,7 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Indigo", hex: "#1E3A6A" },
     ],
   },
-  // ── 8. NETS ────────────────────────────────────────────────────────────────
+  // ── 8. NETS ──────────────────────────────────────────────────────────────
   {
     slug: "nets",
     name: "NETS",
@@ -326,19 +339,19 @@ export const PROJECTS: ProjectWithSlug[] = [
     scope: "Office Interiors",
     style: "Modern Corporate",
     intro:
-      "A corporate environment designed for clarity and efficiency — where clean lines and purposeful layout support focused, high-performance work.",
+      "NETS is a modern corporate office interior design project developed to create a professional, efficient, and visually balanced workspace environment.",
     description:
-      "NETS is a modern office interior where spatial logic and refined detailing come together to create a workplace that feels confident and considered.",
-    overview: [
-      "A modern corporate workspace defined by clean architectural lines, premium textures, and disciplined spatial planning.",
-      "Designed to elevate professional environments through refined detailing and efficient, future-ready interior design.",
-    ],
+      "Designed with contemporary office interiors, clean architectural lines, premium textures, and smart workspace planning, the project supports productivity, functionality, and modern workplace efficiency.",
     philosophy:
-      "We built around the work, not around the aesthetic. Every zone was mapped to how the team actually operates — with the result speaking through precision, not decoration.",
+      "The project features executive cabins, modern meeting rooms, collaborative office layouts, glass partition systems, and customized workspace solutions designed to enhance employee comfort and operational performance. Through premium office interiors, customized interior solutions, and turnkey interior solutions, Infravue Interiors delivered a refined corporate workspace tailored to the client's operational requirements and brand identity.",
+    overview: [
+      "Designed with contemporary office interiors, clean architectural lines, premium textures, and smart workspace planning, the project supports productivity, functionality, and modern workplace efficiency.",
+      "Executive cabins, modern meeting rooms, collaborative office layouts, and glass partition systems — delivered through premium office interiors and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Completed", value: "2024" },
-      { label: "Scope", value: "Office Interior" },
-      { label: "Style", value: "Modern Corporate" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "2,000 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
       { label: "Location", value: "Hyderabad" },
     ],
     palette: [
@@ -348,11 +361,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 9. Unisoft ─────────────────────────────────────────────────────────────
+  // ── 9. Unisoft ───────────────────────────────────────────────────────────
   {
     slug: "unisoft",
     name: "Unisoft",
-    category: "Corporate HQ",
+    category: "Corporate Headquarters",
     image: "/images/projects/unisoft.png",
     gallery: [
       "/images/projects/unisoft/unisoft-01.jpg",
@@ -368,20 +381,20 @@ export const PROJECTS: ProjectWithSlug[] = [
     scope: "Office Interiors",
     style: "Quiet Corporate",
     intro:
-      "A headquarters that feels less like a corporate floor and more like a thoughtfully composed campus — calm, confident, and built for the long view.",
+      "Unisoft is a modern headquarters office interior design project created to deliver a clean, functional, and professional corporate workspace environment.",
     description:
-      "Unisoft's HQ uses generous proportions and a restrained palette to project authority without rigidity, creating a space that scales with the company.",
-    overview: [
-      "A modern headquarters interior built around minimal aesthetics, efficient planning, and a confident corporate identity.",
-      "Crafted with premium finishes and refined architectural detailing for a workspace that scales with the company.",
-    ],
+      "Designed with contemporary office interiors, minimal aesthetics, and efficient workspace planning, the project supports productivity, collaboration, and seamless business operations.",
     philosophy:
-      "We resisted the temptation to perform. Instead, we built clarity into the plan, used premium materials sparingly, and let the architecture itself do the brand work.",
+      "The project features a modern reception area, executive cabins, collaborative meeting rooms, focused workspaces, and functional office layouts designed with simplicity, comfort, and practicality. Through customized interior solutions, premium office interiors, and turnkey interior solutions, Infravue Interiors delivered a refined corporate workspace tailored to the client's operational requirements, workplace culture, and brand identity.",
+    overview: [
+      "Designed with contemporary office interiors, minimal aesthetics, and efficient workspace planning, the project supports productivity, collaboration, and seamless business operations.",
+      "A modern reception area, executive cabins, collaborative meeting rooms, and functional office layouts — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Workstations", value: "180" },
-      { label: "Total Area", value: "12,000 sqft" },
-      { label: "Floors", value: "3" },
-      { label: "Timeline", value: "9 months" },
+      { label: "Completed", value: "2023" },
+      { label: "Total Area", value: "2,000 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Pearl", hex: "#F2EFE9" },
@@ -390,11 +403,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 10. Socrates ───────────────────────────────────────────────────────────
+  // ── 10. Socrates ─────────────────────────────────────────────────────────
   {
     slug: "socrates",
     name: "Socrates",
-    category: "Modern Office",
+    category: "Corporate Workspace",
     image: "/images/projects/socrates.png",
     gallery: [
       "/images/projects/socrates/socrates-01.png",
@@ -410,20 +423,20 @@ export const PROJECTS: ProjectWithSlug[] = [
     scope: "Office Interiors",
     style: "Refined Minimal",
     intro:
-      "A workplace that thinks clearly. Socrates pairs disciplined geometry with warm, human-scale moments to create a space teams genuinely love returning to.",
+      "Socrates is a modern workspace and office interior design project created to deliver a focused, collaborative, and visually refined corporate environment.",
     description:
-      "Socrates was designed around focus — long sightlines, calm surfaces, and the right amount of softness to keep an analytical environment from feeling clinical.",
-    overview: [
-      "A focused, contemporary workspace shaped by disciplined geometry, warm detailing, and a refined material palette.",
-      "Designed to balance analytical work with human-scale comfort across calm, considered office interiors.",
-    ],
+      "Designed with contemporary office interiors, clean architectural lines, smart workspace planning, and warm lighting concepts, the project supports productivity, functionality, and employee comfort.",
     philosophy:
-      "The brief asked for clarity. We answered with rhythm — open work zones balanced with intimate pockets for thinking, conversation, and quiet. A workplace as a tool for better thought.",
+      "The project features contemporary meeting rooms, executive cabins, collaborative workstations, open office layouts, and premium interior detailing designed to balance professionalism and workplace efficiency. Through customized interior solutions, premium office interiors, and turnkey interior solutions, Infravue Interiors delivered a modern corporate workspace tailored to the client's operational requirements and workplace culture.",
+    overview: [
+      "Designed with contemporary office interiors, clean architectural lines, smart workspace planning, and warm lighting concepts, the project supports productivity, functionality, and employee comfort.",
+      "Contemporary meeting rooms, executive cabins, collaborative workstations, and open office layouts — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Workstations", value: "84" },
-      { label: "Total Area", value: "5,800 sqft" },
-      { label: "Meeting Rooms", value: "9" },
-      { label: "Timeline", value: "4 months" },
+      { label: "Completed", value: "2024" },
+      { label: "Total Area", value: "3,500 sq ft" },
+      { label: "Scope", value: "Office Interiors" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Cloud White", hex: "#F4F2EE" },
@@ -432,11 +445,11 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Indigo", hex: "#1E3A6A" },
     ],
   },
-  // ── 11. Dental Speciality ──────────────────────────────────────────────────
+  // ── 11. Dental Speciality ────────────────────────────────────────────────
   {
     slug: "dental-speciality",
     name: "Dental Speciality",
-    category: "Premium Clinic",
+    category: "Healthcare Interior",
     image: "/images/projects/dental.png",
     gallery: [
       "/images/projects/dental-speciality/dental-speciality-01.jpg",
@@ -453,20 +466,20 @@ export const PROJECTS: ProjectWithSlug[] = [
     scope: "Hospital",
     style: "Calm Clinical",
     intro:
-      "A clinic designed to lower the heartbeat the moment you walk in — a hospitality-grade interior wrapped around medical-grade rigour.",
+      "Dental Speciality is a modern healthcare and clinic interior design project created to deliver a calm, hygienic, and patient-friendly environment.",
     description:
-      "Every surface in this dental speciality is selected for both calm and cleanliness — soft light, rounded forms, and a palette that feels far closer to a boutique hotel than a clinic.",
-    overview: [
-      "A calm, hospitality-grade healthcare interior designed to ease patients and elevate the clinical experience.",
-      "Crafted with soft architectural detailing, premium finishes, and patient-centred spatial planning throughout.",
-    ],
+      "Designed with contemporary medical interiors, clean architectural aesthetics, and functional space planning, the project enhances patient comfort, clinical efficiency, and everyday functionality.",
     philosophy:
-      "Patients arrive anxious. We designed the journey from doorway to chair as a sequence of gentle reassurances — colour, scent, scale, sound. The clinical excellence is felt, not announced.",
+      "The project features premium treatment rooms, modern dental workspaces, elegant reception interiors, comfortable waiting lounges, and customized clinic layouts designed to maintain cleanliness, openness, and professional healthcare standards. Through customized interior solutions and turnkey interior solutions, Infravue Interiors delivered a modern healthcare space tailored to the clinic's operational requirements and patient experience.",
+    overview: [
+      "Designed with contemporary medical interiors, clean architectural aesthetics, and functional space planning, the project enhances patient comfort, clinical efficiency, and everyday functionality.",
+      "Premium treatment rooms, modern dental workspaces, elegant reception interiors, and comfortable waiting lounges — delivered through customized interior solutions and turnkey interior execution by Infravue Interiors.",
+    ],
     stats: [
-      { label: "Treatment Rooms", value: "5" },
-      { label: "Total Area", value: "1,800 sqft" },
-      { label: "Lounge Capacity", value: "12" },
-      { label: "Timeline", value: "3 months" },
+      { label: "Completed", value: "2025" },
+      { label: "Total Area", value: "1,800 sq ft" },
+      { label: "Scope", value: "Hospital" },
+      { label: "Location", value: "Hyderabad" },
     ],
     palette: [
       { name: "Bone", hex: "#EFEAE1" },
@@ -475,11 +488,12 @@ export const PROJECTS: ProjectWithSlug[] = [
       { name: "Warm Sand", hex: "#D8C4AD" },
     ],
   },
-  // ── 12. Float-Cover ────────────────────────────────────────────────────────
+  // ── 12. Float Brewery ────────────────────────────────────────────────────
+  // Slug retained (`float-cover`) so prior URLs / sitemap entries do not break.
   {
     slug: "float-cover",
-    name: "Float-Cover",
-    category: "Commercial Interior",
+    name: "Float Brewery",
+    category: "Brewery & Hospitality",
     image: "/images/projects/float-cover.png",
     gallery: [
       "/images/projects/Float-Cover/float-cover-01.png",
@@ -496,29 +510,29 @@ export const PROJECTS: ProjectWithSlug[] = [
     ],
     year: "2025",
     location: "Hyderabad, IN",
-    area: "2,800 sq ft",
-    scope: "Office Interiors",
-    style: "Contemporary Commercial",
+    area: "4,200 sq ft",
+    scope: "Brewery & Hospitality",
+    style: "Premium Hospitality",
     intro:
-      "A workspace shaped by clean architectural lines, layered materials, and a quietly confident palette — designed to feel composed from the first glance.",
+      "Float Brewery is a contemporary brewery and hospitality interior design project created to deliver a premium and immersive guest experience through modern commercial interior design, warm ambience, and refined aesthetics.",
     description:
-      "Float-Cover is a refined commercial interior where considered geometry and warm finishes come together to create a workspace built around clarity, focus, and brand presence.",
-    overview: [
-      "A modern commercial interior balancing disciplined planning with warm, textural detailing for a calm, focused work environment.",
-      "Crafted with premium finishes and thoughtful spatial flow to deliver a polished, brand-aligned workspace experience.",
-    ],
+      "Designed with earthy textures, ambient lighting concepts, sculptural architectural elements, and thoughtfully planned seating layouts, the space balances luxury, comfort, and functionality for modern F&B environments.",
     philosophy:
-      "We approached Float-Cover as an environment that should feel measured, never busy. The architecture leads, the materials whisper, and every detail earns its place — quietly elevating the daily experience of the space.",
+      "The project features customized bar counters, textured feature walls, designer ceilings, lounge seating zones, and premium hospitality interiors designed to enhance customer engagement and overall visual appeal. Through customized interior solutions and turnkey commercial interior execution, Infravue Interiors delivered a modern brewery interior tailored to the brand identity, guest experience, and operational requirements of the space.",
+    overview: [
+      "Designed with earthy textures, ambient lighting concepts, sculptural architectural elements, and thoughtfully planned seating layouts, the space balances luxury, comfort, and functionality for modern F&B environments.",
+      "Customized bar counters, textured feature walls, designer ceilings, and lounge seating zones — delivered through customized interior solutions and turnkey commercial interior execution by Infravue Interiors.",
+    ],
     stats: [
       { label: "Completed", value: "2025" },
-      { label: "Scope", value: "Office Interior" },
-      { label: "Style", value: "Contemporary Commercial" },
+      { label: "Total Area", value: "4,200 sq ft" },
+      { label: "Scope", value: "Brewery & Hospitality" },
       { label: "Location", value: "Hyderabad" },
     ],
     palette: [
-      { name: "Pearl White", hex: "#F2EFE9" },
-      { name: "Deep Navy", hex: "#1E3A6A" },
       { name: "Warm Walnut", hex: "#7A4A20" },
+      { name: "Brass", hex: "#A08259" },
+      { name: "Deep Navy", hex: "#1E3A6A" },
       { name: "Soft Sand", hex: "#D8C4AD" },
     ],
   },

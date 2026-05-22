@@ -1,12 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { getRequestId } from "@/store/leadStore";
+import { useConsultationModal } from "@/context/ModalContext";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+declare global {
+  interface Window {
+    dataLayer?: unknown[];
+  }
+}
+
+// Marker read by /thank-you so direct visits don't inflate conversion counts.
+const SUBMIT_MARKER_KEY = "infravue_lead_just_submitted";
+
+/**
+ * Push an event onto the GTM dataLayer. Defined at module scope so the
+ * window-mutation lives outside the component (satisfies eslint's
+ * react-hooks/immutability rule) and is safe to call from event handlers.
+ */
+function pushDataLayer(event: Record<string, unknown>): void {
+  if (typeof window === "undefined") return;
+  const w = window as Window & { dataLayer?: unknown[] };
+  if (!w.dataLayer) w.dataLayer = [];
+  w.dataLayer.push(event);
+}
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -33,6 +56,8 @@ export default function BookingForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const { closeModal } = useConsultationModal();
 
   const {
     register,
@@ -79,16 +104,40 @@ export default function BookingForm() {
         );
       }
 
-      setShowSuccess(true);
+      // ── Primary conversion event for GTM / Google Ads / Meta CAPI / GA4 ──
+      // `generate_lead` is the GA4 + Google Ads recommended event name. GTM
+      // admins can map it to Ads conversion actions, Meta Pixel "Lead" events,
+      // and GA4 conversion events without site changes.
+      try {
+        pushDataLayer({
+          event: "generate_lead",
+          form_id: "consultation",
+          lead_source: "consultation_form",
+          service_type: data.serviceType,
+          has_email: Boolean(data.email),
+          request_id: requestId ?? null,
+          currency: "INR",
+          value: 1,
+        });
+      } catch {
+        // dataLayer should always be present (GTM bootstraps it), but never
+        // let an analytics failure block the user from seeing the success page.
+      }
 
-      setTimeout(() => {
-        const idForMessage = requestId ?? "n/a";
-        const msg = encodeURIComponent(
-          `Hi! I'm interested in Infravue interior design services.\nRequest ID: ${idForMessage}`
-        );
-        window.open(`https://wa.me/919010709994?text=${msg}`, "_blank");
-        window.location.href = "/";
-      }, 1500);
+      // Mark the visit so the /thank-you page only fires its secondary event
+      // for real submissions (not direct visits / shared links / reloads).
+      try {
+        sessionStorage.setItem(SUBMIT_MARKER_KEY, "1");
+      } catch {
+        // Safari ITP / incognito — direct visit fallback is acceptable.
+      }
+
+      // Brief in-place success flash, then navigate to the dedicated URL so
+      // ad platforms with URL-based conversion triggers (Google Ads, Meta)
+      // can also attribute the conversion.
+      setShowSuccess(true);
+      closeModal();
+      router.push("/thank-you?source=consultation");
     } catch (err) {
       console.error("Form submission error:", err);
       const message =
@@ -106,18 +155,20 @@ export default function BookingForm() {
         {showSuccess ? (
           <motion.div
             key="success"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12 bg-white rounded-2xl border border-gray-100 shadow-xl shadow-navy/5"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
+            role="status"
+            aria-live="polite"
+            className="text-center py-12 bg-white rounded-2xl border border-navy/10 shadow-xl shadow-navy/5"
           >
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center">
-                <CheckCircle size={32} className="text-green-600" />
+              <div className="w-16 h-16 bg-navy/[0.06] rounded-full flex items-center justify-center">
+                <CheckCircle size={32} className="text-navy" strokeWidth={1.6} />
               </div>
             </div>
             <h2 className="text-2xl font-bold text-navy mb-3">Thank You!</h2>
-            <p className="text-navy/60 px-8">
-              We're opening WhatsApp to connect you with a designer...
+            <p className="text-navy/60 px-8 text-[14px] leading-relaxed">
+              Taking you to your confirmation…
             </p>
           </motion.div>
         ) : (
