@@ -42,6 +42,7 @@ export type Project = {
   style?: string;
   intro?: string;
   description?: string;
+  overview?: string[];
   philosophy?: string;
   stats?: ProjectStat[];
   palette?: ProjectPalette[];

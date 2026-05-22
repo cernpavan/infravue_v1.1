@@ -30,6 +30,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A purposeful corporate environment where clean geometry and warm detailing create a workspace that motivates from the moment you walk in.",
     description:
       "Niat is a modern office interior built around clarity — every element intentional, every space calibrated for the people who work there.",
+    overview: [
+      "A modern training institute interior designed to encourage focused learning, collaboration, and effortless functionality.",
+      "Shaped by clean architectural detailing and refined educational spaces to support a productive, future-ready environment.",
+    ],
     philosophy:
       "We designed around purpose, not decoration. The result is a workplace that feels confident, efficient, and genuinely comfortable for long working days.",
     stats: [
@@ -70,6 +74,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A residence composed of soft daylight, layered textures, and quiet luxury — designed to feel grounded yet unmistakably elevated.",
     description:
       "Sesola is a study in restrained richness — a home where every surface, line and shadow has been considered, and nothing is louder than it needs to be.",
+    overview: [
+      "A refined commercial interior shaped by minimal lines, premium textures, and a quietly luxurious material palette.",
+      "Balanced workspace planning meets elegant detailing to deliver a sophisticated, brand-aligned office environment.",
+    ],
     philosophy:
       "We approached Sesola as a series of atmospheres rather than rooms. Light became the architecture; materials became the storyteller. The result is a residence that ages beautifully and lives quietly, every day.",
     stats: [
@@ -110,6 +118,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A commercial floor that treats every visitor like a guest — measured spatial flow, premium finishes, and details engineered to last.",
     description:
       "First Source pairs durable, high-spec finishes with a residential warmth, blurring the line between commercial efficiency and considered hospitality.",
+    overview: [
+      "A modern commercial interior balancing collaborative spaces, hospitality-inspired warmth, and refined architectural detailing.",
+      "Designed to elevate the workplace experience through premium finishes, thoughtful planning, and a seamless visitor journey.",
+    ],
     philosophy:
       "Commercial doesn't have to mean cold. We mapped the entire visitor journey, treated every threshold as a design moment, and built surfaces that wear in rather than wear out.",
     stats: [
@@ -148,6 +160,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A residential interior crafted around lifestyle — where every room transitions naturally into the next, and comfort is built into the architecture.",
     description:
       "SRIAS Lifespaces is a home interior that balances modern aesthetics with everyday functionality, tailored precisely to the family's rhythm and vision.",
+    overview: [
+      "A contemporary commercial interior defined by architectural elegance, premium finishes, and spacious, light-filled layouts.",
+      "Crafted to deliver a refined and welcoming environment built for long-term functionality and modern design standards.",
+    ],
     philosophy:
       "We started with how the family lives, not how the space looks. The design emerged from those conversations — practical, personal, and quietly beautiful.",
     stats: [
@@ -188,6 +204,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A studio with a heartbeat — where exposed structure meets considered detail, and creativity has room to be a little messy.",
     description:
       "Uncode embraces honest materials and unfinished textures, balanced by warm lighting and tactile finishes that make long studio days feel inviting.",
+    overview: [
+      "A creative workspace interior shaped by industrial textures, open layouts, and an energetic, collaborative atmosphere.",
+      "Designed to support modern teamwork through bold detailing, premium lighting, and a confident architectural identity.",
+    ],
     philosophy:
       "Creative work doesn't happen in sterile rooms. We left the bones visible, brought in real wood and woven fabrics, and let the space age with the team that lives in it.",
     stats: [
@@ -226,6 +246,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A tech workspace tuned for focus and flow — quiet zones, soft acoustics, and small architectural surprises that keep the day interesting.",
     description:
       "Wavity blends modern lines with organic warmth — curved corners, fluted wood, and pools of light that change how each space feels at different times of day.",
+    overview: [
+      "A modern tech workspace tuned for focus, flow, and effortless collaboration across every zone.",
+      "Defined by soft architectural detailing, refined materials, and a calm, productive environment built around the team.",
+    ],
     philosophy:
       "Engineering teams need both stillness and serendipity. We mapped the day — heads-down hours, sync-ups, breaks — and shaped a floor plan that supports each mode without compromise.",
     stats: [
@@ -264,6 +288,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A commercial office interior where attention to detail defines every surface — precise, calm, and built for teams that value both form and function.",
     description:
       "Observant is a thoughtfully layered workspace where material choices and spatial planning work in harmony to elevate the daily working experience.",
+    overview: [
+      "A calm, refined office interior shaped by premium materials, warm lighting, and considered architectural detailing.",
+      "Designed to support focused work with a quietly confident workspace tailored to long, high-performance days.",
+    ],
     philosophy:
       "We believe great workplaces reward attention. Every corner of Observant was designed to be noticed — quietly, on the second look, the way quality always reveals itself.",
     stats: [
@@ -301,6 +329,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A corporate environment designed for clarity and efficiency — where clean lines and purposeful layout support focused, high-performance work.",
     description:
       "NETS is a modern office interior where spatial logic and refined detailing come together to create a workplace that feels confident and considered.",
+    overview: [
+      "A modern corporate workspace defined by clean architectural lines, premium textures, and disciplined spatial planning.",
+      "Designed to elevate professional environments through refined detailing and efficient, future-ready interior design.",
+    ],
     philosophy:
       "We built around the work, not around the aesthetic. Every zone was mapped to how the team actually operates — with the result speaking through precision, not decoration.",
     stats: [
@@ -339,6 +371,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A headquarters that feels less like a corporate floor and more like a thoughtfully composed campus — calm, confident, and built for the long view.",
     description:
       "Unisoft's HQ uses generous proportions and a restrained palette to project authority without rigidity, creating a space that scales with the company.",
+    overview: [
+      "A modern headquarters interior built around minimal aesthetics, efficient planning, and a confident corporate identity.",
+      "Crafted with premium finishes and refined architectural detailing for a workspace that scales with the company.",
+    ],
     philosophy:
       "We resisted the temptation to perform. Instead, we built clarity into the plan, used premium materials sparingly, and let the architecture itself do the brand work.",
     stats: [
@@ -377,6 +413,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A workplace that thinks clearly. Socrates pairs disciplined geometry with warm, human-scale moments to create a space teams genuinely love returning to.",
     description:
       "Socrates was designed around focus — long sightlines, calm surfaces, and the right amount of softness to keep an analytical environment from feeling clinical.",
+    overview: [
+      "A focused, contemporary workspace shaped by disciplined geometry, warm detailing, and a refined material palette.",
+      "Designed to balance analytical work with human-scale comfort across calm, considered office interiors.",
+    ],
     philosophy:
       "The brief asked for clarity. We answered with rhythm — open work zones balanced with intimate pockets for thinking, conversation, and quiet. A workplace as a tool for better thought.",
     stats: [
@@ -416,6 +456,10 @@ export const PROJECTS: ProjectWithSlug[] = [
       "A clinic designed to lower the heartbeat the moment you walk in — a hospitality-grade interior wrapped around medical-grade rigour.",
     description:
       "Every surface in this dental speciality is selected for both calm and cleanliness — soft light, rounded forms, and a palette that feels far closer to a boutique hotel than a clinic.",
+    overview: [
+      "A calm, hospitality-grade healthcare interior designed to ease patients and elevate the clinical experience.",
+      "Crafted with soft architectural detailing, premium finishes, and patient-centred spatial planning throughout.",
+    ],
     philosophy:
       "Patients arrive anxious. We designed the journey from doorway to chair as a sequence of gentle reassurances — colour, scent, scale, sound. The clinical excellence is felt, not announced.",
     stats: [
