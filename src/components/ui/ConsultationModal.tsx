@@ -70,7 +70,7 @@ export default function ConsultationModal() {
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-label="Book a free interior design consultation with Infravue"
@@ -82,7 +82,7 @@ export default function ConsultationModal() {
             animate={{ opacity: 1, transition: { duration: 0.25 } }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
             onClick={closeModal}
-            className="absolute inset-0 bg-black/60 backdrop-blur-[6px] cursor-pointer"
+            className="absolute inset-0 bg-[#0B0F19]/70 backdrop-blur-[8px] cursor-pointer"
           />
 
           {/* ── Modal Panel ── */}
@@ -93,7 +93,7 @@ export default function ConsultationModal() {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0, transition: { duration: 0.38, ease: EASE_IN } }}
             exit={{ opacity: 0, scale: 0.95, y: 20, transition: { duration: 0.22, ease: EASE_OUT } }}
-            className="relative z-10 w-full max-w-[900px] max-h-[92dvh] bg-white rounded-2xl shadow-[0_40px_100px_-20px_rgba(30,58,106,0.35)] overflow-hidden flex flex-col md:flex-row focus:outline-none"
+            className="relative z-10 w-full max-w-[900px] max-h-[92dvh] sm:max-h-[88dvh] bg-white rounded-2xl shadow-[0_30px_80px_-20px_rgba(11,15,25,0.55),0_8px_24px_-12px_rgba(11,15,25,0.35)] ring-1 ring-black/[0.04] overflow-hidden flex flex-col md:flex-row focus:outline-none"
           >
             {/* ── Close button ──
                 Mobile: sits on the dark navy header → white
@@ -158,16 +158,17 @@ export default function ConsultationModal() {
                 Right form panel
             ══════════════════════════════════════════ */}
             <div className="flex-1 overflow-y-auto">
-              {/* Mobile-only compact header */}
-              <div className="md:hidden bg-[#1E3A6A] px-6 pt-10 pb-6 text-white">
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D8C4AD] mb-2">
+              {/* Mobile-only compact header — kept tight so the first form
+                  field sits inside the initial viewport on small phones. */}
+              <div className="md:hidden bg-[#1E3A6A] px-5 pt-5 pb-3.5 text-white">
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D8C4AD] mb-1">
                   Infravue Interiors
                 </p>
-                <h2 className="text-xl font-bold leading-snug">
+                <h2 className="text-[1.0625rem] font-bold leading-tight">
                   Book Your Free Consultation
                 </h2>
-                <p className="mt-1.5 text-xs text-white/50 leading-relaxed">
-                  No cost, no commitment. Just great ideas for your space.
+                <p className="mt-1 text-[11px] text-white/50 leading-snug">
+                  No cost, no commitment.
                 </p>
               </div>
 

@@ -72,7 +72,7 @@ export default function AboutSection() {
               <div className="bg-white rounded-2xl border border-sand/30 p-6 shadow-[0_20px_50px_rgba(30,58,106,0.1)]">
                 <div className="relative h-48 w-full mb-5 rounded-xl overflow-hidden">
                   <Image
-                    src="/images/services/design.jpeg"
+                    src="/images/services/design.webp"
                     alt="Infravue Interiors premium interior design guide — curated inspiration for residential and corporate spaces in Hyderabad"
                     fill
                     className="object-cover"

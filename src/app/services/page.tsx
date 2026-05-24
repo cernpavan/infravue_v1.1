@@ -25,7 +25,7 @@ const SERVICES = [
     alt: "Luxury residential living room with marble TV wall and warm walnut joinery by Infravue Interiors, Hyderabad — full-home turnkey execution with modular kitchens, bedrooms, and living spaces",
     description:
       "Complete home interior solutions tailored to your lifestyle, from a single room to full-home turnkey execution. Every space designed around how you actually live.",
-    image: "/images/services/commercial.jpeg",
+    image: "/images/services/residential.webp",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
       "Villa & Bungalow Interiors",
@@ -43,7 +43,7 @@ const SERVICES = [
     alt: "Modern corporate office breakout lounge with engineered ceiling by Infravue Interiors, Hyderabad — co-working spaces, retail fit-outs, and F&B restaurant interiors",
     description:
       "Professional environments designed for productivity, brand identity, and lasting impressions. From startup offices to large corporate headquarters.",
-    image: "/images/projects/first-source/first-source-01.jpg",
+    image: "/images/services/commercial.webp",
     items: [
       "Corporate Office Fit-Outs",
       "Tech & Co-working Spaces",
@@ -61,7 +61,7 @@ const SERVICES = [
     alt: "Premium interior finishing and luxury decor services by Infravue Interiors — custom wallpaper, art curation, bespoke furniture sourcing, and lighting design in Hyderabad",
     description:
       "High-end finishing touches and custom décor that elevate any space to a truly refined experience. Every material and detail chosen with intention.",
-    image: "/images/services/finishing.png",
+    image: "/images/services/finishing.webp",
     items: [
       "Premium Finishing & Cladding",
       "Custom Wallpaper & Murals",
@@ -79,7 +79,7 @@ const SERVICES = [
     alt: "End-to-end interior design planning services by Infravue Interiors, Hyderabad — 2D floor plans, 3D renders, electrical layouts, and complete project management",
     description:
       "Expert solutions covering the full design process, from initial space planning and detailed drawings through to flawless on-site execution.",
-    image: "/images/services/design.jpeg",
+    image: "/images/services/design.webp",
     items: [
       "Furniture & Space Planning",
       "2D Floor Plans & 3D Renders",

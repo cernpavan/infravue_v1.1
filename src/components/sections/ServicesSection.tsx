@@ -10,7 +10,7 @@ const SERVICES = [
     alt: "Interior design planning and space layout services by Infravue Interiors, Hyderabad — 2D plans, 3D renders, and structural detailing",
     description:
       "Expert solutions for planning, detailing, and flawless execution.",
-    image: "/images/services/design.jpeg",
+    image: "/images/services/design.webp",
     items: [
       "Furniture & Space Planning",
       "Lighting Design",
@@ -26,7 +26,7 @@ const SERVICES = [
     alt: "Modern corporate office interior with breakout lounge by Infravue Interiors, Hyderabad — workspaces, retail, and F&B environments",
     description:
       "Professional spaces designed for productivity and aesthetics.",
-    image: "/images/projects/first-source/first-source-01.jpg",
+    image: "/images/services/commercial.webp",
     items: [
       "Office Interiors",
       "F&B Commercial Interiors",
@@ -43,7 +43,7 @@ const SERVICES = [
     alt: "Premium interior finishing and custom decor solutions by Infravue Interiors — wallpaper, art curation, and luxury material sourcing in Hyderabad",
     description:
       "High-end finishing and custom decor solutions for a refined look.",
-    image: "/images/services/finishing.png",
+    image: "/images/services/finishing.webp",
     items: [
       "Finishing & Decor",
       "Wallpaper Design",
@@ -59,7 +59,7 @@ const SERVICES = [
     alt: "Luxury living room interior with marble TV wall and warm walnut joinery by Infravue Interiors, Hyderabad — full home turnkey design, modular kitchens and bedrooms",
     description:
       "Complete home interior solutions tailored to your lifestyle.",
-    image: "/images/services/commercial.jpeg",
+    image: "/images/services/residential.webp",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
       "Villa Interiors",
@@ -86,8 +86,10 @@ function ServiceCard({
           src={service.image}
           alt={service.alt}
           fill
+          loading="lazy"
+          quality={82}
           className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
         />
         {/* Gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />

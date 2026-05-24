@@ -178,9 +178,12 @@ export default function BookingForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="bg-white px-6 sm:px-8 pt-7 sm:pt-8 pb-7 sm:pb-8 space-y-[18px]"
+            className="bg-white px-5 sm:px-8 pt-4 sm:pt-8 pb-5 sm:pb-8 space-y-3 sm:space-y-[18px]"
           >
-            <div className="text-center mb-3">
+            {/* Internal title block — hidden on mobile because the modal hero
+                (and the /book page hero band) already introduce the form;
+                showing it twice cost ~85px on a 360px-wide viewport. */}
+            <div className="hidden md:block text-center mb-3">
               <h2 className="text-[1.5rem] sm:text-[1.625rem] font-bold text-navy tracking-[-0.015em] leading-tight">
                 Free Consultation
               </h2>
@@ -197,7 +200,7 @@ export default function BookingForm() {
             )}
 
             {/* Name */}
-            <div className="space-y-[7px]">
+            <div className="space-y-1.5 sm:space-y-[7px]">
               <label
                 htmlFor="name"
                 className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
@@ -211,7 +214,7 @@ export default function BookingForm() {
                 placeholder="e.g. Pavan Kumar"
                 autoComplete="name"
                 {...register("name")}
-                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
+                className="w-full px-[18px] py-3 sm:py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.name && (
                 <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
@@ -221,7 +224,7 @@ export default function BookingForm() {
             </div>
 
             {/* Phone */}
-            <div className="space-y-[7px]">
+            <div className="space-y-1.5 sm:space-y-[7px]">
               <label
                 htmlFor="phone"
                 className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
@@ -237,7 +240,7 @@ export default function BookingForm() {
                 inputMode="numeric"
                 maxLength={10}
                 {...register("phone")}
-                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.04em] tabular-nums caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
+                className="w-full px-[18px] py-3 sm:py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.04em] tabular-nums caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.phone && (
                 <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
@@ -247,7 +250,7 @@ export default function BookingForm() {
             </div>
 
             {/* Email */}
-            <div className="space-y-[7px]">
+            <div className="space-y-1.5 sm:space-y-[7px]">
               <label
                 htmlFor="email"
                 className="flex items-baseline gap-1.5 text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
@@ -262,7 +265,7 @@ export default function BookingForm() {
                 autoComplete="email"
                 inputMode="email"
                 {...register("email")}
-                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
+                className="w-full px-[18px] py-3 sm:py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
               {errors.email && (
                 <p role="alert" className="text-[11.5px] font-medium text-red-500/95 tracking-[0.005em] mt-1 pl-0.5">
@@ -272,7 +275,7 @@ export default function BookingForm() {
             </div>
 
             {/* Service Type */}
-            <div className="space-y-[7px]">
+            <div className="space-y-1.5 sm:space-y-[7px]">
               <label
                 htmlFor="serviceType"
                 className="block text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
@@ -285,7 +288,7 @@ export default function BookingForm() {
                   id="serviceType"
                   {...register("serviceType")}
                   defaultValue=""
-                  className="w-full pl-[18px] pr-12 py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)] [&:has(option[value='']:checked)]:text-navy/40 [&:has(option[value='']:checked)]:font-normal"
+                  className="w-full pl-[18px] pr-12 py-3 sm:py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out appearance-none cursor-pointer shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)] [&:has(option[value='']:checked)]:text-navy/40 [&:has(option[value='']:checked)]:font-normal"
                 >
                   <option value="" disabled>Choose your service</option>
                   <option value="Residential">Residential Design</option>
@@ -308,7 +311,7 @@ export default function BookingForm() {
             </div>
 
             {/* Message */}
-            <div className="space-y-[7px]">
+            <div className="space-y-1.5 sm:space-y-[7px]">
               <label
                 htmlFor="message"
                 className="flex items-baseline gap-1.5 text-[12px] font-semibold text-navy/85 tracking-[0.02em] pl-0.5"
@@ -321,14 +324,14 @@ export default function BookingForm() {
                 placeholder="Briefly describe your space, budget range, or any specific requirements…"
                 rows={2}
                 {...register("message")}
-                className="w-full px-[18px] py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] leading-relaxed caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal placeholder:leading-relaxed hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
+                className="w-full px-[18px] py-3 sm:py-[14px] bg-white border border-navy/15 rounded-[12px] text-[15px] font-medium text-navy tracking-[0.005em] leading-relaxed caret-navy placeholder:text-navy/35 placeholder:font-normal placeholder:tracking-normal placeholder:leading-relaxed hover:border-navy/30 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/12 focus:bg-white transition-[border-color,box-shadow,background-color] duration-200 ease-out resize-none shadow-[0_1px_2px_rgba(30,58,106,0.04),inset_0_1px_0_rgba(255,255,255,0.6)]"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group relative mt-3 w-full flex items-center justify-center overflow-hidden px-8 py-[15px] bg-gradient-to-b from-navy-light/95 via-navy to-navy-dark text-white text-[13px] font-bold tracking-[0.08em] uppercase rounded-[12px] shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] hover:shadow-[0_20px_44px_-12px_rgba(30,58,106,0.75),inset_0_1px_0_rgba(255,255,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-navy/25 transition-[transform,box-shadow] duration-300 ease-out"
+              className="group relative mt-2 sm:mt-3 w-full flex items-center justify-center overflow-hidden px-8 py-3.5 sm:py-[15px] bg-gradient-to-b from-navy-light/95 via-navy to-navy-dark text-white text-[13px] font-bold tracking-[0.08em] uppercase rounded-[12px] shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] hover:shadow-[0_20px_44px_-12px_rgba(30,58,106,0.75),inset_0_1px_0_rgba(255,255,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-[0_10px_30px_-10px_rgba(30,58,106,0.55),inset_0_1px_0_rgba(255,255,255,0.22)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-navy/25 transition-[transform,box-shadow] duration-300 ease-out"
             >
               <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" aria-hidden="true" />
               {isSubmitting ? (
@@ -341,7 +344,7 @@ export default function BookingForm() {
               )}
             </button>
 
-            <p className="text-[10px] font-semibold text-navy/45 text-center uppercase tracking-[0.22em] mt-2">
+            <p className="text-[10px] font-semibold text-navy/45 text-center uppercase tracking-[0.22em] mt-1.5 sm:mt-2">
               Instant Response via WhatsApp
             </p>
           </motion.form>
