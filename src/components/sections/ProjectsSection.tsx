@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,6 +10,16 @@ import {
   type ProjectWithSlug,
 } from "@/data/projects";
 import ProjectGalleryModal from "@/components/projects/ProjectGalleryModal";
+
+// Sentinel key written to `history.state` while the project modal is open.
+// The device/browser back button pops this entry, which our popstate handler
+// translates into "close the modal" instead of leaving the site.
+const MODAL_HISTORY_KEY = "infravueProjectModal";
+
+type ModalHistoryState = {
+  [MODAL_HISTORY_KEY]?: boolean;
+  slug?: string;
+};
 
 function ProjectCard({
   project,
@@ -69,6 +79,58 @@ function ProjectCard({
 export default function ProjectsSection() {
   const [selected, setSelected] = useState<ProjectWithSlug | null>(null);
 
+  // Single close path for the X button, backdrop, and ESC. If we own the top
+  // history entry, consume it via `history.back()` so the URL stack stays
+  // clean and the popstate handler below clears `selected`. Otherwise close
+  // directly as a defensive fallback.
+  const handleClose = useCallback(() => {
+    if (typeof window === "undefined") {
+      setSelected(null);
+      return;
+    }
+    const state = window.history.state as ModalHistoryState | null;
+    if (state?.[MODAL_HISTORY_KEY]) {
+      window.history.back();
+    } else {
+      setSelected(null);
+    }
+  }, []);
+
+  // Push a sentinel history entry whenever a project opens so the device
+  // back button closes the modal instead of leaving the site. URL is left
+  // untouched, so scroll position around the Projects section is preserved
+  // automatically by the browser.
+  useEffect(() => {
+    if (!selected) return;
+    if (typeof window === "undefined") return;
+
+    const existing = window.history.state as ModalHistoryState | null;
+    const nextState: ModalHistoryState = {
+      [MODAL_HISTORY_KEY]: true,
+      slug: selected.slug,
+    };
+
+    if (existing?.[MODAL_HISTORY_KEY]) {
+      // Already inside a modal entry (project switch). Update the slug in
+      // place rather than stacking another entry so a single back press
+      // still returns the user to the Projects section.
+      window.history.replaceState(nextState, "");
+    } else {
+      window.history.pushState(nextState, "");
+    }
+
+    const onPopState = () => {
+      // Either the user pressed back, or `handleClose` called history.back().
+      // Either way, the modal should close.
+      setSelected(null);
+    };
+
+    window.addEventListener("popstate", onPopState);
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+    };
+  }, [selected]);
+
   return (
     <section id="projects" className="bg-white py-8 lg:py-12 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-20">
@@ -99,7 +161,7 @@ export default function ProjectsSection() {
       </div>
 
       {/* ── Project Gallery Modal ── */}
-      <ProjectGalleryModal project={selected} onClose={() => setSelected(null)} />
+      <ProjectGalleryModal project={selected} onClose={handleClose} />
     </section>
   );
 }
