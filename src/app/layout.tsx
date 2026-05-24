@@ -28,9 +28,14 @@ import Providers from "./Providers";
 import { RootLayoutWrapper } from "./RootLayoutWrapper";
 import "./globals.css";
 
+// Self-hosted via next/font/google. Weight `800` was requested previously
+// but is never used in the codebase (no `font-extrabold` / `font-black`
+// usages found). Dropping it removes one font file from the critical path
+// without any visual change. `display: swap` keeps text visible during the
+// fallback render.
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });

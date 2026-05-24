@@ -76,7 +76,7 @@ export default function FounderSection() {
               */}
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[22px] shadow-[0_30px_70px_-30px_rgba(30,58,106,0.4)] bg-sand/10">
                 <Image
-                  src="/images/team/founder.png"
+                  src="/images/team/founder.webp"
                   alt="A.N. Dinesh Chandra - Founder & CEO of Infravue"
                   fill
                   className="object-cover transition-transform duration-1000 hover:scale-105"

@@ -17,10 +17,11 @@ declare global {
 }
 
 /**
- * GTM bootstrap (head). Loads gtm.js with `afterInteractive` so it never
- * blocks LCP. Also pushes a `page_view` event on every App Router route
- * change — GTM's built-in History Change trigger is unreliable with
- * Next.js client-side navigation, so we emit the event explicitly.
+ * GTM bootstrap (head). Loads gtm.js with `lazyOnload` so it fires AFTER
+ * `window.onload` — never competing with the hero image for bandwidth /
+ * main thread during LCP. Pushes a `page_view` event on every App Router
+ * route change; events queued before GTM bootstraps are replayed once the
+ * container loads (GTM reads the existing `dataLayer` queue on init).
  *
  * All GA4 / Ads / pixel tags should be configured *inside GTM*. The site
  * itself ships only the GTM container.
@@ -30,7 +31,7 @@ export function GoogleTagManager() {
 
   return (
     <>
-      <Script id="gtm-init" strategy="afterInteractive">
+      <Script id="gtm-init" strategy="lazyOnload">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

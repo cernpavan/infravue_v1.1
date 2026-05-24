@@ -75,6 +75,8 @@ export default function AboutSection() {
                     src="/images/services/design.webp"
                     alt="Infravue Interiors premium interior design guide — curated inspiration for residential and corporate spaces in Hyderabad"
                     fill
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 35vw, 100vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-navy/20" />
