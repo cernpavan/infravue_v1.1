@@ -1,13 +1,25 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
+/**
+ * robots.txt
+ *
+ * Defense-in-depth: pages that should not appear in search are already
+ * `noindex`-ed via per-page robots metadata. This file additionally
+ * disallows them at the crawler level so they're never even fetched.
+ */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/api/", "/admin"],
+        disallow: [
+          "/admin",
+          "/admin/",
+          "/api/",
+          "/thank-you",
+        ],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

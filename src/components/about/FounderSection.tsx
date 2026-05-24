@@ -149,7 +149,7 @@ export default function FounderSection() {
             <div className="space-y-6 text-navy/70 text-[1.0625rem] lg:text-lg leading-[1.85] max-w-2xl">
               <p>
                 For Dinesh Chandra, Infravue Interiors began with a simple
-                vision — to create spaces that feel thoughtful, functional,
+                vision: to create spaces that feel thoughtful, functional,
                 and timeless.
               </p>
               <p>
@@ -161,7 +161,7 @@ export default function FounderSection() {
               </p>
               <p>
                 Over time, that vision has continued to shape the way Infravue
-                approaches every project — from corporate spaces and commercial
+                approaches every project, from corporate spaces and commercial
                 environments to modern homes.
               </p>
               <p>

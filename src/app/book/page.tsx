@@ -5,7 +5,7 @@ import BookingForm from "./BookingForm";
 export const metadata: Metadata = pageMetadata({
   title: "Book Free Consultation",
   description:
-    "Book a free interior design consultation with Infravue Interiors — a premium Hyderabad-based studio. Tell us about your space and we'll connect you with the right designer.",
+    "Book a free interior design consultation with Infravue Interiors, a premium Hyderabad-based studio. Tell us about your space and we'll connect you with the right designer.",
   path: "/book",
   ogTitle: "Book a Free Consultation · Infravue Interiors",
   ogDescription:

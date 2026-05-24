@@ -2,14 +2,19 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Home, Building2, Palette, Layout, CheckCircle2 } from "lucide-react";
-import { SITE_NAME } from "@/lib/seo";
+import { SITE_NAME, pageMetadata } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema, servicesItemList } from "@/lib/jsonld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Interior Design Services",
   description:
-    "Premium residential, commercial, and hospitality interior design services by Infravue — from concept to turnkey execution across India.",
-  alternates: { canonical: "/services" },
-};
+    "Premium residential, commercial, hospitality, and turnkey interior design services by Infravue Interiors, from concept to execution across Hyderabad and pan-India. Modular kitchens, office interiors, brewery & lounge fit-outs.",
+  path: "/services",
+  ogTitle: `Interior Design Services · ${SITE_NAME}`,
+  ogDescription:
+    "Residential, commercial, hospitality & turnkey interior design with premium finishes, end-to-end execution, and pan-India delivery.",
+});
 
 const SERVICES = [
   {
@@ -19,7 +24,7 @@ const SERVICES = [
     title: "Residential Interiors",
     alt: "Luxury residential living room with marble TV wall and warm walnut joinery by Infravue Interiors, Hyderabad — full-home turnkey execution with modular kitchens, bedrooms, and living spaces",
     description:
-      "Complete home interior solutions tailored to your lifestyle — from a single room to full-home turnkey execution. Every space designed around how you actually live.",
+      "Complete home interior solutions tailored to your lifestyle, from a single room to full-home turnkey execution. Every space designed around how you actually live.",
     image: "/images/services/commercial.jpeg",
     items: [
       "2BHK / 3BHK / 4BHK Homes",
@@ -73,7 +78,7 @@ const SERVICES = [
     title: "Design & Planning Services",
     alt: "End-to-end interior design planning services by Infravue Interiors, Hyderabad — 2D floor plans, 3D renders, electrical layouts, and complete project management",
     description:
-      "Expert solutions covering the full design process — from initial space planning and detailed drawings through to flawless on-site execution.",
+      "Expert solutions covering the full design process, from initial space planning and detailed drawings through to flawless on-site execution.",
     image: "/images/services/design.jpeg",
     items: [
       "Furniture & Space Planning",
@@ -89,6 +94,23 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <main className="bg-white">
+      {/* ── JSON-LD: Breadcrumb + Service ItemList ── */}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          servicesItemList(
+            SERVICES.map((s) => ({
+              name: s.title,
+              description: s.description,
+              slug: s.id,
+            })),
+          ),
+        ]}
+      />
+
       {/* ── Hero ── */}
       <section className="relative bg-[#0B0F19] pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden">
         <div
@@ -105,7 +127,7 @@ export default function ServicesPage() {
             <span className="italic font-light text-[#D8C4AD]">Your Story</span>
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-base font-light leading-relaxed text-white/60 lg:text-lg">
-            Three verticals, one promise — premium design executed with precision,
+            Three verticals, one promise: premium design executed with precision,
             from concept to completed key handover.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">

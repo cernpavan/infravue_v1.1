@@ -12,10 +12,10 @@ export const LEGAL_NAME =
   "Infravue Interiors and Constructions Private Limited";
 
 export const TAGLINE =
-  "Premium Interior Designers in Hyderabad — Residential, Commercial & Hospitality";
+  "Premium Interior Designers in Hyderabad for Residential, Commercial & Hospitality";
 
 export const DEFAULT_DESCRIPTION =
-  "Infravue Interiors is a premium interior design studio based in Hyderabad — crafting bespoke residential, commercial, and hospitality spaces across India with timeless, considered design.";
+  "Infravue Interiors is a premium interior design studio based in Hyderabad, crafting bespoke residential, commercial, and hospitality spaces across India with timeless, considered design.";
 
 export const PRIMARY_KEYWORDS = [
   "interior designers in Hyderabad",
@@ -57,6 +57,28 @@ export const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encod
   `${SITE_NAME}, ${ADDRESS.streetAddress}, ${ADDRESS.addressLocality}, ${ADDRESS.addressRegion} ${ADDRESS.postalCode}, India`
 )}`;
 
+/**
+ * Approximate geo coordinates for the Bandlaguda Jagir studio area (Ranga
+ * Reddy district, Hyderabad). Used by LocalBusiness JSON-LD so the listing
+ * surfaces correctly on Google Maps / Local Pack. Update precisely when
+ * the business is verified on Google Business Profile.
+ */
+export const GEO_COORDINATES = {
+  latitude: 17.3461,
+  longitude: 78.4023,
+} as const;
+
+/**
+ * Public-facing client rating mirrored from the homepage "Our Impact" stats
+ * strip. Kept in one place so JSON-LD never drifts from the visible UI claim.
+ */
+export const AGGREGATE_RATING = {
+  ratingValue: 4.9,
+  ratingCount: 100,
+  bestRating: 5,
+  worstRating: 1,
+} as const;
+
 export const SERVICE_AREAS = [
   "Hyderabad",
   "Secunderabad",
@@ -79,7 +101,7 @@ export const OG_IMAGE = `${SITE_URL}/logo.jpg`;
 // render previews without re-fetching to probe the image.
 export const OG_IMAGE_WIDTH = 1685;
 export const OG_IMAGE_HEIGHT = 885;
-export const OG_IMAGE_ALT = `${SITE_NAME} — Premium Interior Design Studio in Hyderabad`;
+export const OG_IMAGE_ALT = `${SITE_NAME} · Premium Interior Design Studio in Hyderabad`;
 
 export function absoluteUrl(path: string): string {
   if (!path.startsWith("/")) return `${SITE_URL}/${path}`;
@@ -137,7 +159,7 @@ export function pageMetadata(input: PageMetaInput = {}): Metadata {
 
   // OG/Twitter title: explicit override > absolute > templated > site default.
   const socialTitle =
-    ogTitle ?? titleAbsolute ?? (title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} — ${TAGLINE}`);
+    ogTitle ?? titleAbsolute ?? (title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · ${TAGLINE}`);
   const socialDescription = ogDescription ?? description;
   // Crawlers (especially WhatsApp/Telegram) sometimes fail to follow
   // metadataBase resolution. Emit absolute URLs explicitly.

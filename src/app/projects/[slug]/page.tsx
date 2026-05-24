@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PROJECTS, getNeighbours } from "@/data/projects";
+import { PROJECTS, getNeighbours, getProjectHeroAlt } from "@/data/projects";
 import ProjectDetail from "@/components/projects/ProjectDetail";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, projectCreativeWorkSchema } from "@/lib/jsonld";
@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!neighbours) return {};
   const project = PROJECTS[neighbours.index];
 
-  const title = `${project.name} — ${project.category}`;
+  const title = `${project.name} · ${project.category}`;
   const description =
     project.intro ?? project.description ?? `${project.name} by Infravue.`;
 
@@ -32,7 +32,7 @@ export async function generateMetadata({
     description,
     path: `/projects/${slug}`,
     image: project.image,
-    imageAlt: `${project.name} — ${project.category} interior by Infravue`,
+    imageAlt: getProjectHeroAlt(project),
     type: "article",
   });
 }

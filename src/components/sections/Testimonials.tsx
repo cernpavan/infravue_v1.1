@@ -13,31 +13,31 @@ const TESTIMONIALS = [
     name: "First Source",
     location: "Hyderabad",
     review:
-      "Across a 35,000 sq ft floor plate, Infravue held the same standard of finish and discipline from reception through to the cafeteria. Their turnkey approach removed the usual friction of a project this size — we moved in on schedule, and the space is performing beautifully.",
+      "Across a 35,000 sq ft floor plate, Infravue held the same standard of finish and discipline from reception through to the cafeteria. Their turnkey approach removed the usual friction of a project this size. We moved in on schedule, and the space is performing beautifully.",
   },
   {
     name: "Dr. Reddy & Family",
     location: "Hyderabad",
     review:
-      "Our home feels properly thought-through — every storage detail, lighting layer, and finish choice belongs. Infravue worked with the way we actually live, and the result has only grown on us through the first year.",
+      "Our home feels properly thought-through. Every storage detail, lighting layer, and finish choice belongs. Infravue worked with the way we actually live, and the result has only grown on us through the first year.",
   },
   {
     name: "Sesola Studio",
     location: "Hyderabad",
     review:
-      "The brief was simple: a quiet, premium workspace that doesn't shout. Infravue delivered exactly that — restrained materials, considered lighting, glass partitions that feel architectural rather than added. The kind of office our team is genuinely proud to walk into.",
+      "The brief was simple: a quiet, premium workspace that doesn't shout. Infravue delivered exactly that, with restrained materials, considered lighting, and glass partitions that feel architectural rather than added. The kind of office our team is genuinely proud to walk into.",
   },
   {
     name: "NIAT Institute",
     location: "Pune",
     review:
-      "We needed an interior that supported focused learning and easy collaboration in equal measure. Infravue's planning across 15,000 sq ft — classrooms, faculty zones, circulation — is exceptional. Students respond to the space, and the day-to-day operations run noticeably smoother.",
+      "We needed an interior that supported focused learning and easy collaboration in equal measure. Infravue's planning across 15,000 sq ft of classrooms, faculty zones, and circulation is exceptional. Students respond to the space, and the day-to-day operations run noticeably smoother.",
   },
   {
     name: "Lakshmi Priya",
     location: "Hyderabad",
     review:
-      "Modular kitchen, wardrobes, false ceilings, finishes — all handled by one team with care and consistency. The styling is timeless without ever feeling staged. Genuinely the smoothest project we could have asked for.",
+      "Modular kitchen, wardrobes, false ceilings, finishes, all handled by one team with care and consistency. The styling is timeless without ever feeling staged. Genuinely the smoothest project we could have asked for.",
   },
   {
     name: "Float Brewery",

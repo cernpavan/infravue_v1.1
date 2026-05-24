@@ -309,7 +309,7 @@ export default function ProcessSection() {
             How It Works
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-sm text-navy/55 md:text-base">
-            A guided five-step path — from first conversation to final handover — designed to feel effortless.
+            A guided five-step path, from first conversation to final handover, designed to feel effortless.
           </p>
         </motion.div>
 

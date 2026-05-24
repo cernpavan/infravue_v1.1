@@ -1,7 +1,17 @@
 import type { MetadataRoute } from "next";
 import { PROJECTS } from "@/data/projects";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, absoluteUrl } from "@/lib/seo";
 
+/**
+ * XML sitemap. Includes:
+ *   • every indexable static route (home, services, about, contact, gallery, book, legal)
+ *   • every project deep page
+ *   • per-project image entries (Google Image sitemap extension) so the
+ *     portfolio gallery surfaces in Google Images search
+ *
+ * /thank-you, /admin/*, and /api/* are intentionally excluded — they are
+ * gated by robots.txt and per-page robots metadata respectively.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -11,6 +21,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${SITE_URL}/services`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/gallery`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/book`,
@@ -43,6 +77,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
+    // Google Image sitemap extension — boosts visibility in Google Images.
+    // Cover image is listed first; gallery images follow so each project
+    // page enumerates every photo Google should know about.
+    images: [
+      absoluteUrl(project.image),
+      ...(project.gallery ?? []).map((src) => absoluteUrl(src)),
+    ],
   }));
 
   return [...staticRoutes, ...projectRoutes];

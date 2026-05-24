@@ -33,7 +33,7 @@ export default function AboutSection() {
                 <div className="pt-2">
                   <h3 className="text-xl font-bold text-navy mb-2">Interior Designers in Hyderabad</h3>
                   <p className="mb-3">
-                    Based in Hyderabad, we offer end-to-end interior design and turnkey interior solutions — from concept planning to final execution. As interior designers in Hyderabad, our approach combines:
+                    Based in Hyderabad, we offer end-to-end interior design and turnkey interior solutions, from concept planning to final execution. As interior designers in Hyderabad, our approach combines:
                   </p>
 
                   <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -84,7 +84,7 @@ export default function AboutSection() {
                   Download Our Premium Design Guide
                 </h4>
                 <p className="text-[#1E3A6A]/60 text-sm mb-5">
-                  Discover curated interior inspirations, smart space planning insights, and luxury design trends — crafted for discerning clients.
+                  Discover curated interior inspirations, smart space planning insights, and luxury design trends, crafted for discerning clients.
                 </p>
 
                 <a

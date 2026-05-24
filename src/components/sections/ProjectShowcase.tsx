@@ -18,6 +18,7 @@ import {
   Ruler,
   Sparkles,
 } from "lucide-react";
+import { getProjectHeroAlt, getProjectGalleryAlt } from "@/data/projects";
 
 export type ProjectPalette = { name: string; hex: string };
 export type ProjectStat = { label: string; value: string };
@@ -46,6 +47,10 @@ export type Project = {
   stats?: ProjectStat[];
   palette?: ProjectPalette[];
   detailFrames?: ProjectDetailFrame[];
+  /** SEO-friendly alt text for the hero / cover image. */
+  heroAlt?: string;
+  /** Ordered, SEO-friendly alt text for each gallery image. */
+  galleryAlts?: string[];
 };
 
 type Props = {
@@ -309,7 +314,7 @@ export function ShowcaseContent({
         >
           <Image
             src={project.image}
-            alt={`${project.name} — ${project.category} interior design project by Infravue Interiors${project.location ? `, ${project.location}` : ""}`}
+            alt={getProjectHeroAlt(project)}
             fill
             sizes="100vw"
             preload
@@ -469,8 +474,7 @@ export function ShowcaseContent({
             images={gallery}
             frames={detailFrames}
             onOpen={onOpenImage}
-            projectName={project.name}
-            projectCategory={project.category}
+            project={project}
           />
         </div>
       </section>
@@ -589,14 +593,12 @@ function DetailGallery({
   images,
   frames,
   onOpen,
-  projectName,
-  projectCategory,
+  project,
 }: {
   images: string[];
   frames: ProjectDetailFrame[];
   onOpen: (i: number) => void;
-  projectName: string;
-  projectCategory: string;
+  project: Project;
 }) {
   // Image-first gallery: text overlays removed for a clean, minimal,
   // luxury feel. `frames` is retained only as a source of layout hints
@@ -640,7 +642,7 @@ function DetailGallery({
             key={`${item.image}-${i}`}
             type="button"
             onClick={() => onOpen(item.galleryIndex)}
-            aria-label={`Open ${projectName} image ${i + 1} of ${images.length}`}
+            aria-label={`Open ${project.name} image ${i + 1} of ${images.length}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -653,7 +655,7 @@ function DetailGallery({
           >
             <Image
               src={item.image}
-              alt={`${projectName} interior detail ${i + 1} — ${projectCategory} design by Infravue Interiors`}
+              alt={getProjectGalleryAlt(project, item.galleryIndex, images.length)}
               fill
               sizes="(min-width: 1024px) 60vw, 100vw"
               style={{ objectPosition: item.position ?? "center" }}
@@ -734,7 +736,7 @@ export function Lightbox({
             <div className="relative h-full w-full">
               <Image
                 src={gallery[activeIndex]}
-                alt={`${project.name} — gallery image ${activeIndex + 1} of ${gallery.length}, ${project.category} interior by Infravue Interiors`}
+                alt={getProjectGalleryAlt(project, activeIndex, gallery.length)}
                 fill
                 sizes="100vw"
                 className="object-contain"

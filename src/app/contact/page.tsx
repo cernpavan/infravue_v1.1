@@ -1,18 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ArrowRight, Clock } from "lucide-react";
-import { CONTACT, ADDRESS, SOCIAL, SITE_NAME, MAPS_URL } from "@/lib/seo";
+import { CONTACT, ADDRESS, SOCIAL, SITE_NAME, MAPS_URL, pageMetadata } from "@/lib/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema, contactPageSchema } from "@/lib/jsonld";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Get in touch with Infravue Interiors — premium interior designers in Hyderabad. Call, email, or book a free consultation today.",
-  alternates: { canonical: "/contact" },
-};
+    "Get in touch with Infravue Interiors, premium interior designers in Hyderabad. Call, email, or visit our studio in Bandlaguda Jagir. Book a free consultation today.",
+  path: "/contact",
+  ogTitle: `Contact · ${SITE_NAME}`,
+  ogDescription:
+    "Call, email, or visit our Hyderabad studio for premium residential and commercial interior design across India.",
+});
 
 export default function ContactPage() {
   return (
     <main className="bg-white">
+      {/* ── JSON-LD: ContactPage + Breadcrumb ── */}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          contactPageSchema(),
+        ]}
+      />
+
       {/* ── Hero ── */}
       <section className="relative bg-[#0B0F19] pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden">
         <div
@@ -110,7 +126,7 @@ export default function ContactPage() {
                   >
                     <address className="not-italic leading-relaxed">
                       {ADDRESS.streetAddress},<br />
-                      {ADDRESS.addressLocality}, {ADDRESS.addressRegion} — {ADDRESS.postalCode}
+                      {ADDRESS.addressLocality}, {ADDRESS.addressRegion} {ADDRESS.postalCode}
                     </address>
                     <span className="mt-1.5 inline-flex items-center gap-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-[#A1622C]/85 group-hover:text-[#A1622C] transition-colors">
                       View on Google Maps
@@ -174,7 +190,7 @@ export default function ContactPage() {
                 Book a Free<br />Consultation
               </h2>
               <p className="mb-8 text-sm leading-relaxed text-white/50">
-                Tell us about your space — size, style, budget, and vision. We&apos;ll
+                Tell us about your space, including size, style, budget, and vision. We&apos;ll
                 schedule a no-obligation discovery call and map out a plan that fits
                 your goals perfectly.
               </p>

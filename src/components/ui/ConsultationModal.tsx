@@ -11,7 +11,7 @@ const VALUE_PROPS = [
   {
     icon: Sparkles,
     title: "Complimentary Consultation",
-    desc: "No cost, no commitment — just expert guidance.",
+    desc: "No cost, no commitment, just expert guidance.",
   },
   {
     icon: CheckCircle2,
@@ -127,7 +127,7 @@ export default function ConsultationModal() {
                   <span className="italic font-light text-[#D8C4AD]">Extraordinary</span>
                 </h2>
                 <p className="text-sm text-white/55 leading-relaxed mb-10">
-                  One free conversation with our senior designers can save months of guesswork — and give your project the start it deserves.
+                  One free conversation with our senior designers can save months of guesswork, and give your project the start it deserves.
                 </p>
 
                 {/* Value props */}

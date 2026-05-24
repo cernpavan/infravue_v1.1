@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import type { ProjectWithSlug } from "@/data/projects";
+import { getProjectGalleryAlt, type ProjectWithSlug } from "@/data/projects";
 
 interface Props {
   project: ProjectWithSlug | null;
@@ -162,7 +162,7 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
                       >
                         <Image
                           src={src}
-                          alt={`${project.name} — view ${idx + 1} of ${gallery.length}, interior by Infravue Interiors`}
+                          alt={getProjectGalleryAlt(project, idx, gallery.length)}
                           fill
                           sizes={
                             isHero
@@ -227,7 +227,7 @@ export default function ProjectGalleryModal({ project, onClose }: Props) {
                   <div className="relative w-full h-full max-h-[82vh]">
                     <Image
                       src={gallery[lightboxIdx]}
-                      alt={`${project.name} — image ${lightboxIdx + 1} of ${gallery.length}, interior by Infravue Interiors`}
+                      alt={getProjectGalleryAlt(project, lightboxIdx, gallery.length)}
                       fill
                       sizes="100vw"
                       priority

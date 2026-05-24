@@ -144,7 +144,7 @@ export default function ServicesSection() {
             Spaces That Tell Your Story
           </h2>
           <p className="text-[#1E3A6A]/60 text-base lg:text-lg leading-relaxed">
-            Three verticals, one promise — premium design executed with
+            Three verticals, one promise: premium design executed with
             precision.
           </p>
         </div>

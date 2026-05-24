@@ -12,7 +12,7 @@ import {
 
 type LightboxState = { projectIdx: number; imgIdx: number } | null;
 
-export default function GalleryPage() {
+export default function GalleryClient() {
   const [filter, setFilter] = useState<string>("All");
   const [lightbox, setLightbox] = useState<LightboxState>(null);
 

@@ -4,7 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { PROJECTS, type ProjectWithSlug } from "@/data/projects";
+import {
+  PROJECTS,
+  getProjectHeroAlt,
+  type ProjectWithSlug,
+} from "@/data/projects";
 import ProjectGalleryModal from "@/components/projects/ProjectGalleryModal";
 
 function ProjectCard({
@@ -42,7 +46,7 @@ function ProjectCard({
         {/* ── Image ── */}
         <Image
           src={project.image}
-          alt={`${project.name} — ${project.category} interior design project by Infravue Interiors${project.location ? `, ${project.location}` : ""}`}
+          alt={getProjectHeroAlt(project)}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.08]"
@@ -77,7 +81,7 @@ export default function ProjectsSection() {
             Our Projects
           </h2>
           <p className="text-[#1E3A6A]/60 text-lg leading-relaxed max-w-[860px] mx-auto">
-            Explore our portfolio of corporate, commercial, and residential interiors — crafted with turnkey precision, luxury finishes, and customized solutions delivered across India.
+            Explore our portfolio of corporate, commercial, and residential interiors, crafted with turnkey precision, luxury finishes, and customized solutions delivered across India.
           </p>
         </div>
 

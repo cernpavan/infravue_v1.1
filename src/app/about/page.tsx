@@ -11,11 +11,11 @@ import { SITE_NAME, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
-    "Discover the story behind Infravue Interiors — a Hyderabad-based studio led by founder A.N. Dinesh Chandra (IIT Kharagpur), crafting refined, functional interiors for homes, workplaces, and commercial spaces across India.",
+    "Discover the story behind Infravue Interiors, a Hyderabad-based studio led by founder A.N. Dinesh Chandra (IIT Kharagpur), crafting refined and functional interiors for homes, workplaces, and commercial spaces across India.",
   path: "/about",
   ogTitle: `About · ${SITE_NAME}`,
   ogDescription:
-    "The vision, philosophy, and people behind Infravue Interiors — premium interior design rooted in Hyderabad, delivered PAN India.",
+    "The vision, philosophy, and people behind Infravue Interiors. Premium interior design rooted in Hyderabad, delivered PAN India.",
 });
 
 export default function AboutPage() {
