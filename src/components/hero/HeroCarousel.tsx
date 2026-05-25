@@ -4,49 +4,45 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import BookButton from "@/components/ui/BookButton";
 
-// WebP-only — the heavy PNG/JPG fallbacks (2-2.5 MB each) were retired
-// once every supported browser (Safari 14+, Chrome 32+, Firefox 65+,
-// Edge 18+) shipped WebP. Removing them saved ~9 MB of repo weight and
-// eliminated the `onError` swap that would have re-fetched a megabyte
-// just to recover from a 404.
 const SLIDES = [
   {
     id: 1,
     image: "/images/hero/hero_image_1.webp",
+    fallback: "/images/hero/hero_image_1.png",
     alt: "Luxury corporate office interior designed by Infravue Interiors, Hyderabad — turnkey workspace solution",
   },
   {
     id: 2,
     image: "/images/hero/hero_image_2.webp",
+    fallback: "/images/hero/hero_image_2.png",
     alt: "Modern residential interior with premium finishes crafted by Infravue Interiors, Hyderabad",
   },
   {
     id: 3,
     image: "/images/hero/hero-3.webp",
+    fallback: "/images/hero/hero-3.jpg",
     alt: "Contemporary commercial space interior design in Hyderabad by Infravue Interiors — refined and functional",
   },
   {
     id: 4,
     image: "/images/hero/hero_image_4.webp",
+    fallback: "/images/hero/hero_image_4.png",
     alt: "Premium turnkey corporate workspace interior by Infravue Interiors — modern office design in Hyderabad",
   },
 ];
 
-const AUTO_ROTATE_INTERVAL = 4000;
+const AUTO_ROTATE_INTERVAL = 4000; // 8 seconds
 const CUBIC_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]; // Material Design easing
+const CUBIC_EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1]; // Fast exit easing
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
-  // `mountSecondary` gates slides 1–3 out of the initial SSR/CSR render so
-  // they don't compete with the LCP image (slide 0) for bandwidth on slow
-  // connections. They're injected via requestIdleCallback once the browser
-  // has spare time after first paint.
-  const [mountSecondary, setMountSecondary] = useState(false);
   const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [imgError, setImgError] = useState(false);
 
   // Auto-rotation effect
   useEffect(() => {
@@ -59,22 +55,6 @@ export default function HeroCarousel() {
     return () => clearInterval(timer);
   }, [autoRotate]);
 
-  // Defer mounting slides 1–3 until the browser is idle (or 1.2s, whichever
-  // comes first). Auto-rotate first fires at T=4s so we have plenty of time.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    type IdleWindow = Window & {
-      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
-    };
-    const w = window as IdleWindow;
-    if (typeof w.requestIdleCallback === "function") {
-      w.requestIdleCallback(() => setMountSecondary(true), { timeout: 1200 });
-    } else {
-      const t = setTimeout(() => setMountSecondary(true), 1200);
-      return () => clearTimeout(t);
-    }
-  }, []);
-
   // Pause auto-rotate on manual interaction, with proper cleanup
   const pauseAndResume = (newIndex?: number) => {
     setAutoRotate(false);
@@ -84,16 +64,19 @@ export default function HeroCarousel() {
   };
 
   const handleNext = () => {
+    setImgError(false);
     setCurrent((prev) => (prev + 1) % SLIDES.length);
     pauseAndResume();
   };
 
   const handlePrev = () => {
+    setImgError(false);
     setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
     pauseAndResume();
   };
 
   const handleDot = (index: number) => {
+    setImgError(false);
     pauseAndResume(index);
   };
 
@@ -106,42 +89,42 @@ export default function HeroCarousel() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden pt-24">
-      {/* ── Slide stack (CSS-only crossfade) ──
-          Why CSS, not framer-motion: a `motion.div` wrapping the LCP image
-          ships its `initial={{ opacity: 0 }}` as an inline style during SSR.
-          The image then renders invisible until framer hydrates and runs
-          the tween — pushing LCP from "byte-arrival time" out to
-          "JS-bundle-loaded + hydrated + animation-complete" (~9s on a
-          throttled mid-tier mobile on slow 4G).
-          With this pattern, slide 0 is SSR-painted at opacity 1, so LCP
-          is gated only on image bytes, not on JS. Slides 1–3 mount only
-          after `requestIdleCallback` fires so they don't fight slide 0
-          for bandwidth. */}
-      {SLIDES.map((slide, i) => {
-        if (i > 0 && !mountSecondary) return null;
-        const isActive = i === current;
-        return (
-          <div
-            key={slide.id}
-            aria-hidden={!isActive}
-            className="absolute inset-0 transition-opacity duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none"
-            style={{ opacity: isActive ? 1 : 0 }}
-          >
-            <Image
-              src={slide.image}
-              alt={slide.alt}
-              fill
-              sizes="100vw"
-              priority={i === 0}
-              quality={90}
-              className="object-cover"
-            />
-          </div>
-        );
-      })}
+      {/* ── Image carousel with crossfade + Ken Burns ──
+          `initial={false}` on AnimatePresence makes the FIRST slide paint
+          immediately (no opacity fade-in), so the browser records LCP as
+          soon as the bytes arrive — instead of waiting 1.4s for the
+          framer-motion tween to complete. Subsequent slide changes keep
+          the full crossfade + Ken Burns animation. */}
+      <AnimatePresence mode="sync" initial={false}>
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{
+            opacity: 1,
+            scale: 1.0,
+          }}
+          exit={{ opacity: 0 }}
+          transition={{
+            opacity: { duration: 1.4, ease: CUBIC_EASE },
+            scale: { duration: 10, ease: "linear" },
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
+            alt={SLIDES[current].alt}
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+            quality={90}
+            onError={() => setImgError(true)}
+          />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Dark overlay for content readability */}
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* ── Static Content Overlay ── */}
       <div className="relative h-full z-10 flex flex-col items-center justify-center px-6 lg:px-20 text-center">

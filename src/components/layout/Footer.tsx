@@ -24,10 +24,15 @@ const SOCIALS = [
   },
 ];
 
+// Order mirrors the homepage "Spaces That Tell Your Story" section so
+// footer navigation stays consistent with the user's first exposure to
+// the service verticals. Hrefs use the `#` anchors defined by each card's
+// `id` on the /services page (design, commercial, hospitality, residential).
 const SERVICES = [
-  { label: "Residential Design", href: "/services#residential" },
-  { label: "Commercial Design", href: "/services#commercial" },
-  { label: "Hospitality Design", href: "/services#hospitality" },
+  { label: "Design & Planning Services", href: "/services#design" },
+  { label: "Commercial Interiors", href: "/services#commercial" },
+  { label: "Finishing & Decor", href: "/services#hospitality" },
+  { label: "Residential Interiors", href: "/services#residential" },
   { label: "Book Consultation", href: "/book" },
 ];
 

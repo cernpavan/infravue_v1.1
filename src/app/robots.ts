@@ -22,10 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    // `host` field omitted on purpose: Google deprecated it years ago and
-    // Lighthouse flags it as an invalid directive. Yandex was the only major
-    // consumer and we don't optimise for it. Canonicalisation is handled by
-    // <link rel="canonical"> + the redirect chain on infravueinteriors.com.
     sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }
