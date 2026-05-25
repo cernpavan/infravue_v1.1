@@ -17,11 +17,15 @@ declare global {
 }
 
 /**
- * GTM bootstrap (head). Loads gtm.js with `lazyOnload` so it fires AFTER
- * `window.onload` — never competing with the hero image for bandwidth /
- * main thread during LCP. Pushes a `page_view` event on every App Router
- * route change; events queued before GTM bootstraps are replayed once the
- * container loads (GTM reads the existing `dataLayer` queue on init).
+ * GTM bootstrap (head). `strategy="beforeInteractive"` makes Next.js
+ * inline this snippet directly into the SSR-rendered `<head>` — matching
+ * Google's official install requirement of "as high in `<head>` as
+ * possible". The snippet itself is async (`j.async = true`), so it won't
+ * block parsing even though it's placed early.
+ *
+ * Pushes a `page_view` event on every App Router route change; events
+ * queued before GTM bootstraps are replayed once the container loads
+ * (GTM reads the existing `dataLayer` queue on init).
  *
  * All GA4 / Ads / pixel tags should be configured *inside GTM*. The site
  * itself ships only the GTM container.
@@ -31,7 +35,7 @@ export function GoogleTagManager() {
 
   return (
     <>
-      <Script id="gtm-init" strategy="lazyOnload">
+      <Script id="gtm-init" strategy="beforeInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
