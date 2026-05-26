@@ -86,7 +86,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-[#1E3A6A] text-sm font-medium leading-relaxed mb-7">
-              Premium interior design for homes, offices, and hospitality spaces, crafted with purpose and precision.
+              Premium interior design for Offices commercial and homes and hospitality spaces, crafted with purpose and precision.
             </p>
             {/* ── Social links ──
                 Brand-correct solid glyphs on a soft navy tinted disk.
