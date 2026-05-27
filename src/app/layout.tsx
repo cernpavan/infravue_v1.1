@@ -123,11 +123,10 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-foreground">
-        {/* ── GTM noscript fallback — must be the first child of <body> per
-            Google's install spec. Captures users with JS disabled. ── */}
+        {/* GTM noscript — must be the FIRST child of <body> per Google's spec. */}
         <GoogleTagManagerNoScript />
 
-        {/* ── Global structured data — Organization, LocalBusiness, WebSite ── */}
+        {/* Global structured data — Organization, LocalBusiness, WebSite. */}
         <JsonLd data={organizationSchema()} />
         <JsonLd data={localBusinessSchema()} />
         <JsonLd data={websiteSchema()} />
@@ -138,9 +137,8 @@ export default function RootLayout({
           <WhatsAppButton />
         </Providers>
 
-        {/* ── Google Tag Manager — loads gtm.js after interactive, fires
-            page_view dataLayer pushes on every App Router navigation.
-            All GA4/Ads/pixel tags are configured inside the GTM container. ── */}
+        {/* GTM loader — `beforeInteractive` hoists this snippet into <head>.
+            Fires `page_view` dataLayer pushes on every App Router navigation. */}
         <GoogleTagManager />
       </body>
     </html>
