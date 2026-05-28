@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
     // ASSETS binding serve them directly from the public/ directory.
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/g4tr/:path*",
+        destination: "https://www.google-analytics.com/:path*",
+      },
+    ];
+  },
 };
 
 initOpenNextCloudflareForDev();
