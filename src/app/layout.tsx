@@ -4,8 +4,9 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { LeadSessionInit } from "@/components/LeadSessionInit";
 import JsonLd from "@/components/seo/JsonLd";
 import {
-  GoogleTagManager,
+  GoogleTagManagerHead,
   GoogleTagManagerNoScript,
+  GoogleTagManagerRouteTracker,
 } from "@/components/analytics/GoogleTagManager";
 import {
   DEFAULT_DESCRIPTION,
@@ -122,6 +123,12 @@ export default function RootLayout({
       lang="en-IN"
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
+      <head>
+        {/* GTM loader — raw inline <script> as high in <head> as possible,
+            per Google's install spec. Renders SSR so Tag Assistant can detect
+            the container immediately on page load. */}
+        <GoogleTagManagerHead />
+      </head>
       <body className="min-h-full flex flex-col bg-white text-foreground">
         {/* GTM noscript — must be the FIRST child of <body> per Google's spec. */}
         <GoogleTagManagerNoScript />
@@ -137,9 +144,8 @@ export default function RootLayout({
           <WhatsAppButton />
         </Providers>
 
-        {/* GTM loader — `beforeInteractive` hoists this snippet into <head>.
-            Fires `page_view` dataLayer pushes on every App Router navigation. */}
-        <GoogleTagManager />
+        {/* SPA page_view pushes on App Router navigations. */}
+        <GoogleTagManagerRouteTracker />
       </body>
     </html>
   );

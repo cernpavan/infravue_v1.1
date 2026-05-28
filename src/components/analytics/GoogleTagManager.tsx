@@ -1,40 +1,23 @@
-"use client";
-
-import Script from "next/script";
-import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
-
 // Production container managed at https://tagmanager.google.com.
 // Override per-environment via NEXT_PUBLIC_GTM_ID.
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-WMQWB9ZW";
 
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-  }
-}
+// Standard Google GTM bootstrap. Rendered as a real inline <script> in <head>
+// via dangerouslySetInnerHTML — NOT wrapped in next/script. The next/script
+// `beforeInteractive` strategy queues inline children inside Next 16's
+// self.__next_s bootloader, which executes too late for Google Tag Assistant
+// to detect the container. A raw inline script is what Google's install
+// snippet does and is what Tag Assistant scans for.
+const GTM_HEAD_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
 
-// `strategy="beforeInteractive"` causes next/script to inline this snippet
-// into the SSR-rendered <head> regardless of where the component sits in
-// the tree (Next 16 docs: api-reference/components/script.md). That matches
-// Google's "as high in <head> as possible" install requirement. The loader
-// itself is async (j.async=true), so it never blocks parsing.
-export function GoogleTagManager() {
+// Mount inside <head> of the root layout (server component, SSR-rendered).
+export function GoogleTagManagerHead() {
   if (!GTM_ID) return null;
-
   return (
-    <>
-      <Script id="gtm-init" strategy="beforeInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`}
-      </Script>
-      <Suspense fallback={null}>
-        <RouteChangeTracker />
-      </Suspense>
-    </>
+    <script
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: GTM_HEAD_SCRIPT }}
+    />
   );
 }
 
@@ -56,28 +39,6 @@ export function GoogleTagManagerNoScript() {
   );
 }
 
-// App Router client-side navigations don't trigger a fresh GTM load, so the
-// GTM "Page View" trigger never fires on SPA route changes. Push an explicit
-// page_view event on every pathname/search-params change. GTM's built-in
-// History Change trigger can pick this up, or you can use a Custom Event
-// trigger on `event = page_view` inside the container UI.
-function RouteChangeTracker() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    if (!pathname || typeof window === "undefined") return;
-    const query = searchParams?.toString();
-    const path = query ? `${pathname}?${query}` : pathname;
-
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "page_view",
-      page_path: path,
-      page_location: window.location.href,
-      page_title: document.title,
-    });
-  }, [pathname, searchParams]);
-
-  return null;
-}
+// Re-exported wrapper kept for the App Router page-view tracker. Lives in a
+// separate client-component file so this module stays a server component.
+export { GoogleTagManagerRouteTracker } from "./GoogleTagManagerRouteTracker";
