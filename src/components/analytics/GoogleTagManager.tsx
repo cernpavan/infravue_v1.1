@@ -1,6 +1,6 @@
 // Production container managed at https://tagmanager.google.com.
 // Override per-environment via NEXT_PUBLIC_GTM_ID.
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-WMQWB9ZW";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-K97NQKDT";
 
 // Standard Google GTM bootstrap. Rendered as a real inline <script> in <head>
 // via dangerouslySetInnerHTML — NOT wrapped in next/script. The next/script
