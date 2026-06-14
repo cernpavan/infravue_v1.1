@@ -34,7 +34,7 @@ const SLIDES = [
   },
 ];
 
-const AUTO_ROTATE_INTERVAL = 4000; // 8 seconds
+const AUTO_ROTATE_INTERVAL = 6000;
 const CUBIC_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]; // Material Design easing
 const CUBIC_EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1]; // Fast exit easing
 
@@ -88,7 +88,7 @@ export default function HeroCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden pt-24">
+    <div className="relative w-full h-screen overflow-hidden pt-24 bg-navy">
       {/* ── Image carousel with crossfade + Ken Burns ──
           `initial={false}` on AnimatePresence makes the FIRST slide paint
           immediately (no opacity fade-in), so the browser records LCP as
@@ -116,8 +116,11 @@ export default function HeroCarousel() {
             fill
             sizes="100vw"
             className="object-cover"
-            priority
-            quality={90}
+            // Only the first slide gets `priority` — it's the LCP image. Later
+            // slides load on demand (still fast via the Cloudflare edge loader)
+            // but don't compete with above-the-fold paint.
+            priority={current === 0}
+            quality={80}
             onError={() => setImgError(true)}
           />
         </motion.div>
@@ -135,10 +138,17 @@ export default function HeroCarousel() {
           wrapper has zero visual effect on them.
         */}
         <div className="w-full max-w-5xl">
-          {/* Eyebrow */}
+          {/* Eyebrow
+              NOTE: hero text uses `initial={{ y: 20 }}` (no opacity:0) so
+              Framer Motion ships SSR'd HTML that is already VISIBLE — only
+              the slide-up plays once JS hydrates. Previously each block had
+              `initial={{ opacity: 0 }}`, which framer-motion serializes as
+              `style="opacity:0"` in the SSR response — the hero appeared
+              blank on mobile until JS arrived (2–4s on 4G). Keep the y
+              offset so the cascade still feels intentional. */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, ease: CUBIC_EASE }}
             className="text-sand text-xs font-semibold tracking-[0.18em] uppercase mb-6"
           >
@@ -151,8 +161,8 @@ export default function HeroCarousel() {
               The <br> is hidden on mobile so it wraps naturally at small sizes.
           */}
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: CUBIC_EASE }}
             className="text-[1.75rem] sm:text-[2.125rem] md:text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] font-bold text-white leading-[1.1] tracking-tight mb-6"
           >
@@ -163,8 +173,8 @@ export default function HeroCarousel() {
 
           {/* Subheadline */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: CUBIC_EASE }}
             className="text-white/85 text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto"
           >
@@ -173,8 +183,8 @@ export default function HeroCarousel() {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: CUBIC_EASE }}
             className="flex flex-col sm:flex-row gap-4 items-center justify-center"
           >

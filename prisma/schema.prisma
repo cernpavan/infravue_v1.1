@@ -9,12 +9,16 @@ datasource db {
 }
 
 model WhatsAppLead {
-  id        String   @id @default(cuid())
-  requestId String   @unique
-  source    String   @default("whatsapp")
-  createdAt DateTime @default(now())
+  id            String   @id @default(cuid())
+  requestId     String   @unique
+  source        String   @default("whatsapp")
+  clickCount    Int      @default(1)
+  lastClickedAt DateTime @default(now())
+  createdAt     DateTime @default(now())
 
   @@index([requestId])
+  @@index([createdAt])
+  @@index([source])
 }
 
 model FormLead {

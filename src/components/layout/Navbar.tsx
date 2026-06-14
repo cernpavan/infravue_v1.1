@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
 import BookButton from "@/components/ui/BookButton";
@@ -51,10 +52,13 @@ export default function Navbar() {
             className="flex items-center group transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
             <div className="relative h-[70px] w-[220px] lg:w-[260px]">
-              <img
-                src={logo.src}
+              <Image
+                src={logo}
                 alt="Infravue Interiors — Premium Interior Designers in Hyderabad"
-                className="h-full w-auto object-contain object-left"
+                priority
+                fill
+                sizes="(min-width: 1024px) 260px, 220px"
+                className="object-contain object-left"
               />
             </div>
           </Link>

@@ -11,6 +11,8 @@ interface WhatsAppLead {
   id: string;
   requestId: string;
   source: string;
+  clickCount: number;
+  lastClickedAt: string;
   createdAt: string;
 }
 
@@ -162,6 +164,8 @@ export default function WhatsAppLeadsTable({ initialLeads }: WhatsAppLeadsTableP
                 <th className="px-6 py-4 text-left font-semibold text-black">Date</th>
                 <th className="px-6 py-4 text-left font-semibold text-black">Request ID</th>
                 <th className="px-6 py-4 text-left font-semibold text-black">Source</th>
+                <th className="px-6 py-4 text-right font-semibold text-black">Clicks</th>
+                <th className="px-6 py-4 text-left font-semibold text-black">Last Click</th>
                 <th className="px-6 py-4 text-right font-semibold text-black">Actions</th>
               </tr>
             </thead>
@@ -179,6 +183,12 @@ export default function WhatsAppLeadsTable({ initialLeads }: WhatsAppLeadsTableP
                       <span className="inline-block px-3 py-1 bg-gray-100 text-black font-medium rounded text-xs">
                         {lead.source}
                       </span>
+                    </td>
+                    <td className="px-6 py-4 text-right text-black font-semibold">
+                      {lead.clickCount}
+                    </td>
+                    <td className="px-6 py-4 text-gray-600 text-xs">
+                      {formatDate(lead.lastClickedAt)}
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex gap-2 justify-end">
@@ -203,7 +213,7 @@ export default function WhatsAppLeadsTable({ initialLeads }: WhatsAppLeadsTableP
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="px-6 py-12 text-center text-navy/50">
+                  <td colSpan={6} className="px-6 py-12 text-center text-navy/50">
                     {search ? "No leads match your search" : "No WhatsApp leads yet"}
                   </td>
                 </tr>

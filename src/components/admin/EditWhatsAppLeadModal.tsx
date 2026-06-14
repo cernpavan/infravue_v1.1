@@ -15,6 +15,8 @@ type EditWhatsAppLeadInput = z.infer<typeof editWhatsAppLeadSchema>;
 interface WhatsAppLead extends EditWhatsAppLeadInput {
   id: string;
   requestId: string;
+  clickCount: number;
+  lastClickedAt: string;
   createdAt: string;
 }
 
@@ -66,6 +68,8 @@ export default function EditWhatsAppLeadModal({
       onSave({
         ...updatedLead,
         createdAt: lead.createdAt,
+        clickCount: lead.clickCount,
+        lastClickedAt: lead.lastClickedAt,
       });
       onClose();
     } catch (err) {

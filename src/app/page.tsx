@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { pageMetadata } from "@/lib/seo";
 import HeroCarousel from "@/components/hero/HeroCarousel";
 import TrustBanner from "@/components/sections/TrustBanner";
@@ -6,14 +7,18 @@ import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ServiceIconsSection from "@/components/sections/ServiceIconsSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
-import BrandsMarquee from "@/components/sections/BrandsMarquee";
-import ProcessSection from "@/components/sections/ProcessSection";
-import Testimonials from "@/components/sections/Testimonials";
-import FaqSection from "@/components/sections/FaqSection";
-import CtaBanner from "@/components/sections/CtaBanner";
 import JsonLd from "@/components/seo/JsonLd";
 import { FAQS } from "@/data/faqs";
 import { faqPageSchema } from "@/lib/jsonld";
+
+// Below-the-fold sections — dynamically imported so their JS (and Framer
+// Motion footprint) is split out of the initial bundle. `ssr: true` keeps
+// SEO/crawler content intact via streaming.
+const BrandsMarquee = dynamic(() => import("@/components/sections/BrandsMarquee"));
+const ProcessSection = dynamic(() => import("@/components/sections/ProcessSection"));
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
+const FaqSection = dynamic(() => import("@/components/sections/FaqSection"));
+const CtaBanner = dynamic(() => import("@/components/sections/CtaBanner"));
 const HOME_TITLE = "Interior Designers in Hyderabad | Infravue Interiors";
 const HOME_DESCRIPTION =
   "Infravue Interiors offers modern residential, commercial, and corporate interior design solutions in Hyderabad with customized designs, premium finishes, and turnkey execution. Get luxury, affordable, and customized interiors for your dream space.";

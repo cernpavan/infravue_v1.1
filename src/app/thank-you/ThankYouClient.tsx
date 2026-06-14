@@ -13,6 +13,7 @@ import {
   MessageCircle,
   ShieldCheck,
 } from "lucide-react";
+import WhatsAppLink from "@/components/ui/WhatsAppLink";
 
 declare global {
   interface Window {
@@ -275,10 +276,10 @@ export default function ThankYouClient() {
               transition={{ duration: 0.7, ease: EASE, delay: 0.75 }}
               className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3"
             >
-              <a
-                href="https://wa.me/919010709994?text=Hi%21%20I%20just%20submitted%20a%20consultation%20request%20on%20Infravue%20Interiors."
-                target="_blank"
-                rel="noopener noreferrer"
+              <WhatsAppLink
+                source="thank-you"
+                message="Hi! I just submitted a consultation request on Infravue Interiors."
+                ariaLabel="Continue the conversation on WhatsApp"
                 className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-b from-[#26467E] to-[#152B52] px-7 py-[14px] text-[12.5px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_14px_36px_-14px_rgba(30,58,106,0.6),inset_0_1px_0_rgba(255,255,255,0.22)] hover:shadow-[0_22px_48px_-14px_rgba(30,58,106,0.75),inset_0_1px_0_rgba(255,255,255,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985] transition-[transform,box-shadow] duration-300 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#1E3A6A]/25 min-w-[200px]"
               >
                 {/* Sheen highlight */}
@@ -293,7 +294,7 @@ export default function ThankYouClient() {
                   strokeWidth={2.2}
                   className="transition-transform duration-300 group-hover:translate-x-0.5"
                 />
-              </a>
+              </WhatsAppLink>
 
               <Link
                 href="/"

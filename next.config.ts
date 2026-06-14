@@ -1,13 +1,23 @@
 import type { NextConfig } from "next";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["@prisma/client", ".prisma/client"],
   images: {
-    // Cloudflare Workers does not support the /_next/image optimization API.
-    // Serving images unoptimized bypasses that endpoint and lets Cloudflare's
-    // ASSETS binding serve them directly from the public/ directory.
-    unoptimized: true,
+    // Cloudflare Workers does not support the /_next/image optimization API,
+    // so we route requests through Cloudflare's edge Image Transformations
+    // (/cdn-cgi/image/...) via a custom loader. In dev the loader passes
+    // through unchanged so it works locally without the edge.
+    loader: "custom",
+    loaderFile: "./src/lib/cloudflareImageLoader.ts",
+    deviceSizes: [360, 414, 640, 750, 828, 1080, 1280, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    formats: ["image/avif", "image/webp"],
   },
   async rewrites() {
     return [
@@ -21,4 +31,4 @@ const nextConfig: NextConfig = {
 
 initOpenNextCloudflareForDev();
 
-export default nextConfig;
+export default bundleAnalyzer(nextConfig);

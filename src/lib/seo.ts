@@ -33,8 +33,8 @@ export const PRIMARY_KEYWORDS = [
 ];
 
 export const CONTACT = {
-  phone: "+91-9010709994",
-  phoneDisplay: "+91 90107 09994",
+  phone: "+91-8978871079",
+  phoneDisplay: "+91 89788 71079",
   email: "info@infravueinteriors.com",
 } as const;
 

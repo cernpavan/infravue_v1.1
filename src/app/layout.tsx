@@ -123,15 +123,13 @@ export default function RootLayout({
       lang="en-IN"
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
-      <head>
-        {/* GTM loader — raw inline <script> as high in <head> as possible,
-            per Google's install spec. Renders SSR so Tag Assistant can detect
-            the container immediately on page load. */}
-        <GoogleTagManagerHead />
-      </head>
       <body className="min-h-full flex flex-col bg-white text-foreground">
         {/* GTM noscript — must be the FIRST child of <body> per Google's spec. */}
         <GoogleTagManagerNoScript />
+
+        {/* GTM loader — deferred via next/script `afterInteractive` so the
+            ~50–200 KB gtm.js + tag waterfall no longer blocks FCP on mobile. */}
+        <GoogleTagManagerHead />
 
         {/* Global structured data — Organization, LocalBusiness, WebSite. */}
         <JsonLd data={organizationSchema()} />

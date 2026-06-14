@@ -1,23 +1,8 @@
 "use client";
-import { getRequestId } from "@/store/leadStore";
-
-const WHATSAPP_PHONE = "919010709994";
+import { useWhatsAppClick } from "@/hooks/useWhatsAppClick";
 
 export default function WhatsAppButton() {
-  const handleClick = async () => {
-    const id = getRequestId();
-    if (id) {
-      fetch("/api/leads/whatsapp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ requestId: id }),
-      }).catch(() => {});
-    }
-    const msg = encodeURIComponent(
-      `Hi! I'm interested in Infravue interior design services.\nRequest ID: ${id ?? "N/A"}`
-    );
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${msg}`, "_blank");
-  };
+  const handleClick = useWhatsAppClick({ source: "floating-button" });
 
   return (
     <button

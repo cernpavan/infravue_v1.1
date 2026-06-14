@@ -1,8 +1,6 @@
-"use client";
-
 import { Download, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import RevealOnView from "@/components/ui/RevealOnView";
 
 export default function AboutSection() {
   return (
@@ -12,12 +10,7 @@ export default function AboutSection() {
 
           {/* ── Brand Storytelling (Left) ── */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <RevealOnView>
               <p className="text-terracotta text-sm font-bold tracking-[0.2em] uppercase mb-3">
                 Who We Are
               </p>
@@ -54,18 +47,12 @@ export default function AboutSection() {
                   Every project is crafted to reflect your style, purpose, and budget while maintaining a strong focus on quality, timely delivery, and affordable interiors.
                 </p>
               </div>
-            </motion.div>
+            </RevealOnView>
           </div>
 
           {/* ── Lead Magnet / Visual (Right) ── */}
           <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
+            <RevealOnView className="relative">
               {/* Background Decoration */}
               <div className="absolute -inset-3 bg-gray-50 rounded-3xl -z-10 transform rotate-2" />
 
@@ -108,7 +95,7 @@ export default function AboutSection() {
                   Instant Access via WhatsApp
                 </a>
               </div>
-            </motion.div>
+            </RevealOnView>
           </div>
 
         </div>

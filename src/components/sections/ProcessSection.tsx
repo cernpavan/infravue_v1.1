@@ -3,11 +3,9 @@
 import {
   motion,
   useReducedMotion,
-  useScroll,
-  useTransform,
   type Variants,
 } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   UserPlus,
   Presentation,
@@ -280,14 +278,41 @@ function AmbientBackdrop() {
 export default function ProcessSection() {
   const reduceMotion = useReducedMotion();
   const trackRef = useRef<HTMLDivElement>(null);
+  const [trackActive, setTrackActive] = useState(false);
 
-  // Scroll-driven journey line. As the user scrolls through the steps, the
-  // terracotta progress fills left → right across the desktop track.
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-    offset: ["start 75%", "end 55%"],
-  });
-  const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  // One-shot reveal for the desktop journey line. The original implementation
+  // ran a useScroll/useTransform pair that fired on every scroll pixel — a
+  // measurable cost on low-end mobile even though the line itself is hidden
+  // below `lg`. An IntersectionObserver firing once is dramatically cheaper
+  // and visually almost identical (1.5s ease-out fill instead of scroll-tied).
+  useEffect(() => {
+    const node = trackRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") {
+      setTrackActive(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setTrackActive(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.2 }
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
+  // Combine the vertical centering with the scale fill so the inline `transform`
+  // doesn't shadow the Tailwind `-translate-y-1/2` utility.
+  const lineTransform =
+    reduceMotion || trackActive
+      ? "translateY(-50%) scaleX(1)"
+      : "translateY(-50%) scaleX(0)";
 
   return (
     <section className="relative overflow-hidden bg-white py-10 lg:py-16">
@@ -323,16 +348,16 @@ export default function ProcessSection() {
               className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 [background:repeating-linear-gradient(to_right,rgba(30,58,106,0.18)_0_6px,transparent_6px_14px)]"
             />
             {/* Animated terracotta fill */}
-            <motion.div
+            <div
               aria-hidden
-              style={{ scaleX: reduceMotion ? 1 : lineScaleX }}
-              className="absolute inset-x-0 top-1/2 h-[2px] origin-left -translate-y-1/2 bg-gradient-to-r from-terracotta-light via-terracotta to-terracotta-light"
+              style={{ transform: lineTransform, transition: "transform 1.5s cubic-bezier(0.16,1,0.3,1)" }}
+              className="absolute inset-x-0 top-1/2 h-[2px] origin-left bg-gradient-to-r from-terracotta-light via-terracotta to-terracotta-light"
             />
             {/* Soft glow trailing the fill */}
-            <motion.div
+            <div
               aria-hidden
-              style={{ scaleX: reduceMotion ? 1 : lineScaleX }}
-              className="absolute inset-x-0 top-1/2 h-[10px] origin-left -translate-y-1/2 bg-gradient-to-r from-terracotta/0 via-terracotta/55 to-terracotta/0 blur-md"
+              style={{ transform: lineTransform, transition: "transform 1.5s cubic-bezier(0.16,1,0.3,1)" }}
+              className="absolute inset-x-0 top-1/2 h-[10px] origin-left bg-gradient-to-r from-terracotta/0 via-terracotta/55 to-terracotta/0 blur-md"
             />
           </div>
 

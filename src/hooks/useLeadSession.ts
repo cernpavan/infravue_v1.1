@@ -1,14 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { useLeadStore } from "@/store/leadStore";
-
-function generateRequestId() {
-  return (
-    "REQ-" +
-    Date.now().toString(36).toUpperCase() +
-    Math.random().toString(36).substring(2, 6).toUpperCase()
-  );
-}
+import { generateRequestId, useLeadStore } from "@/store/leadStore";
 
 export function useLeadSession() {
   const { requestId, setRequestId } = useLeadStore();

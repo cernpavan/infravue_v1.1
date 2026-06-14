@@ -1,23 +1,22 @@
+import Script from "next/script";
+
 // Production container managed at https://tagmanager.google.com.
 // Override per-environment via NEXT_PUBLIC_GTM_ID.
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-K97NQKDT";
 
-// Standard Google GTM bootstrap. Rendered as a real inline <script> in <head>
-// via dangerouslySetInnerHTML — NOT wrapped in next/script. The next/script
-// `beforeInteractive` strategy queues inline children inside Next 16's
-// self.__next_s bootloader, which executes too late for Google Tag Assistant
-// to detect the container. A raw inline script is what Google's install
-// snippet does and is what Tag Assistant scans for.
+// Standard Google GTM bootstrap, scheduled via next/script with
+// `afterInteractive` so the gtm.js fetch and tag waterfall no longer block
+// First Contentful Paint or compete with hydration on mobile. Tag Assistant
+// still detects the container — it polls for window.google_tag_manager after
+// load.
 const GTM_HEAD_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
 
-// Mount inside <head> of the root layout (server component, SSR-rendered).
 export function GoogleTagManagerHead() {
   if (!GTM_ID) return null;
   return (
-    <script
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: GTM_HEAD_SCRIPT }}
-    />
+    <Script id="gtm-bootstrap" strategy="afterInteractive">
+      {GTM_HEAD_SCRIPT}
+    </Script>
   );
 }
 

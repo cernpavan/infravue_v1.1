@@ -8,12 +8,14 @@ interface SerializedWhatsAppLead {
   id: string;
   requestId: string;
   source: string;
+  clickCount: number;
+  lastClickedAt: string;
   createdAt: string;
 }
 
 export default async function WhatsAppLeadsPage() {
   const leads = await prisma.whatsAppLead.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: { lastClickedAt: "desc" },
   });
 
   // Serialize dates
@@ -21,6 +23,8 @@ export default async function WhatsAppLeadsPage() {
     id: lead.id,
     requestId: lead.requestId,
     source: lead.source,
+    clickCount: lead.clickCount,
+    lastClickedAt: lead.lastClickedAt.toISOString(),
     createdAt: lead.createdAt.toISOString(),
   }));
 

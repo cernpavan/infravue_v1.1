@@ -1,7 +1,5 @@
-"use client";
-
 import Image, { type StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import RevealOnView from "@/components/ui/RevealOnView";
 
 import BRC from "@/components/brands/BRC.png";
 import FS from "@/components/brands/FS.jpg";
@@ -31,16 +29,12 @@ const BRANDS: Brand[] = [
   { src: Wavity, alt: "Wavity — tech workspace interior designed by Infravue Interiors, Pune" },
 ];
 
-const easeLuxury = [0.22, 1, 0.36, 1] as const;
-
 function BrandCard({ brand }: { brand: Brand }) {
   return (
     <div className="shrink-0 pr-6 md:pr-8">
       <div
         className="group/card relative flex h-28 w-48 items-center justify-center overflow-hidden rounded-2xl border border-neutral-200/70 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-neutral-300 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)] md:h-32 md:w-60"
       >
-        {/* Identical bounding box for every logo — object-contain handles aspect
-            ratios so wide and square logos read at the same visual weight. */}
         <div className="relative flex h-20 w-40 items-center justify-center md:h-24 md:w-52">
           <Image
             src={brand.src}
@@ -58,19 +52,11 @@ function BrandCard({ brand }: { brand: Brand }) {
 
 function MarqueeRow({ brands }: { brands: Brand[] }) {
   // Doubled list — `marquee-x` translates exactly -50% so the second copy
-  // lands precisely where the first started. Each item's `pr-X` provides the
-  // visible spacing (not flex `gap`), keeping the math seamless.
+  // lands precisely where the first started.
   const track = [...brands, ...brands];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, ease: easeLuxury }}
-      className="group relative flex overflow-hidden"
-    >
-      {/* Edge fades — match white section so the loop seam dissolves */}
+    <RevealOnView className="group relative flex overflow-hidden">
       <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-white to-transparent md:w-40 lg:w-56" />
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-white to-transparent md:w-40 lg:w-56" />
 
@@ -79,7 +65,7 @@ function MarqueeRow({ brands }: { brands: Brand[] }) {
           <BrandCard key={`${b.alt}-${i}`} brand={b} />
         ))}
       </div>
-    </motion.div>
+    </RevealOnView>
   );
 }
 
@@ -88,49 +74,36 @@ export default function BrandsMarquee() {
     <section className="relative overflow-hidden bg-white py-8 lg:py-10">
       {/* ── Header ── */}
       <div className="relative mx-auto mb-8 max-w-7xl px-6 text-center lg:mb-10 lg:px-20">
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0.4 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, ease: easeLuxury }}
-          className="mx-auto mb-5 h-px w-20 origin-center bg-gradient-to-r from-transparent via-terracotta to-transparent"
-        />
+        <RevealOnView className="mx-auto mb-5 h-px w-20 origin-center bg-gradient-to-r from-transparent via-terracotta to-transparent" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, delay: 0.05, ease: easeLuxury }}
-          className="mb-5 text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta"
+        <RevealOnView
+          delayMs={50}
+          className="mb-5"
         >
-          Trusted Partners
-        </motion.p>
+          <p className="text-[14px] font-bold uppercase tracking-[0.28em] text-terracotta">
+            Trusted Partners
+          </p>
+        </RevealOnView>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.85, delay: 0.12, ease: easeLuxury }}
-          className="font-bold text-navy"
-          style={{
-            fontSize: "clamp(2.25rem, 5vw, 4.5rem)",
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-          }}
-        >
-          Trusted by Visionary Brands
-        </motion.h2>
+        <RevealOnView delayMs={120}>
+          <h2
+            className="font-bold text-navy"
+            style={{
+              fontSize: "clamp(2.25rem, 5vw, 4.5rem)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            Trusted by Visionary Brands
+          </h2>
+        </RevealOnView>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, delay: 0.22, ease: easeLuxury }}
-          className="mx-auto mt-5 max-w-2xl text-base font-light leading-relaxed text-navy/55 lg:text-lg"
-        >
-          A select group of partners who chose Infravue to design spaces that
-          reflect the standards their teams and clients expect.
-        </motion.p>
+        <RevealOnView delayMs={220}>
+          <p className="mx-auto mt-5 max-w-2xl text-base font-light leading-relaxed text-navy/55 lg:text-lg">
+            A select group of partners who chose Infravue to design spaces that
+            reflect the standards their teams and clients expect.
+          </p>
+        </RevealOnView>
       </div>
 
       {/* ── Single-row marquee ── */}
