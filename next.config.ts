@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
     deviceSizes: [360, 414, 640, 750, 828, 1080, 1280, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ["image/avif", "image/webp"],
+    // Next.js 16 requires every quality value used in code to be registered
+    // here, otherwise it silently refuses to optimize. 75 = default, 80 = hero,
+    // 82 = service tiles.
+    qualities: [75, 80, 82],
   },
   async rewrites() {
     return [

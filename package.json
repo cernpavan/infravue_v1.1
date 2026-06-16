@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build && opennextjs-cloudflare build",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "build": "prisma generate && node scripts/optimize-images.mjs && next build && opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint",
     "db:seed": "node prisma/seed.js",
@@ -53,6 +54,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "prisma": "^6.19.3",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.90.0"

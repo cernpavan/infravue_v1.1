@@ -89,42 +89,51 @@ export default function HeroCarousel() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden pt-24 bg-navy">
-      {/* ── Image carousel with crossfade + Ken Burns ──
-          `initial={false}` on AnimatePresence makes the FIRST slide paint
-          immediately (no opacity fade-in), so the browser records LCP as
-          soon as the bytes arrive — instead of waiting 1.4s for the
-          framer-motion tween to complete. Subsequent slide changes keep
-          the full crossfade + Ken Burns animation. */}
-      <AnimatePresence mode="sync" initial={false}>
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{
-            opacity: 1,
-            scale: 1.0,
-          }}
-          exit={{ opacity: 0 }}
-          transition={{
-            opacity: { duration: 1.4, ease: CUBIC_EASE },
-            scale: { duration: 10, ease: "linear" },
-          }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
-            alt={SLIDES[current].alt}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            // Only the first slide gets `priority` — it's the LCP image. Later
-            // slides load on demand (still fast via the Cloudflare edge loader)
-            // but don't compete with above-the-fold paint.
-            priority={current === 0}
-            quality={80}
-            onError={() => setImgError(true)}
-          />
-        </motion.div>
-      </AnimatePresence>
+      {/* ── LCP image — first slide rendered as plain <Image> outside any
+          motion wrapper, so the browser records LCP the instant the bytes
+          arrive. Framer Motion only kicks in for SUBSEQUENT slides. */}
+      <div className="absolute inset-0">
+        <Image
+          src={imgError && current === 0 ? SLIDES[0].fallback : SLIDES[0].image}
+          alt={SLIDES[0].alt}
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          quality={75}
+          onError={() => setImgError(true)}
+        />
+      </div>
+
+      {/* ── Subsequent slides — crossfade + Ken Burns. Skipped while
+          `current === 0` so the framer-motion subtree is mounted lazily
+          and never competes with LCP paint. */}
+      {current !== 0 && (
+        <AnimatePresence mode="sync" initial={false}>
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1.0 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              opacity: { duration: 1.4, ease: CUBIC_EASE },
+              scale: { duration: 10, ease: "linear" },
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
+              alt={SLIDES[current].alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              quality={75}
+              onError={() => setImgError(true)}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
 
       {/* Dark overlay for content readability */}
       <div className="absolute inset-0 bg-black/40" />
