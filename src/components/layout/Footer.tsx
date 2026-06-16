@@ -42,6 +42,7 @@ const COMPANY = [
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
+  { label: "Cookie Policy", href: "/cookies" },
 ];
 
 export default function Footer() {
@@ -240,6 +241,9 @@ export default function Footer() {
             </Link>
             <Link href="/terms" className="text-xs font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
               Terms of Service
+            </Link>
+            <Link href="/cookies" className="text-xs font-medium text-[#1E3A6A] hover:text-[#A1622C] transition-colors">
+              Cookie Policy
             </Link>
           </div>
         </div>

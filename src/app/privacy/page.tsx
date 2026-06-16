@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import {
   SectionEyebrow,
   Section,
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 const LAST_UPDATED = "May 11, 2026";
 const CONTACT_EMAIL = "info@infravueinteriors.com";
+const CONTACT_PHONE = "+91 9010709994";
 
 const TOC = [
   { num: "01", id: "section-1", title: "What information do we collect?" },
@@ -621,8 +622,30 @@ export default function PrivacyPolicyPage() {
               />
             </a>
 
-            {/* Address card */}
-            <div className="flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)]">
+            {/* Phone card */}
+            <a
+              href={`tel:${CONTACT_PHONE.replace(/\s+/g, "")}`}
+              className="group relative flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:border-navy/20 hover:shadow-[0_4px_8px_rgba(15,23,42,0.04),0_20px_40px_-16px_rgba(15,23,42,0.18)]"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
+                <Phone size={16} />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-navy/45">
+                  Phone
+                </p>
+                <p className="mt-1 text-sm font-medium text-navy group-hover:text-terracotta">
+                  {CONTACT_PHONE}
+                </p>
+              </div>
+              <ArrowUpRight
+                size={16}
+                className="mt-1 shrink-0 text-navy/30 transition group-hover:text-terracotta group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </a>
+
+            {/* Address card — full width on sm+ */}
+            <div className="flex items-start gap-4 rounded-2xl border border-navy/10 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_20px_-12px_rgba(15,23,42,0.08)] sm:col-span-2">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta/10 text-terracotta">
                 <MapPin size={16} />
               </span>

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const LAST_UPDATED = "May 11, 2026";
 const CONTACT_EMAIL = "info@infravueinteriors.com";
-const CONTACT_PHONE = "+91 89788 71079";
+const CONTACT_PHONE = "+91 9010709994";
 
 const TOC = [
   { num: "01", id: "section-1", title: "Use of the Website" },
