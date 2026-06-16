@@ -1,6 +1,7 @@
 import { ArrowRight, Phone } from "lucide-react";
 import BookButton from "@/components/ui/BookButton";
 import WhatsAppLink from "@/components/ui/WhatsAppLink";
+import { CONTACT } from "@/lib/seo";
 
 export default function CtaBanner() {
   return (
@@ -28,7 +29,7 @@ export default function CtaBanner() {
             </BookButton>
 
             <a
-              href="tel:+918978871079"
+              href={`tel:${CONTACT.phone}`}
               className="inline-flex items-center gap-2.5 px-8 py-4 border border-[#1E3A6A]/25 text-[#1E3A6A] font-semibold text-sm rounded-[6px] hover:bg-[#1E3A6A] hover:text-white hover:border-[#1E3A6A] transition-all duration-300"
             >
               <Phone size={16} />
