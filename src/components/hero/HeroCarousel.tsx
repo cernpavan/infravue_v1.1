@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import BookButton from "@/components/ui/BookButton";
 
 const SLIDES = [
@@ -35,8 +34,6 @@ const SLIDES = [
 ];
 
 const AUTO_ROTATE_INTERVAL = 6000;
-const CUBIC_EASE: [number, number, number, number] = [0.4, 0, 0.2, 1]; // Material Design easing
-const CUBIC_EASE_OUT: [number, number, number, number] = [0.4, 0, 1, 1]; // Fast exit easing
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
@@ -89,16 +86,20 @@ export default function HeroCarousel() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden pt-24 bg-navy">
-      {/* ── LCP image — first slide rendered as plain <Image> outside any
-          motion wrapper, so the browser records LCP the instant the bytes
-          arrive. Framer Motion only kicks in for SUBSEQUENT slides. */}
-      <div className="absolute inset-0">
+      {/* ── Slide 0 (Always in DOM to ensure zero LCP delay) ── */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${
+          current === 0 ? "opacity-100 z-0" : "opacity-0 z-[-1] pointer-events-none"
+        }`}
+      >
         <Image
           src={imgError && current === 0 ? SLIDES[0].fallback : SLIDES[0].image}
           alt={SLIDES[0].alt}
           fill
           sizes="100vw"
-          className="object-cover"
+          className={`object-cover transition-transform duration-[10000ms] ease-out ${
+            current === 0 ? "scale-100" : "scale-106"
+          }`}
           priority
           fetchPriority="high"
           quality={75}
@@ -106,33 +107,22 @@ export default function HeroCarousel() {
         />
       </div>
 
-      {/* ── Subsequent slides — crossfade + Ken Burns. Skipped while
-          `current === 0` so the framer-motion subtree is mounted lazily
-          and never competes with LCP paint. */}
+      {/* ── Subsequent slides (mounted/transitioned on demand) ── */}
       {current !== 0 && (
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1.0 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 1.4, ease: CUBIC_EASE },
-              scale: { duration: 10, ease: "linear" },
-            }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
-              alt={SLIDES[current].alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              quality={75}
-              onError={() => setImgError(true)}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <div
+          key={current}
+          className="absolute inset-0 animate-fade-in"
+        >
+          <Image
+            src={imgError ? SLIDES[current].fallback : SLIDES[current].image}
+            alt={SLIDES[current].alt}
+            fill
+            sizes="100vw"
+            className="object-cover animate-ken-burns"
+            quality={75}
+            onError={() => setImgError(true)}
+          />
+        </div>
       )}
 
       {/* Dark overlay for content readability */}
@@ -142,61 +132,30 @@ export default function HeroCarousel() {
       <div className="relative h-full z-10 flex flex-col items-center justify-center px-6 lg:px-20 text-center">
         {/*
           max-w-5xl (1024 px) gives the headline enough horizontal room to
-          sit in exactly 2 lines on desktop.  The sub-headline and CTAs are
+          sit in exactly 2 lines on desktop. The sub-headline and CTAs are
           already self-constrained with their own max-width, so widening this
           wrapper has zero visual effect on them.
         */}
         <div className="w-full max-w-5xl">
-          {/* Eyebrow
-              NOTE: hero text uses `initial={{ y: 20 }}` (no opacity:0) so
-              Framer Motion ships SSR'd HTML that is already VISIBLE — only
-              the slide-up plays once JS hydrates. Previously each block had
-              `initial={{ opacity: 0 }}`, which framer-motion serializes as
-              `style="opacity:0"` in the SSR response — the hero appeared
-              blank on mobile until JS arrived (2–4s on 4G). Keep the y
-              offset so the cascade still feels intentional. */}
-          <motion.p
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, ease: CUBIC_EASE }}
-            className="text-sand text-xs font-semibold tracking-[0.18em] uppercase mb-6"
-          >
+          {/* Eyebrow */}
+          <p className="text-sand text-xs font-semibold tracking-[0.18em] uppercase mb-6 animate-fade-in-up">
             Premium Interior Designers in Hyderabad
-          </motion.p>
+          </p>
 
-          {/* Headline — 2-line layout on md+ screens
-              Line 1: "Transforming Corporate Spaces,"
-              Line 2: "Commercial Environments & Homes"
-              The <br> is hidden on mobile so it wraps naturally at small sizes.
-          */}
-          <motion.h1
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: CUBIC_EASE }}
-            className="text-[1.75rem] sm:text-[2.125rem] md:text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] font-bold text-white leading-[1.1] tracking-tight mb-6"
-          >
+          {/* Headline — 2-line layout on md+ screens */}
+          <h1 className="text-[1.75rem] sm:text-[2.125rem] md:text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] font-bold text-white leading-[1.1] tracking-tight mb-6 animate-[fade-in-up_0.8s_ease-out_0.1s_both]">
             Transforming Corporate Spaces,
             <br className="hidden md:block" />
             {" "}Commercial Environments &amp; Homes
-          </motion.h1>
+          </h1>
 
           {/* Subheadline */}
-          <motion.p
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: CUBIC_EASE }}
-            className="text-white/85 text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto"
-          >
+          <p className="text-white/85 text-base lg:text-lg leading-relaxed mb-10 max-w-lg mx-auto animate-[fade-in-up_0.8s_ease-out_0.2s_both]">
             Modern interior design and turnkey solutions for corporate, commercial, and residential spaces.
-          </motion.p>
+          </p>
 
           {/* CTAs */}
-          <motion.div
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: CUBIC_EASE }}
-            className="flex flex-col sm:flex-row gap-4 items-center justify-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-[fade-in-up_0.8s_ease-out_0.3s_both]">
             <BookButton
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-white font-semibold text-sm rounded-[4px] hover:bg-terracotta-dark transition-colors duration-200 cursor-pointer"
             >
@@ -221,43 +180,29 @@ export default function HeroCarousel() {
             >
               View Our Work
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* ── Navigation dots with layout animation + progress bar ── */}
+      {/* ── Navigation dots with progress bar ── */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-4">
         {SLIDES.map((_, index) => (
           <div key={index} className="relative">
-            <motion.button
-              layout
+            <button
               onClick={() => handleDot(index)}
               aria-label={`Go to slide ${index + 1}`}
-              animate={{
-                width: current === index ? 32 : 10,
-                backgroundColor:
-                  current === index ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.4)",
-              }}
-              transition={{ duration: 0.35, ease: CUBIC_EASE }}
-              className="h-2.5 rounded-full cursor-pointer transition-colors"
-              whileHover={{
-                backgroundColor:
-                  current === index ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.7)",
-              }}
-              whileTap={{ scale: 0.92 }}
+              className={`h-2.5 rounded-full cursor-pointer transition-all duration-350 ease-out active:scale-95 hover:bg-white/70 ${
+                current === index
+                  ? "w-8 bg-white"
+                  : "w-2.5 bg-white/40"
+              }`}
             />
 
             {/* Progress bar under active dot */}
             {current === index && (
-              <motion.div
+              <div
                 key={`progress-${current}`}
-                className="absolute -bottom-2 left-0 h-0.5 bg-terracotta rounded-full"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{
-                  duration: AUTO_ROTATE_INTERVAL / 1000,
-                  ease: "linear",
-                }}
+                className="absolute -bottom-2 left-0 h-0.5 bg-terracotta rounded-full animate-progress"
               />
             )}
           </div>
@@ -266,24 +211,20 @@ export default function HeroCarousel() {
 
       {/* ── Navigation arrows (desktop only) ── */}
       <div className="hidden lg:flex absolute left-8 right-8 top-1/2 transform -translate-y-1/2 justify-between z-20 pointer-events-none">
-        <motion.button
+        <button
           onClick={handlePrev}
           aria-label="Previous slide"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto w-12 h-12 rounded-full bg-white/15 text-white hover:bg-white/30 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-white/15 text-white hover:bg-white/30 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm cursor-pointer active:scale-95"
         >
           <ChevronRight size={24} className="rotate-180" />
-        </motion.button>
-        <motion.button
+        </button>
+        <button
           onClick={handleNext}
           aria-label="Next slide"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto w-12 h-12 rounded-full bg-white/15 text-white hover:bg-white/30 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-white/15 text-white hover:bg-white/30 flex items-center justify-center transition-colors duration-200 backdrop-blur-sm cursor-pointer active:scale-95"
         >
           <ChevronRight size={24} />
-        </motion.button>
+        </button>
       </div>
 
       {/* ── Slide counter (desktop) ── */}

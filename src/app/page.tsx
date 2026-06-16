@@ -5,8 +5,6 @@ import HeroCarousel from "@/components/hero/HeroCarousel";
 import TrustBanner from "@/components/sections/TrustBanner";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import ServiceIconsSection from "@/components/sections/ServiceIconsSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { FAQS } from "@/data/faqs";
 import { faqPageSchema } from "@/lib/jsonld";
@@ -14,6 +12,8 @@ import { faqPageSchema } from "@/lib/jsonld";
 // Below-the-fold sections — dynamically imported so their JS (and Framer
 // Motion footprint) is split out of the initial bundle. `ssr: true` keeps
 // SEO/crawler content intact via streaming.
+const ServiceIconsSection = dynamic(() => import("@/components/sections/ServiceIconsSection"));
+const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"));
 const BrandsMarquee = dynamic(() => import("@/components/sections/BrandsMarquee"));
 const ProcessSection = dynamic(() => import("@/components/sections/ProcessSection"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));

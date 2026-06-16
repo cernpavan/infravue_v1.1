@@ -14,7 +14,7 @@ const GTM_HEAD_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.star
 export function GoogleTagManagerHead() {
   if (!GTM_ID) return null;
   return (
-    <Script id="gtm-bootstrap" strategy="afterInteractive">
+    <Script id="gtm-bootstrap" strategy="lazyOnload">
       {GTM_HEAD_SCRIPT}
     </Script>
   );

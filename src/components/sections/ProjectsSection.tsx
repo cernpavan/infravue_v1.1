@@ -9,7 +9,12 @@ import {
   getProjectHeroAlt,
   type ProjectWithSlug,
 } from "@/data/projects";
-import ProjectGalleryModal from "@/components/projects/ProjectGalleryModal";
+import dynamic from "next/dynamic";
+
+const ProjectGalleryModal = dynamic(
+  () => import("@/components/projects/ProjectGalleryModal"),
+  { ssr: false }
+);
 
 // Sentinel key written to `history.state` while the project modal is open.
 // The device/browser back button pops this entry, which our popstate handler
