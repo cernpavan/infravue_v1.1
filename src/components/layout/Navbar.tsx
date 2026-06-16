@@ -55,7 +55,6 @@ export default function Navbar() {
               <Image
                 src={logo}
                 alt="Infravue Interiors — Premium Interior Designers in Hyderabad"
-                priority
                 fill
                 sizes="(min-width: 1024px) 260px, 220px"
                 className="object-contain object-left"
