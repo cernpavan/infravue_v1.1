@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/app/logo_part1.png";
+import logo from "@/app/logo_part1.webp";
 import BookButton from "@/components/ui/BookButton";
 import { CONTACT, ADDRESS, SOCIAL, MAPS_URL } from "@/lib/seo";
 

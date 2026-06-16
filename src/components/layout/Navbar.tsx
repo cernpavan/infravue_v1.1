@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
 import BookButton from "@/components/ui/BookButton";
-import logo from "@/app/logo_part1.png";
+import logo from "@/app/logo_part1.webp";
 
 const NAV_LINKS = [
   { name: "About Us", href: "/about" },
