@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { ensureRequestId } from "@/store/leadStore";
 
-export const WHATSAPP_PHONE = "918978871079";
+export const WHATSAPP_PHONE = "919346245082";
 
 export type WhatsAppSource =
   | "floating-button"
